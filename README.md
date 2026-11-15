@@ -1,4 +1,4 @@
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0F172A,50:1E3A5F,100:0F172A&height=200&section=header&text=Pruthvi%20Garlapati&fontSize=54&fontColor=F8FAFC&animation=fadeIn&fontAlignY=38&desc=Senior%20GCP%20DevOps%20Engineer%20%7C%20Platform%20%26%20AI%20Agent%20Builder&descAlignY=62&descSize=18&descColor=38BDF8" width="100%" alt="Pruthvi Garlapati - Senior GCP DevOps Engineer" />
+<img src="assets/banner.svg" width="100%" alt="Pruthvi Garlapati - Senior GCP DevOps Engineer" />
 
 <div align="center">
 
@@ -71,4 +71,4 @@ In parallel, I design and ship **AI agent systems end to end, solo** - research 
 
 The fastest way to evaluate my work is the live products above - Sach takes 10 seconds to try. For roles or collaboration, reach me on [LinkedIn](https://www.linkedin.com/in/pruthvi-g/).
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0F172A,50:1E3A5F,100:0F172A&height=110&section=footer" width="100%" alt="" />
+<img src="assets/footer.svg" width="100%" alt="" />
