@@ -66,15 +66,17 @@ Live demos: [Sach](https://sachcheck.in) - [Sach impact page](https://sachcheck.
 </div>
 
 <div align="center">
-<img src="github-metrics.svg" width="480" alt="GitHub metrics - real contributions, habits, languages and achievements" />
-</div>
-
-<div align="center">
   <img alt="Galaga - contribution graph space shooter" src="https://raw.githubusercontent.com/pruthvig1998/pruthvig1998/output/galaga-contribution-graph-dark.svg" />
 </div>
 
 <div align="center">
   <img alt="Breakout - contribution graph brick breaker" src="https://raw.githubusercontent.com/pruthvig1998/pruthvig1998/output/breakout-contribution-graph-dark.svg" />
+</div>
+
+<p align="center"><sub>LIVE DATA - REGENERATED DAILY FROM MY GITHUB ACTIVITY</sub></p>
+
+<div align="center">
+<img src="github-metrics.svg" width="480" alt="GitHub metrics - real contributions, habits, languages and activity" />
 </div>
 
 <div align="center"><img src="assets/divider.svg" width="100%" alt="" /></div>
