@@ -1,96 +1,49 @@
-<svg width="1200" height="280" viewBox="0 0 1200 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pruthvi Garlapati - Senior GCP DevOps Engineer">
+<svg width="1200" height="300" viewBox="0 0 1200 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pruthvi Garlapati - Senior GCP DevOps Engineer">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#050914">
-        <animate attributeName="stop-color" values="#050914;#0B1030;#050914" dur="14s" repeatCount="indefinite"/>
-      </stop>
-      <stop offset="0.55" stop-color="#101E42">
-        <animate attributeName="stop-color" values="#101E42;#1B2A5E;#101E42" dur="14s" repeatCount="indefinite"/>
-      </stop>
-      <stop offset="1" stop-color="#050914">
-        <animate attributeName="stop-color" values="#050914;#160F38;#050914" dur="14s" repeatCount="indefinite"/>
-      </stop>
+      <stop offset="0" stop-color="#0B0C0E"/><stop offset="1" stop-color="#141519"/>
     </linearGradient>
-    <radialGradient id="aurora1" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#22D3EE" stop-opacity="0.35"/>
-      <stop offset="1" stop-color="#22D3EE" stop-opacity="0"/>
-    </radialGradient>
-    <radialGradient id="aurora2" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#8B5CF6" stop-opacity="0.32"/>
-      <stop offset="1" stop-color="#8B5CF6" stop-opacity="0"/>
+    <radialGradient id="glow1" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#C6A15B" stop-opacity="0.13"/><stop offset="1" stop-color="#C6A15B" stop-opacity="0"/>
     </radialGradient>
     <linearGradient id="rule" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#22D3EE" stop-opacity="0"/>
-      <stop offset="0.5" stop-color="#22D3EE"/>
-      <stop offset="1" stop-color="#8B5CF6" stop-opacity="0"/>
+      <stop offset="0" stop-color="#C6A15B" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#C6A15B"/>
+      <stop offset="1" stop-color="#E5D9BE" stop-opacity="0"/>
     </linearGradient>
-    <linearGradient id="sweep" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0"/>
-      <stop offset="0.5" stop-color="#BDEFFF" stop-opacity="0.10"/>
-      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
-    </linearGradient>
-    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="5" result="b"/>
-      <feMerge>
-        <feMergeNode in="b"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
   </defs>
-
-  <rect width="1200" height="280" fill="url(#bg)"/>
-
-  <ellipse cx="240" cy="60" rx="330" ry="150" fill="url(#aurora1)">
-    <animate attributeName="cx" values="240;330;240" dur="16s" repeatCount="indefinite"/>
-    <animate attributeName="cy" values="60;92;60" dur="16s" repeatCount="indefinite"/>
+  <rect width="1200" height="300" fill="url(#bg)"/>
+  <ellipse cx="300" cy="60" rx="420" ry="170" fill="url(#glow1)">
+    <animate attributeName="cx" values="300;900;300" dur="26s" repeatCount="indefinite"/>
   </ellipse>
-  <ellipse cx="980" cy="210" rx="360" ry="160" fill="url(#aurora2)">
-    <animate attributeName="cx" values="980;890;980" dur="19s" repeatCount="indefinite"/>
-    <animate attributeName="cy" values="210;178;210" dur="19s" repeatCount="indefinite"/>
+  <ellipse cx="950" cy="260" rx="380" ry="150" fill="url(#glow1)" opacity="0.7">
+    <animate attributeName="cx" values="950;350;950" dur="32s" repeatCount="indefinite"/>
   </ellipse>
-
-  <g stroke="#FFFFFF" stroke-opacity="0.05" stroke-width="1">
-    <line x1="0" y1="70" x2="1200" y2="70"/>
-    <line x1="0" y1="140" x2="1200" y2="140"/>
-    <line x1="0" y1="210" x2="1200" y2="210"/>
-    <line x1="200" y1="0" x2="200" y2="280"/>
-    <line x1="400" y1="0" x2="400" y2="280"/>
-    <line x1="600" y1="0" x2="600" y2="280"/>
-    <line x1="800" y1="0" x2="800" y2="280"/>
-    <line x1="1000" y1="0" x2="1000" y2="280"/>
+  <g stroke="#FFFFFF" stroke-opacity="0.035">
+    <path d="M100 0 V300 M300 0 V300 M500 0 V300 M700 0 V300 M900 0 V300 M1100 0 V300"/>
+    <path d="M0 75 H1200 M0 150 H1200 M0 225 H1200"/>
   </g>
-
-  <g stroke="#22D3EE" stroke-opacity="0.28" stroke-width="1">
-    <line x1="120" y1="52" x2="252" y2="96"/>
-    <line x1="252" y1="96" x2="392" y2="44"/>
-    <line x1="948" y1="60" x2="1062" y2="104"/>
-    <line x1="1062" y1="104" x2="1128" y2="48"/>
-    <line x1="180" y1="212" x2="262" y2="162"/>
-    <line x1="900" y1="216" x2="1010" y2="182"/>
-    <line x1="1010" y1="182" x2="1104" y2="222"/>
+  <g stroke="#C6A15B" stroke-opacity="0.30" stroke-width="1.4">
+    <path d="M26 44 V26 H44" fill="none"/><path d="M1156 26 H1174 V44" fill="none"/>
+    <path d="M26 256 V274 H44" fill="none"/><path d="M1156 274 H1174 V256" fill="none"/>
   </g>
-  <g fill="#7DD3FC">
-    <circle cx="120" cy="52" r="3.5"><animate attributeName="opacity" values="0.9;0.25;0.9" dur="3.2s" repeatCount="indefinite"/></circle>
-    <circle cx="252" cy="96" r="3"><animate attributeName="opacity" values="0.25;0.9;0.25" dur="4.1s" repeatCount="indefinite"/></circle>
-    <circle cx="392" cy="44" r="3.5"><animate attributeName="opacity" values="0.9;0.3;0.9" dur="3.7s" repeatCount="indefinite"/></circle>
-    <circle cx="948" cy="60" r="3.5"><animate attributeName="opacity" values="0.3;0.95;0.3" dur="4.4s" repeatCount="indefinite"/></circle>
-    <circle cx="1062" cy="104" r="3"><animate attributeName="opacity" values="0.9;0.25;0.9" dur="3.4s" repeatCount="indefinite"/></circle>
-    <circle cx="1128" cy="48" r="3.5"><animate attributeName="opacity" values="0.25;0.9;0.25" dur="3.9s" repeatCount="indefinite"/></circle>
-    <circle cx="180" cy="212" r="3"><animate attributeName="opacity" values="0.9;0.3;0.9" dur="4.2s" repeatCount="indefinite"/></circle>
-    <circle cx="262" cy="162" r="3.5"><animate attributeName="opacity" values="0.3;0.9;0.3" dur="3.5s" repeatCount="indefinite"/></circle>
-    <circle cx="900" cy="216" r="3"><animate attributeName="opacity" values="0.9;0.25;0.9" dur="4.6s" repeatCount="indefinite"/></circle>
-    <circle cx="1010" cy="182" r="3.5"><animate attributeName="opacity" values="0.25;0.95;0.25" dur="3.3s" repeatCount="indefinite"/></circle>
-    <circle cx="1104" cy="222" r="3"><animate attributeName="opacity" values="0.9;0.3;0.9" dur="4.0s" repeatCount="indefinite"/></circle>
+  <g fill="none" stroke="#C6A15B" stroke-opacity="0.35">
+    <polyline points="120,210 260,150 400,185 560,105" />
+    <polyline points="760,120 900,80 1040,140" opacity="0.6"/>
   </g>
-
-  <path d="M0,232 C200,196 380,262 620,238 C840,217 1020,252 1200,224 L1200,280 L0,280 Z" fill="#22D3EE" fill-opacity="0.08"/>
-  <path d="M0,248 C220,216 420,272 660,250 C880,231 1040,262 1200,240 L1200,280 L0,280 Z" fill="#8B5CF6" fill-opacity="0.10"/>
-
-  <text x="600" y="128" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="bold" fill="#F8FAFC" letter-spacing="0.5" filter="url(#glow)">Pruthvi Garlapati</text>
-  <rect x="410" y="150" width="380" height="2.5" fill="url(#rule)"/>
-  <text x="600" y="192" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="21" fill="#22D3EE" letter-spacing="1.5">Senior GCP DevOps Engineer | Platform &amp; AI Agent Builder</text>
-
-  <rect x="-260" y="0" width="240" height="280" fill="url(#sweep)" transform="skewX(-18)">
-    <animateTransform attributeName="transform" type="translate" values="0 0;1700 0" dur="7s" repeatCount="indefinite" additive="sum"/>
+  <g fill="#E5D9BE">
+    <circle cx="260" cy="150" r="3.5"><animate attributeName="opacity" values="0.9;0.3;0.9" dur="3.4s" repeatCount="indefinite"/></circle>
+    <circle cx="560" cy="105" r="3.5"><animate attributeName="opacity" values="0.3;0.9;0.3" dur="4.2s" repeatCount="indefinite"/></circle>
+    <circle cx="900" cy="80" r="3.5"><animate attributeName="opacity" values="0.9;0.35;0.9" dur="3.8s" repeatCount="indefinite"/></circle>
+  </g>
+  <text x="600" y="148" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="66" font-weight="bold" fill="#ECE7DF" filter="url(#soft)">Pruthvi Garlapati</text>
+  <rect x="360" y="172" width="480" height="2" fill="url(#rule)">
+    <animate attributeName="width" values="480;560;480" dur="9s" repeatCount="indefinite"/>
+    <animate attributeName="x" values="360;320;360" dur="9s" repeatCount="indefinite"/>
   </rect>
+  <text x="600" y="216" text-anchor="middle" font-family="Courier New, monospace" font-size="19" letter-spacing="4" fill="#C6A15B">SENIOR GCP DEVOPS ENGINEER | PLATFORM AND AI AGENT BUILDER</text>
+  <text x="600" y="258" text-anchor="middle" font-family="Courier New, monospace" font-size="13.5" letter-spacing="3" fill="#9C968B">GKE - TERRAFORM - ARGO CD - EVIDENCE-GROUNDED AI SYSTEMS</text>
 </svg>
