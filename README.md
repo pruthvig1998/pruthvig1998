@@ -21,13 +21,9 @@
 
 ## 01 - About
 
-Senior GCP DevOps Engineer at **UKG**, building cloud platform infrastructure since 2018 - currently on the UTM infrastructure team (GKE, Cloud Run, SQL Server 2022 migration, PagerDuty noise reduction). Based between Hyderabad and Toronto; Canadian permanent resident.
-
-In parallel, I design and ship **AI agent systems end to end, solo** - research agents, trading research desks, and a public-interest fact-checker - with a strict rule that runs through all of them: **every claim an agent makes must be traceable to evidence, and "I could not verify this" is a valid answer.**
-
-- **Certifications:** Google Cloud Professional Cloud DevOps Engineer - PagerDuty Foundational Practitioner
-- **Education:** BTech, CVR College of Engineering, Hyderabad - PG diplomas in Cloud Computing (George Brown) and Business Analytics (Cambrian)
-- **Open to:** Senior GCP / Platform / DevOps roles, Toronto hybrid or Canada remote
+<div align="center">
+<img src="assets/about.svg" width="100%" alt="About Pruthvi Garlapati - Senior GCP DevOps Engineer at UKG, AI agent systems builder" />
+</div>
 
 <div align="center"><img src="assets/divider.svg" width="100%" alt="" /></div>
 
@@ -67,6 +63,10 @@ Live demos: [Sach](https://sachcheck.in) - [Sach impact page](https://sachcheck.
 
 <div align="center">
 <img src="assets/city.svg" width="100%" alt="Commit city - main-branch commits per public repository" />
+</div>
+
+<div align="center">
+<img src="github-metrics.svg" width="100%" alt="GitHub metrics - real contributions, habits, languages and achievements" />
 </div>
 
 <div align="center">
