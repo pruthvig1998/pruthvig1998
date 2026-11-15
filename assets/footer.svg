@@ -1,12 +1,28 @@
 <svg width="1200" height="110" viewBox="0 0 1200 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="">
   <defs>
     <linearGradient id="fbg" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#0F172A"/>
-      <stop offset="0.5" stop-color="#1E3A5F"/>
-      <stop offset="1" stop-color="#0F172A"/>
+      <stop offset="0" stop-color="#050914">
+        <animate attributeName="stop-color" values="#050914;#0B1030;#050914" dur="14s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="0.5" stop-color="#101E42">
+        <animate attributeName="stop-color" values="#101E42;#1B2A5E;#101E42" dur="14s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="1" stop-color="#050914">
+        <animate attributeName="stop-color" values="#050914;#160F38;#050914" dur="14s" repeatCount="indefinite"/>
+      </stop>
     </linearGradient>
   </defs>
   <rect width="1200" height="110" fill="url(#fbg)"/>
-  <path d="M0,44 C200,80 380,14 620,38 C840,59 1020,18 1200,46 L1200,110 L0,110 Z" fill="#38BDF8" fill-opacity="0.10"/>
-  <path d="M0,60 C220,90 420,30 660,52 C880,71 1040,34 1200,62 L1200,110 L0,110 Z" fill="#38BDF8" fill-opacity="0.13"/>
+  <path fill="#22D3EE" fill-opacity="0.09" d="M0,44 C200,80 380,14 620,38 C840,59 1020,18 1200,46 L1200,110 L0,110 Z">
+    <animate attributeName="d" dur="9s" repeatCount="indefinite"
+      values="M0,44 C200,80 380,14 620,38 C840,59 1020,18 1200,46 L1200,110 L0,110 Z;
+              M0,58 C210,22 400,74 620,50 C830,30 1010,66 1200,34 L1200,110 L0,110 Z;
+              M0,44 C200,80 380,14 620,38 C840,59 1020,18 1200,46 L1200,110 L0,110 Z"/>
+  </path>
+  <path fill="#8B5CF6" fill-opacity="0.11" d="M0,60 C220,90 420,30 660,52 C880,71 1040,34 1200,62 L1200,110 L0,110 Z">
+    <animate attributeName="d" dur="11s" repeatCount="indefinite"
+      values="M0,60 C220,90 420,30 660,52 C880,71 1040,34 1200,62 L1200,110 L0,110 Z;
+              M0,46 C230,28 410,78 660,40 C870,24 1030,72 1200,48 L1200,110 L0,110 Z;
+              M0,60 C220,90 420,30 660,52 C880,71 1040,34 1200,62 L1200,110 L0,110 Z"/>
+  </path>
 </svg>
