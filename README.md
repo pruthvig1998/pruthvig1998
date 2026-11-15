@@ -15,6 +15,13 @@
 
 **[View my full portfolio site](https://pruthvig1998.github.io/pruthvig1998/)** - flagship projects, experience timeline and live demos in one page.
 
+<table>
+<tr>
+<td width="56%"><img src="assets/whoami.svg" width="100%" alt="whoami - terminal profile" /></td>
+<td width="44%"><img src="assets/portrait.svg" width="100%" alt="Pruthvi Garlapati - halftone portrait" /></td>
+</tr>
+</table>
+
 ## About
 
 Senior GCP DevOps Engineer at **UKG**, building cloud platform infrastructure since 2018 - currently on the UTM infrastructure team (GKE, Cloud Run, SQL Server 2022 migration, PagerDuty noise reduction). Based between Hyderabad and Toronto; Canadian permanent resident.
