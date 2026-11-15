@@ -2,25 +2,22 @@
 
 <div align="center">
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=21&pause=1200&color=C6A15B&center=true&vCenter=true&width=820&lines=Senior+GCP+DevOps+Engineer+at+UKG;GKE+%C2%B7+Terraform+%C2%B7+Argo+CD+%C2%B7+Cloud+Run;I+build+AI+agents+that+have+to+show+their+work;Sach+%C2%B7+QuantPilot+%C2%B7+Cluse+-+built+solo%2C+live+in+production" alt="What Pruthvi does" />
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=21&pause=1200&color=E5484D&center=true&vCenter=true&width=820&lines=Senior+GCP+DevOps+Engineer+at+UKG;GKE+%C2%B7+Terraform+%C2%B7+Argo+CD+%C2%B7+Cloud+Run;I+build+AI+agents+that+have+to+show+their+work;Sach+%C2%B7+QuantPilot+%C2%B7+Cluse+-+built+solo%2C+live+in+production" alt="What Pruthvi does" />
 
 <br/>
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Pruthvi%20Garlapati-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/pruthvi-g/)
 [![Live product](https://img.shields.io/badge/Live%20product-sachcheck.in-C2321F?style=for-the-badge&logo=whatsapp&logoColor=white)](https://sachcheck.in)
-[![Profile views](https://komarev.com/ghpvc/?username=pruthvig1998&label=Profile%20views&color=8C6D2F&style=for-the-badge)](https://github.com/pruthvig1998)
+[![Profile views](https://komarev.com/ghpvc/?username=pruthvig1998&label=Profile%20views&color=8E2438&style=for-the-badge)](https://github.com/pruthvig1998)
 [![Portfolio site](https://img.shields.io/badge/Portfolio-full%20site-38BDF8?style=for-the-badge&logo=googlechrome&logoColor=white)](https://pruthvig1998.github.io/pruthvig1998/)
 
 </div>
 
 **[View my full portfolio site](https://pruthvig1998.github.io/pruthvig1998/)** - flagship projects, experience timeline and live demos in one page.
 
-<table>
-<tr>
-<td width="56%"><img src="assets/whoami.svg" width="100%" alt="whoami - terminal profile" /></td>
-<td width="44%"><img src="assets/portrait.svg" width="100%" alt="Pruthvi Garlapati - halftone portrait" /></td>
-</tr>
-</table>
+<div align="center">
+<img src="assets/whoami.svg" width="100%" alt="whoami - terminal profile" />
+</div>
 
 ## 01 - About
 
