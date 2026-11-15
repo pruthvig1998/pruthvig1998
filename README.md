@@ -6,7 +6,7 @@
 
 <br/>
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Pruthvi%20Garlapati-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/pruthvi-garlapati/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Pruthvi%20Garlapati-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/pruthvi-g/)
 [![Live product](https://img.shields.io/badge/Live%20product-sachcheck.in-C2321F?style=for-the-badge&logo=whatsapp&logoColor=white)](https://sachcheck.in)
 [![Profile views](https://komarev.com/ghpvc/?username=pruthvig1998&label=Profile%20views&color=0E75B6&style=for-the-badge)](https://github.com/pruthvig1998)
 
@@ -60,10 +60,12 @@ In parallel, I design and ship **AI agent systems end to end, solo** - research 
 <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=pruthvig1998&theme=tokyonight" height="170" alt="Contribution stats" />
 </div>
 
-<!-- Contribution snake: section returns once the snake workflow (blocked for the Muse GitHub App - workflow permission) is added by the repo owner and has run once. See .github/workflows/snake.yml in the staging build. -->
+<div align="center">
+  <img alt="Contribution snake animation" src="https://raw.githubusercontent.com/pruthvig1998/pruthvig1998/output/github-contribution-grid-snake-dark.svg" />
+</div>
 
 ## Connect
 
-The fastest way to evaluate my work is the live products above - Sach takes 10 seconds to try. For roles or collaboration, reach me on [LinkedIn](https://www.linkedin.com/in/pruthvi-garlapati/).
+The fastest way to evaluate my work is the live products above - Sach takes 10 seconds to try. For roles or collaboration, reach me on [LinkedIn](https://www.linkedin.com/in/pruthvi-g/).
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0F172A,50:1E3A5F,100:0F172A&height=110&section=footer" width="100%" alt="" />
