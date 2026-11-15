@@ -69,7 +69,11 @@ In parallel, I design and ship **AI agent systems end to end, solo** - research 
 </div>
 
 <div align="center">
-<img src="assets/arcade.svg" width="100%" alt="Contribution Invaders - arcade game card" />
+  <img alt="Galaga - contribution graph space shooter" src="https://raw.githubusercontent.com/pruthvig1998/pruthvig1998/output/galaga-contribution-graph-dark.svg" />
+</div>
+
+<div align="center">
+  <img alt="Breakout - contribution graph brick breaker" src="https://raw.githubusercontent.com/pruthvig1998/pruthvig1998/output/breakout-contribution-graph-dark.svg" />
 </div>
 
 <div align="center">
