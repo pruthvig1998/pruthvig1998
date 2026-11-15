@@ -1,0 +1,42 @@
+<svg width="1200" height="280" viewBox="0 0 1200 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pruthvi Garlapati - Senior GCP DevOps Engineer">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0F172A"/>
+      <stop offset="0.5" stop-color="#1E3A5F"/>
+      <stop offset="1" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="rule" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#38BDF8" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#38BDF8"/>
+      <stop offset="1" stop-color="#38BDF8" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="280" fill="url(#bg)"/>
+  <g stroke="#38BDF8" stroke-opacity="0.16" stroke-width="1">
+    <line x1="120" y1="52" x2="252" y2="96"/>
+    <line x1="252" y1="96" x2="392" y2="44"/>
+    <line x1="948" y1="60" x2="1062" y2="104"/>
+    <line x1="1062" y1="104" x2="1128" y2="48"/>
+    <line x1="180" y1="212" x2="262" y2="162"/>
+    <line x1="900" y1="216" x2="1010" y2="182"/>
+    <line x1="1010" y1="182" x2="1104" y2="222"/>
+  </g>
+  <g fill="#7DD3FC" fill-opacity="0.55">
+    <circle cx="120" cy="52" r="3.5"/>
+    <circle cx="252" cy="96" r="3"/>
+    <circle cx="392" cy="44" r="3.5"/>
+    <circle cx="948" cy="60" r="3.5"/>
+    <circle cx="1062" cy="104" r="3"/>
+    <circle cx="1128" cy="48" r="3.5"/>
+    <circle cx="180" cy="212" r="3"/>
+    <circle cx="262" cy="162" r="3.5"/>
+    <circle cx="900" cy="216" r="3"/>
+    <circle cx="1010" cy="182" r="3.5"/>
+    <circle cx="1104" cy="222" r="3"/>
+  </g>
+  <path d="M0,232 C200,196 380,262 620,238 C840,217 1020,252 1200,224 L1200,280 L0,280 Z" fill="#38BDF8" fill-opacity="0.10"/>
+  <path d="M0,248 C220,216 420,272 660,250 C880,231 1040,262 1200,240 L1200,280 L0,280 Z" fill="#38BDF8" fill-opacity="0.12"/>
+  <text x="600" y="128" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="bold" fill="#F8FAFC" letter-spacing="0.5">Pruthvi Garlapati</text>
+  <rect x="430" y="150" width="340" height="2.5" fill="url(#rule)"/>
+  <text x="600" y="192" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="21" fill="#38BDF8" letter-spacing="1.5">Senior GCP DevOps Engineer | Platform &amp; AI Agent Builder</text>
+</svg>
