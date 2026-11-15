@@ -25,6 +25,8 @@ In parallel, I design and ship **AI agent systems end to end, solo** - research 
 - **Education:** BTech, CVR College of Engineering, Hyderabad - PG diplomas in Cloud Computing (George Brown) and Business Analytics (Cambrian)
 - **Open to:** Senior GCP / Platform / DevOps roles, Toronto hybrid or Canada remote
 
+<div align="center"><img src="assets/divider.svg" width="100%" alt="" /></div>
+
 ## Flagship work
 
 | Project | What it is | Proof it is real |
@@ -47,25 +49,19 @@ In parallel, I design and ship **AI agent systems end to end, solo** - research 
 | **Reliability** | Cloud Monitoring and Prometheus, Grafana, PagerDuty, FinOps with Kubecost and Spot VMs |
 | **AI agent systems** | Multi-agent research pipelines with evidence grounding, citation verification, eval sets and red-team fixtures - see Sach and QuantPilot above |
 
+<div align="center"><img src="assets/divider.svg" width="100%" alt="" /></div>
+
 ## GitHub activity
 
 <div align="center">
-<img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=pruthvig1998&theme=tokyonight" width="100%" alt="Profile details" />
-</div>
-
-<div align="center">
-<img src="https://github-readme-stats-fast.vercel.app/api?username=pruthvig1998&show_icons=true&theme=tokyonight&hide_border=true" height="170" alt="GitHub stats" />
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=pruthvig1998&theme=tokyonight&hide_border=true" height="170" alt="Contribution streak" />
-</div>
-
-<div align="center">
-<img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=pruthvig1998&theme=tokyonight" height="170" alt="Repositories per language" />
-<img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=pruthvig1998&theme=tokyonight" height="170" alt="Contribution stats" />
+<img src="assets/activity.svg" width="100%" alt="System telemetry - live systems and language mix" />
 </div>
 
 <div align="center">
   <img alt="Contribution snake animation" src="https://raw.githubusercontent.com/pruthvig1998/pruthvig1998/output/github-contribution-grid-snake-dark.svg" />
 </div>
+
+<div align="center"><img src="assets/divider.svg" width="100%" alt="" /></div>
 
 ## Connect
 
