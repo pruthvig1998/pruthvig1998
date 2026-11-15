@@ -258,6 +258,37 @@
     .live-dot{animation:none}
     #cursor-dot,#cursor-ring{display:none !important}
   }
+
+  /* ---------- Feature pack 2 ---------- */
+  /* Hero parallax wrapper: GSAP moves the wrapper, Ken Burns keeps the inner layer */
+  .hero-bg-wrap{position:absolute;inset:-9% 0;overflow:hidden;will-change:transform}
+
+  /* Giant ghost words behind Work and Expertise */
+  #projects,#expertise{position:relative;z-index:0}
+  .ghost-word{position:absolute;top:-4px;left:-8px;z-index:-1;font-family:var(--head);font-weight:700;
+    font-size:clamp(6rem,17vw,12.5rem);line-height:1;letter-spacing:.01em;white-space:nowrap;pointer-events:none;
+    color:rgba(229,72,77,.03);-webkit-text-stroke:1.5px rgba(229,72,77,.10)}
+
+  /* Card art bands */
+  .card-band{position:relative;height:84px;margin:-22px -22px 18px;border-radius:13px 13px 0 0;overflow:hidden;
+    display:flex;align-items:center;padding:0 20px}
+  .card-band::after{content:attr(data-num);position:absolute;right:14px;top:50%;transform:translateY(-52%);
+    font-family:var(--head);font-weight:700;font-size:62px;line-height:1;color:rgba(236,231,223,.05);
+    -webkit-text-stroke:1px rgba(236,231,223,.18);pointer-events:none}
+  .card::before,.card::after{z-index:2}
+  .band-1{background:radial-gradient(420px 120px at 82% 0%,rgba(229,72,77,.32),transparent 70%),linear-gradient(115deg,#23060F 0%,#430A1B 55%,#2A0810 100%)}
+  .band-2{background:radial-gradient(420px 120px at 82% 0%,rgba(229,217,190,.20),transparent 70%),linear-gradient(115deg,#1D040B 0%,#5A0E20 55%,#23060F 100%)}
+  .band-3{background:radial-gradient(420px 120px at 82% 0%,rgba(240,163,168,.22),transparent 70%),linear-gradient(115deg,#2A0810 0%,#430A1B 48%,#1D040B 100%)}
+  .band-4{background:radial-gradient(420px 120px at 82% 0%,rgba(229,72,77,.24),transparent 70%),linear-gradient(115deg,#17060D 0%,#38091A 60%,#23060F 100%)}
+  .band-spark{flex:none;opacity:.92}
+
+  /* Section dot nav */
+  .dotnav{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:120;display:flex;flex-direction:column;gap:15px}
+  .dotnav a{width:9px;height:9px;border-radius:50%;border:1px solid rgba(236,231,223,.55);background:transparent;transition:all .3s}
+  .dotnav a:hover{border-color:var(--gold)}
+  .dotnav a.active{background:var(--gold);border-color:var(--gold);transform:scale(1.3);box-shadow:0 0 12px rgba(229,72,77,.8)}
+  @media (max-width:900px){ .dotnav{display:none} .ghost-word{display:none} }
+  @media (prefers-reduced-motion: reduce){ .dotnav{display:none} }
 </style>
 </head>
 <body>
@@ -278,10 +309,10 @@
 </header>
 
 <section class="hero" id="hero">
-  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-bg-wrap" aria-hidden="true"><div class="hero-bg"></div></div>
   <div class="hero-shade" aria-hidden="true"></div>
   <div class="hero-inner">
-    <div class="hero-eyebrow">Building</div>
+    <div class="hero-eyebrow"><span id="hero-name">PRUTHVI GARLAPATI</span></div>
     <h1 class="hero-title">Platforms that<br>Run <span class="accent">Themselves.</span></h1>
     <p class="hero-sub">Senior GCP DevOps Engineer at UKG. I build cloud platforms for a living, and AI agent systems that have to show their work as proof of craft.</p>
     <div class="hero-btns">
@@ -316,9 +347,11 @@
     </section>
 
     <section id="projects" class="reveal">
+      <div class="ghost-word" aria-hidden="true">SYSTEMS</div>
       <div class="sec-head">Flagship work</div>
 
       <a class="card" href="https://sachcheck.in" target="_blank" rel="noopener">
+        <div class="card-band band-1" data-num="01" aria-hidden="true"><svg class="band-spark" width="180" height="44" viewBox="0 0 180 44" fill="none" aria-hidden="true"><polyline points="0,34 24,28 48,31 72,20 96,24 120,13 144,17 168,7 180,10" stroke="#E5484D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="180" cy="10" r="3" fill="#E5D9BE"/></svg></div>
         <div class="kicker">Live product - Code for a Billion, Governance</div>
         <h3>Sach - WhatsApp forward fact-checker <span class="arrow">↗</span></h3>
         <p>Paste a viral WhatsApp forward and get a cited TRUE / FALSE / MISLEADING / UNVERIFIED verdict from PIB Fact Check and official sources, in English and 15 Indian languages, as a card ready to post back into the family group. Built solo, runs on free tiers, filed as submission #126.</p>
@@ -327,6 +360,7 @@
       </a>
 
       <a class="card" href="https://pruthvig1998.github.io/QuantPilot/explorer/" target="_blank" rel="noopener">
+        <div class="card-band band-2" data-num="02" aria-hidden="true"><svg class="band-spark" width="180" height="44" viewBox="0 0 180 44" fill="none" aria-hidden="true"><polyline points="0,12 24,20 48,15 72,26 96,21 120,30 144,25 168,34 180,31" stroke="#E5484D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="180" cy="31" r="3" fill="#E5D9BE"/></svg></div>
         <div class="kicker">Open Agent Hackathon 2026 - Track 02</div>
         <h3>QuantPilot - research agent that shows its work <span class="arrow">↗</span></h3>
         <p>An autonomous pre-market options research agent for US markets. It investigates 12 names across fragmented sources and produces trade cards where every number traces to the evidence packet it came from - including a verifier that catches the model misquoting its own data. Screening rank 252 of 547; demo score 12.5 of 15.</p>
@@ -335,6 +369,7 @@
       </a>
 
       <a class="card" href="https://pruthvig1998.github.io/cluse-desk-live/" target="_blank" rel="noopener">
+        <div class="card-band band-3" data-num="03" aria-hidden="true"><svg class="band-spark" width="180" height="44" viewBox="0 0 180 44" fill="none" aria-hidden="true"><polyline points="0,24 24,24 48,10 72,36 96,12 120,30 144,16 168,26 180,20" stroke="#E5484D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="180" cy="20" r="3" fill="#E5D9BE"/></svg></div>
         <div class="kicker">Live system - paper trading only</div>
         <h3>Cluse - autonomous paper-trading desk <span class="arrow">↗</span></h3>
         <p>A Nasdaq-100 options research desk running on virtual money: technical setups, an intraday news radar, market-regime filters, and strict risk rules with a drawdown kill-switch. The public page refreshes every 5 minutes in session, with an interactive 3D diagram of the whole system.</p>
@@ -343,6 +378,7 @@
       </a>
 
       <a class="card" href="https://github.com/pruthvig1998/nexus" target="_blank" rel="noopener">
+        <div class="card-band band-4" data-num="04" aria-hidden="true"><svg class="band-spark" width="180" height="44" viewBox="0 0 180 44" fill="none" aria-hidden="true"><polyline points="0,30 24,26 48,28 72,22 96,18 120,20 144,14 168,12 180,8" stroke="#E5484D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="180" cy="8" r="3" fill="#E5D9BE"/></svg></div>
         <div class="kicker">Trading infrastructure</div>
         <h3>Nexus - algorithmic trading system <span class="arrow">↗</span></h3>
         <p>A production-grade long/short algorithmic trading system in Python: multi-strategy, multi-broker, AI-powered signals, and institutional-style risk layers, with full architecture documentation and CI.</p>
@@ -380,6 +416,7 @@
     </section>
 
     <section id="expertise" class="reveal">
+      <div class="ghost-word" aria-hidden="true">AGENTS</div>
       <div class="sec-head">Expertise</div>
       <div class="grid2">
         <div class="skillbox">
@@ -443,6 +480,14 @@
     </footer>
   </main>
 </div>
+
+<nav class="dotnav" id="dotnav" aria-label="Section navigation">
+  <a href="#about" data-sec="about" aria-label="About"></a>
+  <a href="#projects" data-sec="projects" aria-label="Work"></a>
+  <a href="#experience" data-sec="experience" aria-label="Experience"></a>
+  <a href="#expertise" data-sec="expertise" aria-label="Expertise"></a>
+  <a href="#contact" data-sec="contact" aria-label="Contact"></a>
+</nav>
 
 <script>
   // Typing roles
@@ -683,6 +728,115 @@
           });
         }, { threshold: .4 });
         nums.forEach(function(n){ cio.observe(n); });
+      }
+    } catch(e){}
+  })();
+</script>
+<script>
+  // Feature pack 2: hero name decode, magnetic hero buttons, hero parallax,
+  // ghost-word drift, section dot nav. Every block is guarded - if GSAP or
+  // any API is missing, the page behaves exactly as before. All of it is
+  // skipped under prefers-reduced-motion (the static fallbacks are the
+  // plain HTML/CSS, which already show the final name and layout).
+  (function(){
+    "use strict";
+    var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if(reduceMotion) return;
+
+    // Name decode: the eyebrow name resolves from scrambled mono glyphs
+    // to its final text over about 1.2s, starting as the preloader lifts.
+    // The HTML already carries the final text, so any failure shows it.
+    try {
+      var nameEl = document.getElementById("hero-name");
+      if(nameEl){
+        var finalText = "PRUTHVI GARLAPATI";
+        var glyphs = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#/@<>-+*";
+        var begun = false;
+        var beginDecode = function(){
+          if(begun) return;
+          begun = true;
+          var start = null, dur = 1200;
+          var frame = function(ts){
+            if(!start) start = ts;
+            var k = Math.min((ts - start) / dur, 1);
+            var lock = Math.floor(k * finalText.length);
+            var out = "";
+            for(var i = 0; i < finalText.length; i++){
+              if(finalText.charAt(i) === " ") out += " ";
+              else if(i < lock) out += finalText.charAt(i);
+              else out += glyphs.charAt(Math.floor(Math.random() * glyphs.length));
+            }
+            nameEl.textContent = out;
+            if(k < 1) requestAnimationFrame(frame);
+            else nameEl.textContent = finalText;
+          };
+          requestAnimationFrame(frame);
+        };
+        if(document.readyState === "complete") beginDecode();
+        else addEventListener("load", beginDecode);
+        setTimeout(beginDecode, 1800);
+      }
+    } catch(e){}
+
+    // Magnetic hero buttons: drift a few px toward the cursor, ease back
+    // on leave (the buttons' own CSS transition provides the easing).
+    try {
+      if(window.matchMedia && window.matchMedia("(pointer: fine)").matches){
+        document.querySelectorAll(".hero-btns a").forEach(function(btn){
+          btn.addEventListener("pointermove", function(e){
+            var r = btn.getBoundingClientRect();
+            var dx = (e.clientX - (r.left + r.width / 2)) / r.width;
+            var dy = (e.clientY - (r.top + r.height / 2)) / r.height;
+            var tx = Math.max(-6, Math.min(6, dx * 12));
+            var ty = Math.max(-6, Math.min(6, dy * 12));
+            btn.style.transform = "translate(" + tx.toFixed(1) + "px," + ty.toFixed(1) + "px)";
+          });
+          btn.addEventListener("pointerleave", function(){ btn.style.transform = ""; });
+        });
+      }
+    } catch(e){}
+
+    // Hero parallax + ghost-word drift (GSAP ScrollTrigger, scrubbed).
+    // Parallax rides the .hero-bg-wrap wrapper so it never fights the
+    // Ken Burns transform on .hero-bg itself; the content layer
+    // (.hero-inner) is untouched by the intro timeline, so no conflict.
+    try {
+      if(window.gsap && window.ScrollTrigger){
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.fromTo(".hero-bg-wrap", { yPercent: -6 }, {
+          yPercent: 6, ease: "none",
+          scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true }
+        });
+        gsap.to(".hero-inner", {
+          y: -64, opacity: 0.15, ease: "none",
+          scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true }
+        });
+        gsap.utils.toArray(".ghost-word").forEach(function(el){
+          gsap.fromTo(el, { xPercent: -3 }, {
+            xPercent: 3, ease: "none",
+            scrollTrigger: { trigger: el.parentNode, start: "top bottom", end: "bottom top", scrub: true }
+          });
+        });
+        addEventListener("load", function(){ try { ScrollTrigger.refresh(); } catch(e){} });
+      }
+    } catch(e){}
+
+    // Section dot nav: IntersectionObserver marks the current section.
+    // Clicks are plain anchor links, so the motion layer's existing
+    // handler routes them through Lenis whenever it is running.
+    try {
+      var dots = document.querySelectorAll("#dotnav a");
+      if(dots.length && "IntersectionObserver" in window){
+        var dio = new IntersectionObserver(function(es){
+          es.forEach(function(en){
+            if(!en.isIntersecting) return;
+            dots.forEach(function(d){ d.classList.toggle("active", d.getAttribute("data-sec") === en.target.id); });
+          });
+        }, { rootMargin: "-45% 0px -50% 0px" });
+        ["about", "projects", "experience", "expertise", "contact"].forEach(function(id){
+          var s = document.getElementById(id);
+          if(s) dio.observe(s);
+        });
       }
     } catch(e){}
   })();
