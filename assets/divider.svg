@@ -1,0 +1,21 @@
+<svg width="1200" height="26" viewBox="0 0 1200 26" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="">
+  <defs>
+    <linearGradient id="dl" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#22D3EE" stop-opacity="0"/>
+      <stop offset="0.25" stop-color="#22D3EE" stop-opacity="0.55"/>
+      <stop offset="0.55" stop-color="#8B5CF6" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#8B5CF6" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="dglow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="3.2" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect x="0" y="12" width="1200" height="1.6" fill="url(#dl)"/>
+  <circle cx="0" cy="12.8" r="3.4" fill="#A5F3FC" filter="url(#dglow)">
+    <animate attributeName="cx" values="30;1170;30" dur="11s" repeatCount="indefinite"/>
+  </circle>
+</svg>
