@@ -22,7 +22,7 @@
 </tr>
 </table>
 
-## About
+## 01 - About
 
 Senior GCP DevOps Engineer at **UKG**, building cloud platform infrastructure since 2018 - currently on the UTM infrastructure team (GKE, Cloud Run, SQL Server 2022 migration, PagerDuty noise reduction). Based between Hyderabad and Toronto; Canadian permanent resident.
 
@@ -34,7 +34,7 @@ In parallel, I design and ship **AI agent systems end to end, solo** - research 
 
 <div align="center"><img src="assets/divider.svg" width="100%" alt="" /></div>
 
-## Flagship work
+## 02 - Flagship work
 
 | Project | What it is | Proof it is real |
 |---|---|---|
@@ -43,7 +43,7 @@ In parallel, I design and ship **AI agent systems end to end, solo** - research 
 | **[Cluse desk, live](https://github.com/pruthvig1998/cluse-desk-live)** | Public, read-only live view of my paper-trading research desk: book, signals and agent activity, refreshed every 5 minutes in session. Paper only, no real orders, ever | [Live desk](https://pruthvig1998.github.io/cluse-desk-live/) - [3D system diagram](https://pruthvig1998.github.io/cluse-desk-live/3d/) |
 | **[Nexus](https://github.com/pruthvig1998/nexus)** | Production-grade long/short algorithmic trading system in Python: multi-strategy, multi-broker, AI-powered signals, institutional-style risk layers | [Repository](https://github.com/pruthvig1998/nexus) with full architecture and CI |
 
-## Core expertise
+## 03 - Core expertise
 
 <div align="center">
 <img src="https://skillicons.dev/icons?i=gcp,kubernetes,terraform,docker,python,linux,githubactions" alt="GCP, Kubernetes, Terraform, Docker, Python, Linux, GitHub Actions" />
@@ -58,7 +58,7 @@ In parallel, I design and ship **AI agent systems end to end, solo** - research 
 
 <div align="center"><img src="assets/divider.svg" width="100%" alt="" /></div>
 
-## GitHub activity
+## 04 - GitHub activity
 
 <div align="center">
 <img src="assets/activity.svg" width="100%" alt="System telemetry - live systems and language mix" />
@@ -82,7 +82,7 @@ In parallel, I design and ship **AI agent systems end to end, solo** - research 
 
 <div align="center"><img src="assets/divider.svg" width="100%" alt="" /></div>
 
-## Connect
+## 05 - Connect
 
 The fastest way to evaluate my work is the live products above - Sach takes 10 seconds to try. For roles or collaboration, reach me on [LinkedIn](https://www.linkedin.com/in/pruthvi-g/).
 
