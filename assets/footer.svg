@@ -1,28 +1,12 @@
-<svg width="1200" height="110" viewBox="0 0 1200 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="">
-  <defs>
-    <linearGradient id="fbg" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#050914">
-        <animate attributeName="stop-color" values="#050914;#0B1030;#050914" dur="14s" repeatCount="indefinite"/>
-      </stop>
-      <stop offset="0.5" stop-color="#101E42">
-        <animate attributeName="stop-color" values="#101E42;#1B2A5E;#101E42" dur="14s" repeatCount="indefinite"/>
-      </stop>
-      <stop offset="1" stop-color="#050914">
-        <animate attributeName="stop-color" values="#050914;#160F38;#050914" dur="14s" repeatCount="indefinite"/>
-      </stop>
-    </linearGradient>
-  </defs>
-  <rect width="1200" height="110" fill="url(#fbg)"/>
-  <path fill="#22D3EE" fill-opacity="0.09" d="M0,44 C200,80 380,14 620,38 C840,59 1020,18 1200,46 L1200,110 L0,110 Z">
-    <animate attributeName="d" dur="9s" repeatCount="indefinite"
-      values="M0,44 C200,80 380,14 620,38 C840,59 1020,18 1200,46 L1200,110 L0,110 Z;
-              M0,58 C210,22 400,74 620,50 C830,30 1010,66 1200,34 L1200,110 L0,110 Z;
-              M0,44 C200,80 380,14 620,38 C840,59 1020,18 1200,46 L1200,110 L0,110 Z"/>
+<svg width="1200" height="120" viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Footer">
+  <defs><linearGradient id="fbg" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#0B0C0E"/><stop offset="1" stop-color="#141519"/></linearGradient></defs>
+  <rect width="1200" height="120" rx="16" fill="url(#fbg)"/>
+  <path fill="#C6A15B" fill-opacity="0.14" d="M0,64 C200,34 400,94 600,64 C800,34 1000,94 1200,64 L1200,120 L0,120 Z">
+    <animate attributeName="d" values="M0,64 C200,34 400,94 600,64 C800,34 1000,94 1200,64 L1200,120 L0,120 Z;M0,54 C200,84 400,44 600,74 C800,94 1000,44 1200,74 L1200,120 L0,120 Z;M0,64 C200,34 400,94 600,64 C800,34 1000,94 1200,64 L1200,120 L0,120 Z" dur="11s" repeatCount="indefinite"/>
   </path>
-  <path fill="#8B5CF6" fill-opacity="0.11" d="M0,60 C220,90 420,30 660,52 C880,71 1040,34 1200,62 L1200,110 L0,110 Z">
-    <animate attributeName="d" dur="11s" repeatCount="indefinite"
-      values="M0,60 C220,90 420,30 660,52 C880,71 1040,34 1200,62 L1200,110 L0,110 Z;
-              M0,46 C230,28 410,78 660,40 C870,24 1030,72 1200,48 L1200,110 L0,110 Z;
-              M0,60 C220,90 420,30 660,52 C880,71 1040,34 1200,62 L1200,110 L0,110 Z"/>
+  <path fill="#E5D9BE" fill-opacity="0.06" d="M0,84 C240,58 420,104 660,84 C880,64 1040,100 1200,82 L1200,120 L0,120 Z">
+    <animate attributeName="d" values="M0,84 C240,58 420,104 660,84 C880,64 1040,100 1200,82 L1200,120 L0,120 Z;M0,74 C240,98 420,64 660,92 C880,104 1040,66 1200,90 L1200,120 L0,120 Z;M0,84 C240,58 420,104 660,84 C880,64 1040,100 1200,82 L1200,120 L0,120 Z" dur="14s" repeatCount="indefinite"/>
   </path>
+  <text x="600" y="52" text-anchor="middle" font-family="Courier New, monospace" font-size="14" letter-spacing="4" fill="#9C968B">BUILT IN THE OPEN - EVERY CLAIM TRACEABLE TO EVIDENCE</text>
 </svg>
