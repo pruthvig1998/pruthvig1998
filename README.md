@@ -2,13 +2,13 @@
 
 <div align="center">
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=21&pause=1200&color=38BDF8&center=true&vCenter=true&width=820&lines=Senior+GCP+DevOps+Engineer+at+UKG;GKE+%C2%B7+Terraform+%C2%B7+Argo+CD+%C2%B7+Cloud+Run;I+build+AI+agents+that+have+to+show+their+work;Sach+%C2%B7+QuantPilot+%C2%B7+Cluse+-+built+solo%2C+live+in+production" alt="What Pruthvi does" />
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=21&pause=1200&color=C6A15B&center=true&vCenter=true&width=820&lines=Senior+GCP+DevOps+Engineer+at+UKG;GKE+%C2%B7+Terraform+%C2%B7+Argo+CD+%C2%B7+Cloud+Run;I+build+AI+agents+that+have+to+show+their+work;Sach+%C2%B7+QuantPilot+%C2%B7+Cluse+-+built+solo%2C+live+in+production" alt="What Pruthvi does" />
 
 <br/>
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Pruthvi%20Garlapati-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/pruthvi-g/)
 [![Live product](https://img.shields.io/badge/Live%20product-sachcheck.in-C2321F?style=for-the-badge&logo=whatsapp&logoColor=white)](https://sachcheck.in)
-[![Profile views](https://komarev.com/ghpvc/?username=pruthvig1998&label=Profile%20views&color=0E75B6&style=for-the-badge)](https://github.com/pruthvig1998)
+[![Profile views](https://komarev.com/ghpvc/?username=pruthvig1998&label=Profile%20views&color=8C6D2F&style=for-the-badge)](https://github.com/pruthvig1998)
 [![Portfolio site](https://img.shields.io/badge/Portfolio-full%20site-38BDF8?style=for-the-badge&logo=googlechrome&logoColor=white)](https://pruthvig1998.github.io/pruthvig1998/)
 
 </div>
@@ -38,7 +38,7 @@ In parallel, I design and ship **AI agent systems end to end, solo** - research 
 
 | Project | What it is | Proof it is real |
 |---|---|---|
-| **[Sach](https://github.com/pruthvig1998/sach-check)** | Paste a viral WhatsApp forward, get a cited TRUE / FALSE / MISLEADING / UNVERIFIED verdict from PIB Fact Check and official sources, in English and 15 Indian languages | [Live: sachcheck.in](https://sachcheck.in) - [Impact page](https://sachcheck.in/impact) - Filed for Code for a Billion (Governance), [issue #126](https://github.com/karlmehta/code-for-a-billion/issues/126) - 79-claim live evaluation, 0 overclaimed verdicts |
+| **[Sach](https://github.com/pruthvig1998/sach-check)** | Paste a viral WhatsApp forward, get a cited TRUE / FALSE / MISLEADING / UNVERIFIED verdict from PIB Fact Check and official sources, in English and 15 Indian languages | [Live: sachcheck.in](https://sachcheck.in) - [Impact page](https://sachcheck.in/impact) - Filed for Code for a Billion (Governance), [issue #126](https://github.com/karlmehta/code-for-a-billion/issues/126) - [Watch the 55s demo](https://youtu.be/ZFO4BZXokL4) - 79-claim live evaluation, 0 overclaimed verdicts |
 | **[QuantPilot](https://github.com/pruthvig1998/QuantPilot)** | Autonomous pre-market options research agent for US markets: investigates 12 names across fragmented sources and produces trade cards where every number traces to its evidence packet | [Live Explorer](https://pruthvig1998.github.io/QuantPilot/explorer/) - Open Agent Hackathon 2026, Track 02 - screening rank 252/547, demo score 12.5/15 |
 | **[Cluse desk, live](https://github.com/pruthvig1998/cluse-desk-live)** | Public, read-only live view of my paper-trading research desk: book, signals and agent activity, refreshed every 5 minutes in session. Paper only, no real orders, ever | [Live desk](https://pruthvig1998.github.io/cluse-desk-live/) - [3D system diagram](https://pruthvig1998.github.io/cluse-desk-live/3d/) |
 | **[Nexus](https://github.com/pruthvig1998/nexus)** | Production-grade long/short algorithmic trading system in Python: multi-strategy, multi-broker, AI-powered signals, institutional-style risk layers | [Repository](https://github.com/pruthvig1998/nexus) with full architecture and CI |
@@ -62,6 +62,10 @@ In parallel, I design and ship **AI agent systems end to end, solo** - research 
 
 <div align="center">
 <img src="assets/activity.svg" width="100%" alt="System telemetry - live systems and language mix" />
+</div>
+
+<div align="center">
+<img src="assets/city.svg" width="100%" alt="Commit city - main-branch commits per public repository" />
 </div>
 
 <div align="center">
