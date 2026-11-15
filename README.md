@@ -9,8 +9,11 @@
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Pruthvi%20Garlapati-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/pruthvi-g/)
 [![Live product](https://img.shields.io/badge/Live%20product-sachcheck.in-C2321F?style=for-the-badge&logo=whatsapp&logoColor=white)](https://sachcheck.in)
 [![Profile views](https://komarev.com/ghpvc/?username=pruthvig1998&label=Profile%20views&color=0E75B6&style=for-the-badge)](https://github.com/pruthvig1998)
+[![Portfolio site](https://img.shields.io/badge/Portfolio-full%20site-38BDF8?style=for-the-badge&logo=googlechrome&logoColor=white)](https://pruthvig1998.github.io/pruthvig1998/)
 
 </div>
+
+**[View my full portfolio site](https://pruthvig1998.github.io/pruthvig1998/)** - flagship projects, experience timeline and live demos in one page.
 
 ## About
 
