@@ -33,25 +33,29 @@ In parallel, I design and ship **AI agent systems end to end, solo** - research 
 
 ## 02 - Flagship work
 
-| Project | What it is | Proof it is real |
-|---|---|---|
-| **[Sach](https://github.com/pruthvig1998/sach-check)** | Paste a viral WhatsApp forward, get a cited TRUE / FALSE / MISLEADING / UNVERIFIED verdict from PIB Fact Check and official sources, in English and 15 Indian languages | [Live: sachcheck.in](https://sachcheck.in) - [Impact page](https://sachcheck.in/impact) - Filed for Code for a Billion (Governance), [issue #126](https://github.com/karlmehta/code-for-a-billion/issues/126) - [Watch the 55s demo](https://youtu.be/ZFO4BZXokL4) - 79-claim live evaluation, 0 overclaimed verdicts |
-| **[QuantPilot](https://github.com/pruthvig1998/QuantPilot)** | Autonomous pre-market options research agent for US markets: investigates 12 names across fragmented sources and produces trade cards where every number traces to its evidence packet | [Live Explorer](https://pruthvig1998.github.io/QuantPilot/explorer/) - Open Agent Hackathon 2026, Track 02 - screening rank 252/547, demo score 12.5/15 |
-| **[Cluse desk, live](https://github.com/pruthvig1998/cluse-desk-live)** | Public, read-only live view of my paper-trading research desk: book, signals and agent activity, refreshed every 5 minutes in session. Paper only, no real orders, ever | [Live desk](https://pruthvig1998.github.io/cluse-desk-live/) - [3D system diagram](https://pruthvig1998.github.io/cluse-desk-live/3d/) |
-| **[Nexus](https://github.com/pruthvig1998/nexus)** | Production-grade long/short algorithmic trading system in Python: multi-strategy, multi-broker, AI-powered signals, institutional-style risk layers | [Repository](https://github.com/pruthvig1998/nexus) with full architecture and CI |
+<div align="center">
+<a href="https://github.com/pruthvig1998/sach-check"><img src="assets/card-sach.svg" width="100%" alt="Sach - WhatsApp forward fact-checker" /></a>
+</div>
+
+<div align="center">
+<a href="https://github.com/pruthvig1998/QuantPilot"><img src="assets/card-quantpilot.svg" width="100%" alt="QuantPilot - autonomous options research agent" /></a>
+</div>
+
+<div align="center">
+<a href="https://github.com/pruthvig1998/cluse-desk-live"><img src="assets/card-cluse.svg" width="100%" alt="Cluse desk, live - paper-trading research desk" /></a>
+</div>
+
+<div align="center">
+<a href="https://github.com/pruthvig1998/nexus"><img src="assets/card-nexus.svg" width="100%" alt="Nexus - algorithmic trading system" /></a>
+</div>
+
+Live demos: [Sach](https://sachcheck.in) - [Sach impact page](https://sachcheck.in/impact) - [Sach 55s demo](https://youtu.be/ZFO4BZXokL4) - [QuantPilot Explorer](https://pruthvig1998.github.io/QuantPilot/explorer/) - [Cluse live desk](https://pruthvig1998.github.io/cluse-desk-live/) - [Cluse 3D diagram](https://pruthvig1998.github.io/cluse-desk-live/3d/)
 
 ## 03 - Core expertise
 
 <div align="center">
-<img src="https://skillicons.dev/icons?i=gcp,kubernetes,terraform,docker,python,linux,githubactions" alt="GCP, Kubernetes, Terraform, Docker, Python, Linux, GitHub Actions" />
+<img src="assets/stack.svg" width="100%" alt="Stack scan - cloud platform, infrastructure as code, reliability, AI agent systems" />
 </div>
-
-| Area | Depth |
-|---|---|
-| **Cloud platform (GCP)** | GKE, Cloud Run, Cloud SQL / Spanner / Storage, Shared VPC, Private Service Connect, IAM and Workload Identity Federation |
-| **Infrastructure as code** | Terraform / OpenTofu with Terragrunt, Argo CD GitOps, Helm and Kustomize, Cloud Build / Cloud Deploy |
-| **Reliability** | Cloud Monitoring and Prometheus, Grafana, PagerDuty, FinOps with Kubecost and Spot VMs |
-| **AI agent systems** | Multi-agent research pipelines with evidence grounding, citation verification, eval sets and red-team fixtures - see Sach and QuantPilot above |
 
 <div align="center"><img src="assets/divider.svg" width="100%" alt="" /></div>
 
