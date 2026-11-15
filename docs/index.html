@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pruthvi Garlapati - Senior GCP DevOps Engineer</title>
+<meta name="description" content="Senior GCP DevOps Engineer at UKG. Platform engineering, Kubernetes, Terraform, and AI agent systems that have to show their work: Sach, QuantPilot, Cluse.">
+<style>
+  :root{
+    --bg:#0a1428; --bg2:#0f1d3a; --panel:#101f3c; --line:#1e3a5f;
+    --text:#e6eefc; --muted:#93a7c9; --accent:#38bdf8; --accent2:#7dd3fc;
+    --mono:"SFMono-Regular",ui-monospace,"Cascadia Mono",Menlo,Consolas,monospace;
+    --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{color:var(--accent2)}
+  ::selection{background:var(--accent);color:#06283d}
+
+  #bg-canvas{position:fixed;inset:0;z-index:0;opacity:.5;pointer-events:none}
+  .glow{position:fixed;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(56,189,248,.13),transparent 65%);z-index:0;pointer-events:none;filter:blur(10px)}
+
+  .layout{position:relative;z-index:1;display:flex;max-width:1280px;margin:0 auto;min-height:100vh}
+
+  /* ---------- Sidebar (Brittany Chiang pattern) ---------- */
+  aside{position:sticky;top:0;height:100vh;width:44%;padding:96px 64px 48px 48px;display:flex;flex-direction:column;justify-content:space-between}
+  .avatar{width:112px;height:112px;border-radius:50%;border:2px solid var(--line);object-fit:cover;margin-bottom:28px;background:var(--panel)}
+  h1{font-size:clamp(36px,4.2vw,52px);font-weight:800;letter-spacing:-.02em;line-height:1.08}
+  .role{margin-top:14px;font-size:clamp(17px,1.6vw,20px);font-weight:600;color:var(--text)}
+  .role .typed{color:var(--accent)}
+  .caret{display:inline-block;width:9px;height:1.05em;background:var(--accent);vertical-align:text-bottom;margin-left:3px;animation:blink 1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+  .tagline{margin-top:18px;color:var(--muted);max-width:420px;font-size:15.5px}
+  nav{margin-top:48px}
+  nav a{display:flex;align-items:center;gap:14px;padding:9px 0;color:var(--muted);font-family:var(--mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;transition:color .25s}
+  nav a .bar{width:32px;height:1px;background:var(--muted);transition:width .25s,background .25s}
+  nav a:hover,nav a.active{color:var(--text)}
+  nav a:hover .bar,nav a.active .bar{width:64px;background:var(--accent)}
+  .socials{display:flex;gap:20px;align-items:center}
+  .socials a{color:var(--muted);font-family:var(--mono);font-size:13px;border:1px solid var(--line);padding:8px 14px;border-radius:999px;transition:all .25s}
+  .socials a:hover{color:var(--accent);border-color:var(--accent);transform:translateY(-2px)}
+
+  /* ---------- Main column ---------- */
+  main{width:56%;padding:96px 48px 96px 24px}
+  section{margin-bottom:110px;scroll-margin-top:40px}
+  .sec-head{display:none}
+  p{color:var(--muted);font-size:15.5px;margin-bottom:14px}
+  p b, p strong{color:var(--text)}
+  .hl{color:var(--accent)}
+
+  .proof{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:26px 0 6px}
+  .proof .cell{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px}
+  .proof .n{font-size:24px;font-weight:800;color:var(--text)}
+  .proof .l{font-size:12px;color:var(--muted);font-family:var(--mono);letter-spacing:.06em;margin-top:2px}
+
+  .card{display:block;background:transparent;border:1px solid transparent;border-radius:12px;padding:22px;margin:0 -22px 10px;transition:all .3s}
+  .card:hover{background:var(--panel);border-color:var(--line);transform:translateY(-2px)}
+  .card .kicker{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.1em;text-transform:uppercase}
+  .card h3{font-size:20px;margin:6px 0 8px;color:var(--text)}
+  .card h3 .arrow{transition:transform .25s;display:inline-block}
+  .card:hover h3 .arrow{transform:translate(3px,-3px)}
+  .card p{font-size:14.5px;margin-bottom:10px}
+  .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .tags span{font-family:var(--mono);font-size:11.5px;color:var(--accent2);background:rgba(56,189,248,.09);padding:4px 10px;border-radius:999px}
+  .links{display:flex;gap:16px;font-family:var(--mono);font-size:12.5px;margin-top:8px}
+
+  .job{padding:20px 22px;margin:0 -22px 8px;border-radius:12px;border:1px solid transparent;transition:all .3s}
+  .job:hover{background:var(--panel);border-color:var(--line)}
+  .job .when{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.08em}
+  .job h3{font-size:17px;margin:5px 0 6px}
+  .job h3 span{color:var(--accent)}
+  .job p{font-size:14.5px;margin-bottom:6px}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .skillbox{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px}
+  .skillbox h4{font-size:15px;margin-bottom:10px;color:var(--text)}
+  .skillbox ul{list-style:none}
+  .skillbox li{color:var(--muted);font-size:14px;padding:3px 0 3px 18px;position:relative}
+  .skillbox li:before{content:"▸";position:absolute;left:0;color:var(--accent)}
+
+  .contact-box{background:linear-gradient(135deg,var(--panel),var(--bg2));border:1px solid var(--line);border-radius:14px;padding:30px}
+  .contact-box h3{font-size:22px;margin-bottom:10px}
+  .btn{display:inline-block;margin-top:14px;background:transparent;color:var(--accent);border:1px solid var(--accent);padding:12px 22px;border-radius:8px;font-family:var(--mono);font-size:13.5px;transition:all .25s}
+  .btn:hover{background:rgba(56,189,248,.1);transform:translateY(-2px)}
+  footer{color:var(--muted);font-size:12.5px;font-family:var(--mono);padding-bottom:10px}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:900px){
+    .layout{flex-direction:column}
+    aside{position:relative;height:auto;width:100%;padding:56px 24px 8px}
+    nav{display:none}
+    .socials{margin-top:30px}
+    main{width:100%;padding:40px 24px 70px}
+    .sec-head{display:block;font-family:var(--mono);font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--text);margin-bottom:22px}
+    .proof{grid-template-columns:1fr 1fr}
+    .grid2{grid-template-columns:1fr}
+    section{margin-bottom:72px}
+  }
+</style>
+</head>
+<body>
+<canvas id="bg-canvas"></canvas>
+<div class="glow" id="glow"></div>
+
+<div class="layout">
+  <aside>
+    <div>
+      <img class="avatar" src="https://avatars.githubusercontent.com/u/119470388?v=4" alt="Pruthvi Garlapati">
+      <h1>Pruthvi<br>Garlapati</h1>
+      <div class="role"><span class="typed" id="typed"></span><span class="caret"></span></div>
+      <p class="tagline">Senior GCP DevOps Engineer at UKG. I build cloud platforms for a living, and AI agent systems that have to show their work as proof of craft.</p>
+      <nav id="nav">
+        <a href="#about"><span class="bar"></span>About</a>
+        <a href="#projects"><span class="bar"></span>Flagship work</a>
+        <a href="#experience"><span class="bar"></span>Experience</a>
+        <a href="#expertise"><span class="bar"></span>Expertise</a>
+        <a href="#contact"><span class="bar"></span>Contact</a>
+      </nav>
+    </div>
+    <div class="socials">
+      <a href="https://github.com/pruthvig1998" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/pruthvi-g/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://sachcheck.in" target="_blank" rel="noopener">Sach - live</a>
+    </div>
+  </aside>
+
+  <main>
+    <section id="about" class="reveal">
+      <div class="sec-head">About</div>
+      <p>I am a <b>Senior GCP DevOps Engineer at UKG</b>, building cloud platform infrastructure since 2018 - currently on the UTM infrastructure team, working on GKE platforms, a SQL Server 2022 migration, and PagerDuty noise reduction. Based between Hyderabad and Toronto, Canadian permanent resident.</p>
+      <p>In parallel I design and ship <b>AI agent systems end to end, solo</b>: a public-interest fact-checker used from WhatsApp, an autonomous options-research agent, and a live paper-trading desk. One rule runs through all of them: <span class="hl">every claim an agent makes must be traceable to evidence, and "I could not verify this" is a valid answer.</span></p>
+      <div class="proof">
+        <div class="cell"><div class="n">8+</div><div class="l">YEARS IN INFRASTRUCTURE, SINCE 2018</div></div>
+        <div class="cell"><div class="n">3</div><div class="l">AI SYSTEMS LIVE IN PRODUCTION</div></div>
+        <div class="cell"><div class="n">0</div><div class="l">OVERCLAIMED VERDICTS IN SACH'S 79-CLAIM EVAL</div></div>
+      </div>
+    </section>
+
+    <section id="projects" class="reveal">
+      <div class="sec-head">Flagship work</div>
+
+      <a class="card" href="https://sachcheck.in" target="_blank" rel="noopener">
+        <div class="kicker">Live product - Code for a Billion, Governance</div>
+        <h3>Sach - WhatsApp forward fact-checker <span class="arrow">↗</span></h3>
+        <p>Paste a viral WhatsApp forward and get a cited TRUE / FALSE / MISLEADING / UNVERIFIED verdict from PIB Fact Check and official sources, in English and 15 Indian languages, as a card ready to post back into the family group. Built solo, runs on free tiers, filed as submission #126.</p>
+        <div class="links"><span>Live: sachcheck.in</span><span>Impact page</span><span>79-claim evaluation, 0 overclaims</span></div>
+        <div class="tags"><span>AI agents</span><span>Evidence grounding</span><span>Fact-check APIs</span><span>Vercel</span></div>
+      </a>
+
+      <a class="card" href="https://pruthvig1998.github.io/QuantPilot/explorer/" target="_blank" rel="noopener">
+        <div class="kicker">Open Agent Hackathon 2026 - Track 02</div>
+        <h3>QuantPilot - research agent that shows its work <span class="arrow">↗</span></h3>
+        <p>An autonomous pre-market options research agent for US markets. It investigates 12 names across fragmented sources and produces trade cards where every number traces to the evidence packet it came from - including a verifier that catches the model misquoting its own data. Screening rank 252 of 547; demo score 12.5 of 15.</p>
+        <div class="links"><span>Live Explorer</span><span>GitHub repo</span></div>
+        <div class="tags"><span>Multi-agent systems</span><span>Citation verification</span><span>Python</span><span>Eval design</span></div>
+      </a>
+
+      <a class="card" href="https://pruthvig1998.github.io/cluse-desk-live/" target="_blank" rel="noopener">
+        <div class="kicker">Live system - paper trading only</div>
+        <h3>Cluse - autonomous paper-trading desk <span class="arrow">↗</span></h3>
+        <p>A Nasdaq-100 options research desk running on virtual money: technical setups, an intraday news radar, market-regime filters, and strict risk rules with a drawdown kill-switch. The public page refreshes every 5 minutes in session, with an interactive 3D diagram of the whole system.</p>
+        <div class="links"><span>Live desk</span><span>3D system diagram</span></div>
+        <div class="tags"><span>Trading systems</span><span>Risk engines</span><span>Discord bots</span><span>Three.js</span></div>
+      </a>
+
+      <a class="card" href="https://github.com/pruthvig1998/nexus" target="_blank" rel="noopener">
+        <div class="kicker">Trading infrastructure</div>
+        <h3>Nexus - algorithmic trading system <span class="arrow">↗</span></h3>
+        <p>A production-grade long/short algorithmic trading system in Python: multi-strategy, multi-broker, AI-powered signals, and institutional-style risk layers, with full architecture documentation and CI.</p>
+        <div class="links"><span>GitHub repo</span></div>
+        <div class="tags"><span>Python</span><span>Multi-broker</span><span>Risk management</span><span>CI/CD</span></div>
+      </a>
+    </section>
+
+    <section id="experience" class="reveal">
+      <div class="sec-head">Experience</div>
+
+      <div class="job">
+        <div class="when">JUL 2023 - PRESENT · TORONTO / HYDERABAD</div>
+        <h3>Senior GCP DevOps Engineer <span>· UKG</span></h3>
+        <p>UTM infrastructure team: GKE and Cloud Run platforms, Terraform/OpenTofu with Terragrunt, Argo CD GitOps, SQL Server 2022 migration, PagerDuty noise reduction, FinOps with Kubecost and Spot VMs.</p>
+      </div>
+
+      <div class="job">
+        <div class="when">DEC 2020 - JUL 2023 · TORONTO (CONTRACT)</div>
+        <h3>DevOps Engineer <span>· TD Bank</span></h3>
+        <p>Cloud and CI/CD engineering in a regulated banking environment.</p>
+      </div>
+
+      <div class="job">
+        <div class="when">SEP 2019 - DEC 2020 · HYDERABAD</div>
+        <h3>DevOps Engineer <span>· Stibo Systems</span></h3>
+        <p>Release and infrastructure engineering for enterprise software.</p>
+      </div>
+
+      <div class="job">
+        <div class="when">JUL 2018 - SEP 2019 · HYDERABAD</div>
+        <h3>Linux Administrator <span>· Guidewire</span></h3>
+        <p>Linux systems administration - where the infrastructure career started.</p>
+      </div>
+    </section>
+
+    <section id="expertise" class="reveal">
+      <div class="sec-head">Expertise</div>
+      <div class="grid2">
+        <div class="skillbox">
+          <h4>Cloud platform - GCP</h4>
+          <ul>
+            <li>GKE, Cloud Run, Cloud SQL / Spanner / Storage</li>
+            <li>Shared VPC, Private Service Connect</li>
+            <li>IAM and Workload Identity Federation</li>
+          </ul>
+        </div>
+        <div class="skillbox">
+          <h4>Infrastructure as code</h4>
+          <ul>
+            <li>Terraform / OpenTofu with Terragrunt</li>
+            <li>Argo CD GitOps, Helm, Kustomize</li>
+            <li>Cloud Build / Cloud Deploy</li>
+          </ul>
+        </div>
+        <div class="skillbox">
+          <h4>Reliability and FinOps</h4>
+          <ul>
+            <li>Cloud Monitoring, Prometheus, Grafana</li>
+            <li>PagerDuty incident practice</li>
+            <li>Kubecost, Spot VM strategy</li>
+          </ul>
+        </div>
+        <div class="skillbox">
+          <h4>AI agent systems</h4>
+          <ul>
+            <li>Multi-agent research pipelines</li>
+            <li>Evidence grounding and citation checks</li>
+            <li>Eval sets and red-team fixtures</li>
+          </ul>
+        </div>
+      </div>
+      <p style="margin-top:22px"><b>Certifications:</b> Google Cloud Professional Cloud DevOps Engineer - PagerDuty Foundational Practitioner.<br>
+      <b>Education:</b> BTech, CVR College of Engineering, Hyderabad - PG diplomas in Cloud Computing (George Brown) and Business Analytics (Cambrian).</p>
+    </section>
+
+    <section id="contact" class="reveal">
+      <div class="sec-head">Contact</div>
+      <div class="contact-box">
+        <h3>Open to Senior GCP / Platform roles</h3>
+        <p>Toronto hybrid or Canada remote. The fastest way to evaluate my work is the live products above - Sach takes about 10 seconds to try. For roles or collaboration, LinkedIn is the best channel.</p>
+        <a class="btn" href="https://www.linkedin.com/in/pruthvi-g/" target="_blank" rel="noopener">Connect on LinkedIn</a>
+        <a class="btn" href="https://github.com/pruthvig1998" target="_blank" rel="noopener">GitHub profile</a>
+      </div>
+    </section>
+
+    <footer>Built by Pruthvi Garlapati - design in the spirit of the modern portfolio canon, content strictly from the record.</footer>
+  </main>
+</div>
+
+<script>
+  // Typing roles
+  (function(){
+    var roles = ["Senior GCP DevOps Engineer at UKG","Platform Engineer - GKE · Terraform · Argo CD","Builder of AI agents that show their work","Sach · QuantPilot · Cluse - built solo, live"];
+    var el = document.getElementById("typed"), ri = 0, ci = 0, del = false;
+    function tick(){
+      var word = roles[ri];
+      el.textContent = word.slice(0, ci);
+      if(!del){ ci++; if(ci > word.length){ del = true; return setTimeout(tick, 1700); } }
+      else { ci--; if(ci === 0){ del = false; ri = (ri+1) % roles.length; } }
+      setTimeout(tick, del ? 26 : 52);
+    }
+    tick();
+  })();
+
+  // Scroll reveal + active nav
+  (function(){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting) e.target.classList.add("in"); });
+    }, {threshold: .08});
+    document.querySelectorAll(".reveal").forEach(function(s){ io.observe(s); });
+    var links = document.querySelectorAll("#nav a");
+    var so = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){
+          links.forEach(function(l){ l.classList.toggle("active", l.getAttribute("href") === "#" + e.target.id); });
+        }
+      });
+    }, {rootMargin: "-40% 0px -55% 0px"});
+    document.querySelectorAll("main section").forEach(function(s){ so.observe(s); });
+  })();
+
+  // Particle network hero background (lightweight, vanilla)
+  (function(){
+    var c = document.getElementById("bg-canvas"), x = c.getContext("2d"), W, H, pts = [];
+    function size(){ W = c.width = innerWidth; H = c.height = innerHeight; }
+    size(); addEventListener("resize", size);
+    for(var i = 0; i < 55; i++) pts.push({x: Math.random(), y: Math.random(), vx: (Math.random()-.5)*.00045, vy: (Math.random()-.5)*.00045});
+    function frame(){
+      x.clearRect(0, 0, W, H);
+      pts.forEach(function(p){
+        p.x += p.vx; p.y += p.vy;
+        if(p.x < 0 || p.x > 1) p.vx *= -1;
+        if(p.y < 0 || p.y > 1) p.vy *= -1;
+      });
+      for(var a = 0; a < pts.length; a++) for(var b = a+1; b < pts.length; b++){
+        var dx = (pts[a].x - pts[b].x) * W, dy = (pts[a].y - pts[b].y) * H, d = Math.sqrt(dx*dx + dy*dy);
+        if(d < 150){ x.strokeStyle = "rgba(56,189,248," + (0.14 * (1 - d/150)) + ")"; x.beginPath(); x.moveTo(pts[a].x*W, pts[a].y*H); x.lineTo(pts[b].x*W, pts[b].y*H); x.stroke(); }
+      }
+      pts.forEach(function(p){ x.fillStyle = "rgba(125,211,252,.7)"; x.beginPath(); x.arc(p.x*W, p.y*H, 1.6, 0, 7); x.fill(); });
+      requestAnimationFrame(frame);
+    }
+    frame();
+    // Cursor glow follow
+    var glow = document.getElementById("glow");
+    addEventListener("pointermove", function(e){ glow.style.left = (e.clientX - 300) + "px"; glow.style.top = (e.clientY - 300) + "px"; });
+  })();
+</script>
+</body>
+</html>
