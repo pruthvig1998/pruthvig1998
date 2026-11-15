@@ -66,7 +66,7 @@ Live demos: [Sach](https://sachcheck.in) - [Sach impact page](https://sachcheck.
 </div>
 
 <div align="center">
-<img src="github-metrics.svg" width="100%" alt="GitHub metrics - real contributions, habits, languages and achievements" />
+<img src="github-metrics.svg" width="480" alt="GitHub metrics - real contributions, habits, languages and achievements" />
 </div>
 
 <div align="center">
