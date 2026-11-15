@@ -60,13 +60,7 @@ In parallel, I design and ship **AI agent systems end to end, solo** - research 
 <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=pruthvig1998&theme=tokyonight" height="170" alt="Contribution stats" />
 </div>
 
-<div align="center">
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/pruthvig1998/pruthvig1998/output/github-contribution-grid-snake-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/pruthvig1998/pruthvig1998/output/github-contribution-grid-snake.svg" />
-  <img alt="Contribution snake animation" src="https://raw.githubusercontent.com/pruthvig1998/pruthvig1998/output/github-contribution-grid-snake.svg" />
-</picture>
-</div>
+<!-- Contribution snake: section returns once the snake workflow (blocked for the Muse GitHub App - workflow permission) is added by the repo owner and has run once. See .github/workflows/snake.yml in the staging build. -->
 
 ## Connect
 
