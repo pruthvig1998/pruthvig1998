@@ -27,6 +27,4 @@ jobs:
           plugin_habits: yes
           plugin_habits_facts: yes
           plugin_habits_charts: yes
-          plugin_achievements: yes
-          plugin_achievements_limit: 12
-          plugin_achievements_secrets: yes
+          config_css: ":root{--color-fg-default:#e6edf3;--color-fg-muted:#9198a1;--color-fg-subtle:#6e7681;--color-canvas-default:#0d1117;--color-canvas-subtle:#151b23;--color-border-default:#3d444d;--color-border-muted:#3d444db3;--color-accent-fg:#4493f8;--color-accent-emphasis:#1f6feb;--color-success-fg:#3fb950;--color-attention-fg:#d29922;--color-danger-fg:#f85149;--color-calendar-graph-day-bg:#151b23;--color-calendar-graph-day-L1-bg:#0e4429;--color-calendar-graph-day-L2-bg:#006d32;--color-calendar-graph-day-L3-bg:#26a641;--color-calendar-graph-day-L4-bg:#39d353}"
