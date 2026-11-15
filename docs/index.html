@@ -59,6 +59,7 @@
   .hero-eyebrow{display:flex;align-items:center;gap:14px;font-family:var(--mono);font-size:12.5px;letter-spacing:.42em;
     text-transform:uppercase;color:var(--ivory);opacity:.92}
   .hero-eyebrow::before{content:"";width:44px;height:1px;background:var(--gold);box-shadow:0 0 10px rgba(229,72,77,.8)}
+  .hero-name-display{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2.3rem,5vw,3.8rem);font-weight:700;color:var(--text);letter-spacing:.01em;line-height:1.08;margin:16px 0 4px}
   .hero-title{font-family:var(--head);font-weight:700;letter-spacing:-.015em;line-height:1.01;
     font-size:clamp(3.5rem,8.6vw,6.5rem);margin-top:22px;color:#F5F0E4;
     text-shadow:0 4px 44px rgba(0,0,0,.55)}
@@ -312,7 +313,8 @@
   <div class="hero-bg-wrap" aria-hidden="true"><div class="hero-bg"></div></div>
   <div class="hero-shade" aria-hidden="true"></div>
   <div class="hero-inner">
-    <div class="hero-eyebrow"><span id="hero-name">PRUTHVI GARLAPATI</span></div>
+    <div class="hero-eyebrow">SENIOR GCP DEVOPS ENGINEER - UKG</div>
+    <div class="hero-name-display" id="hero-name">Pruthvi Garlapati.</div>
     <h1 class="hero-title">Platforms that<br>Run <span class="accent">Themselves.</span></h1>
     <p class="hero-sub">Senior GCP DevOps Engineer at UKG. I build cloud platforms for a living, and AI agent systems that have to show their work as proof of craft.</p>
     <div class="hero-btns">
@@ -749,7 +751,7 @@
     try {
       var nameEl = document.getElementById("hero-name");
       if(nameEl){
-        var finalText = "PRUTHVI GARLAPATI";
+        var finalText = "Pruthvi Garlapati.";
         var glyphs = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#/@<>-+*";
         var begun = false;
         var beginDecode = function(){
