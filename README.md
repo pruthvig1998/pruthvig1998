@@ -73,10 +73,6 @@ In parallel, I design and ship **AI agent systems end to end, solo** - research 
   <img alt="Breakout - contribution graph brick breaker" src="https://raw.githubusercontent.com/pruthvig1998/pruthvig1998/output/breakout-contribution-graph-dark.svg" />
 </div>
 
-<div align="center">
-  <img alt="Contribution snake animation" src="https://raw.githubusercontent.com/pruthvig1998/pruthvig1998/output/github-contribution-grid-snake-dark.svg" />
-</div>
-
 <div align="center"><img src="assets/divider.svg" width="100%" alt="" /></div>
 
 ## 05 - Connect
