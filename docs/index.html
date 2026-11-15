@@ -391,5 +391,54 @@
     addEventListener("pointermove", function(e){ glow.style.left = (e.clientX - 300) + "px"; glow.style.top = (e.clientY - 300) + "px"; });
   })();
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+<script>
+  // Motion layer: Lenis smooth scroll + GSAP reveals + 3D card tilt.
+  // Every feature is guarded - if a CDN fails, the site behaves exactly as before.
+  (function(){
+    var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if(reduceMotion) return;
+    try {
+      var lenis = null;
+      if(window.Lenis){
+        lenis = new Lenis({ duration: 1.15, smoothWheel: true });
+        function raf(t){ lenis.raf(t); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
+        document.querySelectorAll('a[href^="#"]').forEach(function(a){
+          a.addEventListener("click", function(e){
+            var target = document.querySelector(a.getAttribute("href"));
+            if(target){ e.preventDefault(); lenis.scrollTo(target, { offset: -20 }); }
+          });
+        });
+      }
+      if(window.gsap && window.ScrollTrigger){
+        gsap.registerPlugin(ScrollTrigger);
+        if(lenis){ lenis.on("scroll", ScrollTrigger.update); }
+        gsap.utils.toArray(".card, .job, .skillbox, .proof .cell").forEach(function(el, i){
+          gsap.fromTo(el, { opacity: 0, y: 34 }, {
+            opacity: 1, y: 0, duration: 0.9, ease: "power3.out", delay: (i % 3) * 0.08,
+            scrollTrigger: { trigger: el, start: "top 88%" }
+          });
+        });
+        gsap.fromTo("aside .avatar", { scale: 0.85, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.1, ease: "elastic.out(1, 0.55)", delay: 0.15 });
+      }
+      // 3D tilt on flagship cards (fine pointers only)
+      if(window.matchMedia && window.matchMedia("(pointer: fine)").matches){
+        document.querySelectorAll(".card").forEach(function(card){
+          card.style.transformStyle = "preserve-3d";
+          card.addEventListener("pointermove", function(e){
+            var r = card.getBoundingClientRect();
+            var rx = ((e.clientY - r.top) / r.height - 0.5) * -7;
+            var ry = ((e.clientX - r.left) / r.width - 0.5) * 7;
+            card.style.transform = "perspective(900px) rotateX(" + rx.toFixed(2) + "deg) rotateY(" + ry.toFixed(2) + "deg) translateY(-3px)";
+          });
+          card.addEventListener("pointerleave", function(){ card.style.transform = ""; });
+        });
+      }
+    } catch(e) { /* motion layer is decorative only */ }
+  })();
+</script>
 </body>
 </html>
