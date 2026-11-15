@@ -69,6 +69,10 @@ In parallel, I design and ship **AI agent systems end to end, solo** - research 
 </div>
 
 <div align="center">
+<img src="assets/arcade.svg" width="100%" alt="Contribution Invaders - arcade game card" />
+</div>
+
+<div align="center">
   <img alt="Contribution snake animation" src="https://raw.githubusercontent.com/pruthvig1998/pruthvig1998/output/github-contribution-grid-snake-dark.svg" />
 </div>
 
