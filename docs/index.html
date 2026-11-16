@@ -364,6 +364,20 @@
     .menu-links a{opacity:1;transform:none}
     .menu-overlay{transition:none}
   }
+
+  /* deep links */
+  .card h3 a{color:inherit;text-decoration:none}
+  .card h3 a:hover{color:var(--gold)}
+  .links a{color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(229,72,77,.35);padding-bottom:1px;transition:color .2s,border-color .2s}
+  .links a:hover{color:var(--gold);border-color:var(--gold)}
+  .links .next-link{margin-left:auto;border-bottom:none;color:var(--gold)}
+  section p a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(229,72,77,.4)}
+  section p a:hover{border-color:var(--gold)}
+  .hero-status a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(229,72,77,.4)}
+  footer .explore{font-family:var(--mono);font-size:12px;color:var(--muted);display:flex;flex-wrap:wrap;gap:8px 14px;margin:14px 0 6px;align-items:center}
+  footer .explore a{color:var(--muted);text-decoration:none}
+  footer .explore a:hover{color:var(--gold)}
+  footer .explore span{color:var(--gold);letter-spacing:.12em}
 </style>
 </head>
 <body>
@@ -418,7 +432,7 @@
     </div>
   </div>
   <div class="hero-scroll" aria-hidden="true"><span>SCROLL</span><span class="line"></span></div>
-  <div class="hero-status"><span class="live-dot"></span>Available for new opportunities - Senior GCP / Platform roles</div>
+  <div class="hero-status"><span class="live-dot"></span><a href="#contact">Available for new opportunities - Senior GCP / Platform roles</a></div>
 </section>
 
 <section id="immersion" aria-label="Interactive 3D form">
@@ -434,7 +448,7 @@
     <section id="about" class="reveal">
       <div class="sec-head">About</div>
       <p>I am a <b>Senior GCP DevOps Engineer at UKG</b>, building cloud platform infrastructure since 2018 - currently on the UTM infrastructure team, working on GKE platforms, a SQL Server 2022 migration, and PagerDuty noise reduction. Based between Hyderabad and Toronto, Canadian permanent resident.</p>
-      <p>In parallel I design and ship <b>AI agent systems end to end, solo</b>: a public-interest fact-checker used from WhatsApp, an autonomous options-research agent, and a live paper-trading desk. One rule runs through all of them: <span class="hl">every claim an agent makes must be traceable to evidence, and "I could not verify this" is a valid answer.</span></p>
+      <p>In parallel I design and ship <b>AI agent systems end to end, solo</b>: <a href="#sach">a public-interest fact-checker used from WhatsApp</a>, <a href="#quantpilot">an autonomous options-research agent</a>, and <a href="#cluse">a live paper-trading desk</a>. One rule runs through all of them: <span class="hl">every claim an agent makes must be traceable to evidence, and "I could not verify this" is a valid answer.</span></p>
       <div class="proof">
         <div class="cell"><div class="n">8+</div><div class="l">YEARS IN INFRASTRUCTURE, SINCE 2018</div></div>
         <div class="cell"><div class="n">3</div><div class="l">AI SYSTEMS LIVE IN PRODUCTION</div></div>
@@ -446,41 +460,41 @@
       <div class="ghost-word" aria-hidden="true">SYSTEMS</div>
       <div class="sec-head">Flagship work</div>
 
-      <a class="card" href="https://sachcheck.in" target="_blank" rel="noopener">
+      <div class="card" id="sach">
         <div class="card-band band-1" data-num="01" aria-hidden="true"><svg class="band-spark" width="180" height="44" viewBox="0 0 180 44" fill="none" aria-hidden="true"><polyline points="0,34 24,28 48,31 72,20 96,24 120,13 144,17 168,7 180,10" stroke="#E5484D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="180" cy="10" r="3" fill="#E5D9BE"/></svg></div>
         <div class="kicker">Live product - Code for a Billion, Governance</div>
-        <h3>Sach - WhatsApp forward fact-checker <span class="arrow">↗</span></h3>
-        <p>Paste a viral WhatsApp forward and get a cited TRUE / FALSE / MISLEADING / UNVERIFIED verdict from PIB Fact Check and official sources, in English and 15 Indian languages, as a card ready to post back into the family group. Built solo, runs on free tiers, filed as submission #126.</p>
-        <div class="links"><span>Live: sachcheck.in</span><span>Impact page</span><span>79-claim evaluation, 0 overclaims</span></div>
+        <h3><a href="https://sachcheck.in" target="_blank" rel="noopener">Sach - WhatsApp forward fact-checker <span class="arrow">↗</span></a></h3>
+        <p>Paste a viral WhatsApp forward and get a cited TRUE / FALSE / MISLEADING / UNVERIFIED verdict from PIB Fact Check and official sources, in English and 15 Indian languages, as a card ready to post back into the family group. Built solo, runs on free tiers, filed as submission <a href="https://github.com/karlmehta/code-for-a-billion/issues/126" target="_blank" rel="noopener">#126</a>.</p>
+        <div class="links"><a href="https://sachcheck.in" target="_blank" rel="noopener">Live: sachcheck.in</a><a href="https://sachcheck.in/impact" target="_blank" rel="noopener">Impact page</a><a href="https://github.com/pruthvig1998/sach-check" target="_blank" rel="noopener">79-claim evaluation, 0 overclaims</a><a href="https://youtu.be/ZFO4BZXokL4" target="_blank" rel="noopener">55s demo</a><a class="next-link" href="#quantpilot">Next: QuantPilot -&gt;</a></div>
         <div class="tags"><span>AI agents</span><span>Evidence grounding</span><span>Fact-check APIs</span><span>Vercel</span></div>
-      </a>
+      </div>
 
-      <a class="card" href="https://pruthvig1998.github.io/QuantPilot/explorer/" target="_blank" rel="noopener">
+      <div class="card" id="quantpilot">
         <div class="card-band band-2" data-num="02" aria-hidden="true"><svg class="band-spark" width="180" height="44" viewBox="0 0 180 44" fill="none" aria-hidden="true"><polyline points="0,12 24,20 48,15 72,26 96,21 120,30 144,25 168,34 180,31" stroke="#E5484D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="180" cy="31" r="3" fill="#E5D9BE"/></svg></div>
         <div class="kicker">Open Agent Hackathon 2026 - Track 02</div>
-        <h3>QuantPilot - research agent that shows its work <span class="arrow">↗</span></h3>
+        <h3><a href="https://pruthvig1998.github.io/QuantPilot/explorer/" target="_blank" rel="noopener">QuantPilot - research agent that shows its work <span class="arrow">↗</span></a></h3>
         <p>An autonomous pre-market options research agent for US markets. It investigates 12 names across fragmented sources and produces trade cards where every number traces to the evidence packet it came from - including a verifier that catches the model misquoting its own data. Screening rank 252 of 547; demo score 12.5 of 15.</p>
-        <div class="links"><span>Live Explorer</span><span>GitHub repo</span></div>
+        <div class="links"><a href="https://pruthvig1998.github.io/QuantPilot/explorer/" target="_blank" rel="noopener">Live Explorer</a><a href="https://github.com/pruthvig1998/QuantPilot" target="_blank" rel="noopener">GitHub repo</a><a href="https://www.linkedin.com/feed/update/urn:li:activity:7526341625153822720/" target="_blank" rel="noopener">Build story</a><a class="next-link" href="#cluse">Next: Cluse -&gt;</a></div>
         <div class="tags"><span>Multi-agent systems</span><span>Citation verification</span><span>Python</span><span>Eval design</span></div>
-      </a>
+      </div>
 
-      <a class="card" href="https://pruthvig1998.github.io/cluse-desk-live/" target="_blank" rel="noopener">
+      <div class="card" id="cluse">
         <div class="card-band band-3" data-num="03" aria-hidden="true"><svg class="band-spark" width="180" height="44" viewBox="0 0 180 44" fill="none" aria-hidden="true"><polyline points="0,24 24,24 48,10 72,36 96,12 120,30 144,16 168,26 180,20" stroke="#E5484D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="180" cy="20" r="3" fill="#E5D9BE"/></svg></div>
         <div class="kicker">Live system - paper trading only</div>
-        <h3>Cluse - autonomous paper-trading desk <span class="arrow">↗</span></h3>
+        <h3><a href="https://pruthvig1998.github.io/cluse-desk-live/" target="_blank" rel="noopener">Cluse - autonomous paper-trading desk <span class="arrow">↗</span></a></h3>
         <p>A Nasdaq-100 options research desk running on virtual money: technical setups, an intraday news radar, market-regime filters, and strict risk rules with a drawdown kill-switch. The public page refreshes every 5 minutes in session, with an interactive 3D diagram of the whole system.</p>
-        <div class="links"><span>Live desk</span><span>3D system diagram</span></div>
+        <div class="links"><a href="https://pruthvig1998.github.io/cluse-desk-live/" target="_blank" rel="noopener">Live desk</a><a href="https://pruthvig1998.github.io/cluse-desk-live/3d/" target="_blank" rel="noopener">3D system diagram</a><a href="https://github.com/pruthvig1998/cluse-desk-live" target="_blank" rel="noopener">GitHub repo</a><a class="next-link" href="#nexus">Next: Nexus -&gt;</a></div>
         <div class="tags"><span>Trading systems</span><span>Risk engines</span><span>Discord bots</span><span>Three.js</span></div>
-      </a>
+      </div>
 
-      <a class="card" href="https://github.com/pruthvig1998/nexus" target="_blank" rel="noopener">
+      <div class="card" id="nexus">
         <div class="card-band band-4" data-num="04" aria-hidden="true"><svg class="band-spark" width="180" height="44" viewBox="0 0 180 44" fill="none" aria-hidden="true"><polyline points="0,30 24,26 48,28 72,22 96,18 120,20 144,14 168,12 180,8" stroke="#E5484D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="180" cy="8" r="3" fill="#E5D9BE"/></svg></div>
         <div class="kicker">Trading infrastructure</div>
-        <h3>Nexus - algorithmic trading system <span class="arrow">↗</span></h3>
+        <h3><a href="https://github.com/pruthvig1998/nexus" target="_blank" rel="noopener">Nexus - algorithmic trading system <span class="arrow">↗</span></a></h3>
         <p>A production-grade long/short algorithmic trading system in Python: multi-strategy, multi-broker, AI-powered signals, and institutional-style risk layers, with full architecture documentation and CI.</p>
-        <div class="links"><span>GitHub repo</span></div>
+        <div class="links"><a href="https://github.com/pruthvig1998/nexus" target="_blank" rel="noopener">GitHub repo</a><a class="next-link" href="#sach">Back to Sach -&gt;</a></div>
         <div class="tags"><span>Python</span><span>Multi-broker</span><span>Risk management</span><span>CI/CD</span></div>
-      </a>
+      </div>
     </section>
 
     <section id="experience" class="reveal">
@@ -489,7 +503,7 @@
       <div class="job">
         <div class="when">JUL 2023 - PRESENT · TORONTO / HYDERABAD</div>
         <h3>Senior GCP DevOps Engineer <span>· UKG</span></h3>
-        <p>UTM infrastructure team: GKE and Cloud Run platforms, Terraform/OpenTofu with Terragrunt, Argo CD GitOps, SQL Server 2022 migration, PagerDuty noise reduction, FinOps with Kubecost and Spot VMs.</p>
+        <p>UTM infrastructure team: <a href="#expertise">GKE and Cloud Run platforms, Terraform/OpenTofu with Terragrunt, Argo CD GitOps</a>, SQL Server 2022 migration, PagerDuty noise reduction, FinOps with Kubecost and Spot VMs.</p>
       </div>
 
       <div class="job">
@@ -548,7 +562,7 @@
           </ul>
         </div>
       </div>
-      <p style="margin-top:22px"><b>Certifications:</b> Google Cloud Professional Cloud DevOps Engineer - PagerDuty Foundational Practitioner.<br>
+      <p style="margin-top:22px"><b>Certifications:</b> <a href="https://www.linkedin.com/in/pruthvi-g/" target="_blank" rel="noopener">Google Cloud Professional Cloud DevOps Engineer</a> - <a href="https://www.linkedin.com/in/pruthvi-g/" target="_blank" rel="noopener">PagerDuty Foundational Practitioner</a>.<br>
       <b>Education:</b> BTech, CVR College of Engineering, Hyderabad - PG diplomas in Cloud Computing (George Brown) and Business Analytics (Cambrian).</p>
     </section>
 
@@ -556,7 +570,7 @@
       <div class="sec-head">Contact</div>
       <div class="contact-box">
         <h3>Open to Senior GCP / Platform roles</h3>
-        <p>Toronto hybrid or Canada remote. The fastest way to evaluate my work is the live products above - Sach takes about 10 seconds to try. For roles or collaboration, LinkedIn is the best channel.</p>
+        <p>Toronto hybrid or Canada remote. The fastest way to evaluate my work is <a href="#projects">the live products above</a> - <a href="https://sachcheck.in" target="_blank" rel="noopener">Sach</a> takes about 10 seconds to try. For roles or collaboration, LinkedIn is the best channel.</p>
         <a class="btn" href="https://www.linkedin.com/in/pruthvi-g/" target="_blank" rel="noopener">Connect on LinkedIn</a>
         <a class="btn" href="https://github.com/pruthvig1998" target="_blank" rel="noopener">GitHub profile</a>
       </div>
@@ -569,6 +583,7 @@
           <a href="https://www.linkedin.com/in/pruthvi-g/" target="_blank" rel="noopener">LinkedIn</a>
           <a href="https://sachcheck.in" target="_blank" rel="noopener">Sach - live</a>
         </div>
+        <div class="explore"><span>EXPLORE</span><a href="#about">About</a><a href="#projects">Work</a><a href="#experience">Experience</a><a href="#expertise">Expertise</a><a href="#contact">Contact</a><span>PROJECTS</span><a href="#sach">Sach</a><a href="#quantpilot">QuantPilot</a><a href="#cluse">Cluse</a><a href="#nexus">Nexus</a></div>
         <div class="live-line"><span class="live-dot"></span>Open to Senior GCP / Platform roles</div>
         <div class="live-clock"><span class="lc-label">TORONTO</span><span id="toronto-clock">--:--:--</span></div>
       </div>
