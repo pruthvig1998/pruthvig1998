@@ -44,7 +44,9 @@
   .topnav-links a.active{color:var(--gold)}
 
   /* ---------- Cinematic hero ---------- */
-  .hero{position:relative;min-height:100vh;min-height:100svh;overflow:hidden;display:flex;align-items:center}
+  .hero{position:relative;min-height:100vh;min-height:100svh;overflow:hidden;display:flex;align-items:center;
+    background:radial-gradient(120% 90% at 50% 36%, #2B0714 0%, #1D040B 46%, #0A0105 100%)}
+  .hero-bg-wrap{display:none}
   .hero-bg{position:absolute;inset:0;background:url("assets/hero.jpg") center 38%/cover no-repeat;opacity:.32;
     animation:kenburns 26s ease-in-out infinite alternate;will-change:transform}
   @keyframes kenburns{
@@ -378,7 +380,8 @@
   .portrait-stage{position:absolute;inset:0;z-index:1;cursor:pointer;outline:none}
   .portrait-stage:focus-visible{box-shadow:0 0 0 2px var(--gold);border-radius:12px}
   #portrait-gl{position:absolute;inset:0;width:100%;height:100%;display:block}
-  #portrait-img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;pointer-events:none}
+  #portrait-img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;pointer-events:none;
+    -webkit-mask-image:linear-gradient(180deg, #000 80%, transparent 97%);mask-image:linear-gradient(180deg, #000 80%, transparent 97%)}
   .reveal-btn{position:relative;z-index:3;margin-top:16px;display:inline-flex;align-items:center;gap:9px;
     padding:9px 20px;border-radius:999px;border:1px solid rgba(236,231,223,.35);background:rgba(16,2,6,.55);
     backdrop-filter:blur(6px);color:var(--ivory);font-family:var(--mono);font-size:11px;letter-spacing:.24em;
@@ -1503,6 +1506,7 @@
             return [255,158,87];
           };
           var base = [], scat = [], cols = [];
+          var base2 = [], scat2 = [], cols2 = [];
           for(var gy = 0; gy < ROWS; gy++){
             for(var gx = 0; gx < COLS; gx++){
               var idx = (gy * COLS + gx) * 4;
@@ -1510,13 +1514,17 @@
               if(al < 0.45) continue;
               var r = data[idx] / 255, g = data[idx+1] / 255, b = data[idx+2] / 255;
               var lum = 0.2126 * r + 0.7152 * g + 0.0722 * b;
-              var l2 = Math.min(1, Math.pow(lum, 1.35) * 0.92 * (0.35 + 0.65 * al));
+              var fy = gy / (ROWS - 1);
+              var fs = Math.min(1, Math.max(0, (fy - 0.80) / 0.20));
+              var fadeY = 1 - 0.9 * fs * fs * (3 - 2 * fs);
+              var l2 = Math.min(1, (0.16 + 0.88 * Math.pow(lum, 1.3)) * (0.35 + 0.65 * al) * fadeY);
               var px = (gx / (COLS - 1) - 0.5) * PW, py = (0.5 - gy / (ROWS - 1)) * PH, pz = (l2 - 0.40) * 0.85;
               base.push(px, py, pz);
-              var th = Math.random() * Math.PI * 2, ph = Math.acos(2 * Math.random() - 1), rr = 0.7 + Math.random() * 1.5;
+              var th = Math.random() * Math.PI * 2, ph = Math.acos(2 * Math.random() - 1), rr = 0.15 + Math.random() * 0.45;
               scat.push(px + rr * Math.sin(ph) * Math.cos(th), py + rr * Math.sin(ph) * Math.sin(th), pz + rr * Math.cos(ph));
               var c = ramp(l2);
               cols.push(c[0] / 255, c[1] / 255, c[2] / 255);
+              if(l2 > 0.5){ base2.push(px, py, pz); scat2.push(scat[scat.length-3], scat[scat.length-2], scat[scat.length-1]); cols2.push(c[0] / 255, c[1] / 255, c[2] / 255); }
             }
           }
           var geo = new THREE.BufferGeometry();
@@ -1535,8 +1543,22 @@
           var sprite = new THREE.CanvasTexture(spc);
           var mat = new THREE.PointsMaterial({ size: PW / COLS * 1.05, map: sprite, vertexColors: true, transparent: true, opacity: 1, sizeAttenuation: true, depthWrite: false, blending: THREE.AdditiveBlending });
           var points = new THREE.Points(geo, mat);
+          var group = new THREE.Group();
+          group.add(points);
+          var posArr2 = null, baseArr2 = null, scatArr2 = null, mat2 = null;
+          if(base2.length){
+            var geo2 = new THREE.BufferGeometry();
+            posArr2 = new Float32Array(base2);
+            geo2.setAttribute("position", new THREE.BufferAttribute(posArr2, 3));
+            geo2.setAttribute("color", new THREE.Float32BufferAttribute(cols2, 3));
+            mat2 = new THREE.PointsMaterial({ size: PW / COLS * 1.9, map: sprite, vertexColors: true, transparent: true, opacity: 0.5, sizeAttenuation: true, depthWrite: false, blending: THREE.AdditiveBlending });
+            var points2 = new THREE.Points(geo2, mat2);
+            group.add(points2);
+            baseArr2 = new Float32Array(base2);
+            scatArr2 = new Float32Array(scat2);
+          }
           var pScene = new THREE.Scene();
-          pScene.add(points);
+          pScene.add(group);
           var pCam = new THREE.PerspectiveCamera(38, image.width / image.height, 0.1, 50);
           pCam.position.z = 3.42;
           var pRen = new THREE.WebGLRenderer({ canvas: pCanvas, antialias: true, alpha: true });
@@ -1561,7 +1583,7 @@
             heroSec.classList.toggle("revealed", revealed);
             pStage.setAttribute("aria-pressed", revealed ? "true" : "false");
             if(rBtn) rBtn.setAttribute("aria-pressed", revealed ? "true" : "false");
-            if(rLabel) rLabel.textContent = revealed ? "HIDE" : "REVEAL";
+            if(rLabel) rLabel.textContent = revealed ? "BACK TO DOTS" : "REVEAL";
           };
           pStage.addEventListener("click", toggleReveal);
           pStage.addEventListener("keydown", function(e){
@@ -1582,12 +1604,18 @@
               posArr[i] = baseArr[i] + (scatArr[i] - baseArr[i]) * e2;
             }
             geo.attributes.position.needsUpdate = true;
+            if(posArr2){
+              for(var j = 0; j < posArr2.length; j++){
+                posArr2[j] = baseArr2[j] + (scatArr2[j] - baseArr2[j]) * e2;
+              }
+              mat2.opacity = 0.5 * (1 - e2);
+            }
             mat.opacity = 1 - e2 * 0.92;
             pImg.style.opacity = e2.toFixed(3);
             cRY += (tRY - cRY) * 0.06;
             cRX += (tRX - cRX) * 0.06;
-            points.rotation.y = cRY;
-            points.rotation.x = cRX;
+            group.rotation.y = cRY;
+            group.rotation.x = cRX;
             pRen.render(pScene, pCam);
           };
           pLoop();
