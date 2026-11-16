@@ -34,7 +34,7 @@
 | **At work** | UTM infrastructure at UKG - GKE, Cloud Run, SQL Server 2022 migration, PagerDuty noise reduction |
 | **Open to** | Senior GCP / Platform roles - Toronto hybrid, Canada remote |
 
-Credentials: **PagerDuty Foundational Practitioner** (Feb 2025) and **Google Cloud Professional Cloud DevOps Engineer** (Jan 2024) - both listed with issuer links on my [LinkedIn](https://www.linkedin.com/in/pruthvi-g/).
+Credentials: **Google Cloud Professional Cloud DevOps Engineer** (Jan 2024) - verifiable in my [Credly badge wallet](https://www.credly.com/users/prudhvi-garlapati); **PagerDuty Foundational Practitioner** (Feb 2025) - listed with issuer link on my [LinkedIn](https://www.linkedin.com/in/pruthvi-g/).
 
 <div align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/divider.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/divider-light.svg" /><img src="assets/divider.svg" width="100%" alt="" /></picture></div>
 
