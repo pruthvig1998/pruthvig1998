@@ -466,6 +466,10 @@
     transform:perspective(900px) rotateY(calc(var(--look-x,0) * 18deg)) rotateX(calc(var(--look-y,0) * 12deg)) translate3d(calc(var(--look-x,0) * 26px), calc(var(--look-y,0) * 16px), 0);
     transform-origin:57% 30%;will-change:transform;
     -webkit-mask-image:linear-gradient(180deg, #000 88%, transparent 99%);mask-image:linear-gradient(180deg, #000 88%, transparent 99%)}
+  #portrait-gaze{position:absolute;inset:0;width:100%;height:100%;opacity:0;pointer-events:none;
+    transform:perspective(900px) rotateY(calc(var(--look-x,0) * 18deg)) rotateX(calc(var(--look-y,0) * 12deg)) translate3d(calc(var(--look-x,0) * 26px), calc(var(--look-y,0) * 16px), 0);
+    transform-origin:57% 30%;will-change:transform;
+    -webkit-mask-image:linear-gradient(180deg, #000 88%, transparent 99%);mask-image:linear-gradient(180deg, #000 88%, transparent 99%)}
   /* About: scroll-driven 3D model layer */
   #about{position:relative;isolation:isolate}
   #about-gl{position:absolute;inset:-30px -16px;width:calc(100% + 32px);height:calc(100% + 60px);z-index:0;pointer-events:none}
@@ -556,6 +560,7 @@
       <div class="portrait-stage" id="portrait-stage" role="button" tabindex="0" aria-pressed="false" aria-label="Dot portrait of Pruthvi Garlapati. Activate to reveal the photograph.">
         <canvas id="portrait-gl"></canvas>
         <img id="portrait-img" src="assets/portrait-bust-v13.png" alt="Pruthvi Garlapati" />
+        <canvas id="portrait-gaze" width="681" height="570" aria-hidden="true"></canvas>
       </div>
     </figure>
     <button class="reveal-btn" id="reveal-btn" type="button" aria-pressed="false"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><circle cx="3" cy="3" r="1.7" fill="currentColor"/><circle cx="9" cy="3" r="1.7" fill="currentColor"/><circle cx="3" cy="9" r="1.7" fill="currentColor"/><circle cx="9" cy="9" r="1.7" fill="currentColor"/></svg><span id="reveal-label">REVEAL</span></button>
@@ -1625,6 +1630,26 @@
       var pStage = document.getElementById("portrait-stage");
       var pCanvas = document.getElementById("portrait-gl");
       var pImg = document.getElementById("portrait-img");
+      var gazeCv = document.getElementById("portrait-gaze");
+      var gazeCtx = gazeCv ? gazeCv.getContext("2d") : null;
+      var gazeReady = 0;
+      var gazeBase = new Image(), gazeEyes = new Image();
+      function gazeDraw(nx, ny){
+        if(gazeReady < 2 || !gazeCtx) return;
+        gazeCtx.clearRect(0, 0, 681, 570);
+        gazeCtx.drawImage(gazeBase, 0, 0);
+        gazeCtx.save();
+        gazeCtx.translate(Math.round(nx * 5), Math.round(ny * 3));
+        gazeCtx.drawImage(gazeEyes, 0, 0);
+        gazeCtx.restore();
+      }
+      var gazeOn = function(){ gazeReady++; if(gazeReady === 2) gazeDraw(0, 0); };
+      if(gazeCtx){
+        gazeBase.onload = gazeOn;
+        gazeEyes.onload = gazeOn;
+        gazeBase.src = "assets/portrait-gaze-base.png";
+        gazeEyes.src = "assets/portrait-eyes.png";
+      }
       var rBtn = document.getElementById("reveal-btn");
       var rLabel = document.getElementById("reveal-label");
       if(heroSec && pStage && pCanvas && pImg && window.THREE){
@@ -1842,7 +1867,13 @@
               mat2.opacity = 0.5 * (1 - e2);
             }
             mat.opacity = 1 - e2 * 0.92;
-            pImg.style.opacity = e2.toFixed(3);
+            if(gazeReady >= 2){
+              gazeCv.style.opacity = e2.toFixed(3);
+              pImg.style.opacity = "0";
+              if(e2 > 0.01) gazeDraw(nX, nY);
+            } else {
+              pImg.style.opacity = e2.toFixed(3);
+            }
             if(Math.abs(nX - lastVarX) > 0.003 || Math.abs(nY - lastVarY) > 0.003){
               heroSec.style.setProperty("--look-x", nX.toFixed(3));
               heroSec.style.setProperty("--look-y", nY.toFixed(3));
