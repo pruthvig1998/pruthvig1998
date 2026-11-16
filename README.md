@@ -127,8 +127,8 @@ I write up what I build - the decisions, the numbers, and what the scores actual
 ## 06 - Latest activity
 
 <!--START_SECTION:activity-->
-- Nov 15, 2026 - This profile and the portfolio site rebuilt and shipped
-- Nov 13-15, 2026 - Cluse desk: SPX lotto multi-entry live; the desk republishes itself daily
+1. 🎉 Merged PR [#3](https://github.com/pruthvig1998/sach-check/pull/3) in [pruthvig1998/sach-check](https://github.com/pruthvig1998/sach-check)
+2. 💪 Opened PR [#3](https://github.com/pruthvig1998/sach-check/pull/3) in [pruthvig1998/sach-check](https://github.com/pruthvig1998/sach-check)
 - Nov 14, 2026 - Sach filed in Code for a Billion (issue #126), launch post published
 <!--END_SECTION:activity-->
 
