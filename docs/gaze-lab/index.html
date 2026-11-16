@@ -53,7 +53,7 @@
 </div>
 <script>
 "use strict";
-const META = {"S": 2, "W": 681, "H": 570, "layout": {"R_plate": {"x": 0, "y": 0, "w": 76, "h": 44}, "R_disc": {"x": 320, "y": 10.75, "w": 22.5, "h": 22.5, "r": 11.25}, "R_lid": {"x": 456, "y": 0, "w": 76, "h": 44}, "L_plate": {"x": 160, "y": 0, "w": 76, "h": 44}, "L_disc": {"x": 388, "y": 11.25, "w": 21.5, "h": 21.5, "r": 10.75}, "L_lid": {"x": 616, "y": 0, "w": 76, "h": 44}, "R_ball": {"x": 640, "y": 14.8, "w": 48.0, "h": 34.4}, "L_ball": {"x": 770, "y": 15.3, "w": 47.0, "h": 33.4}}, "travel": [10.0, 3.2], "eyes": [{"name": "R", "icx": 348, "icy": 166, "acx": 346, "acy": 163, "arx": 18, "ary": 8, "bx": 307, "by": 141, "iris_r": 10.5}, {"name": "L", "icx": 430, "icy": 168, "acx": 428, "acy": 163, "arx": 23, "ary": 9, "bx": 385, "by": 138, "iris_r": 10.0}]};
+const META = {"S": 2, "W": 681, "H": 570, "layout": {"R_plate": {"x": 0, "y": 0, "w": 76, "h": 44}, "R_disc": {"x": 320, "y": 11.75, "w": 20.5, "h": 20.5, "r": 10.25}, "R_ball": {"x": 640, "y": 15.8, "w": 46.0, "h": 32.4}, "R_lidstrip": {"x": 920, "y": 0, "w": 76, "h": 11}, "L_plate": {"x": 160, "y": 0, "w": 76, "h": 44}, "L_disc": {"x": 388, "y": 11.75, "w": 20.5, "h": 20.5, "r": 10.25}, "L_ball": {"x": 770, "y": 15.8, "w": 46.0, "h": 32.4}, "L_lidstrip": {"x": 1008, "y": 0, "w": 76, "h": 11}}, "travel": [10.0, 3.2], "eyes": [{"name": "R", "icx": 348, "icy": 159, "acx": 347, "acy": 159, "arx": 18, "ary": 9, "bx": 307, "by": 138, "iris_r": 9.5}, {"name": "L", "icx": 430, "icy": 163, "acx": 429, "acy": 163, "arx": 22, "ary": 9.5, "bx": 385, "by": 136, "iris_r": 9.5}]};
 const S = META.S, EYES = META.eyes, LAY = META.layout;
 const cv = document.getElementById('eyes'), ctx = cv.getContext('2d');
 const stack = document.getElementById('stack');
@@ -125,13 +125,15 @@ function drawEye(e, gx, gy, blinkCov) {
   const dx = (e.icx + gx - dr) * S, dy = (e.icy + gy - dr) * S;
   ctx.drawImage(sheet, ds[0], ds[1], ds[2], ds[3], dx, dy, ds[2], ds[3]);
   if (blinkCov > 0.001) {
-    const ld = sprite(e.name + '_lid');
+    const ls = sprite(e.name + '_lidstrip');
+    const topY = (e.acy - e.ary) * S, destH = blinkCov * 2 * e.ary * S;
     ctx.save();
     ctx.beginPath();
     ctx.ellipse(e.acx * S, e.acy * S, (e.arx - 1) * S, (e.ary - 0.5) * S, 0, 0, Math.PI * 2);
     ctx.clip();
-    const slide = (1 - blinkCov) * (2 * e.ary + 4);
-    ctx.drawImage(sheet, ld[0], ld[1], ld[2], ld[3], bx, by - slide * S, ld[2], ld[3]);
+    ctx.translate(0, 2 * topY + destH);
+    ctx.scale(1, -1);
+    ctx.drawImage(sheet, ls[0], ls[1], ls[2], ls[3], bx, topY, ls[2], destH);
     ctx.restore();
   }
 }
