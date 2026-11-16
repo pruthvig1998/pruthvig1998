@@ -43,7 +43,7 @@
   ::-webkit-scrollbar-track{background:#0B0C0E}
   ::-webkit-scrollbar-thumb{background:#8E2438;border-radius:6px;border:2px solid #0B0C0E}
   html{scrollbar-width:thin;scrollbar-color:var(--gold) #0B0C0E;scroll-behavior:smooth;scroll-snap-type:y proximity}
-  #hero, .intro, #about, #projects, #experience, #writing, #expertise, #contact{scroll-snap-align:start;scroll-margin-top:10px}
+  #hero, .intro, #about, #projects, #lab, #experience, #writing, #expertise, #contact{scroll-snap-align:start;scroll-margin-top:10px}
 
   /* ---------- Fixed top nav ---------- */
   .topnav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
@@ -174,6 +174,63 @@
   @media (min-width:1024px) and (min-height:660px){
     #projects .card{position:sticky;top:96px;transform-origin:center top;box-shadow:0 -18px 44px rgba(0,0,0,.38)}
   }
+  /* B7: case studies as a bento grid */
+  .case.open{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .case .case-row{display:block;background:rgba(236,231,223,.03);border:1px solid rgba(236,231,223,.08);border-radius:10px;padding:12px 14px;margin:0}
+  .case .case-row b{display:block;margin-bottom:5px}
+  .case .case-row.wide{grid-column:1 / -1}
+  .case .term{grid-column:1 / -1}
+  @media (max-width:720px){ .case.open{grid-template-columns:1fr} }
+  /* B3: project index */
+  .idx{border-top:1px solid rgba(236,231,223,.12);margin:6px 0 26px}
+  .idx-row{display:flex;align-items:baseline;gap:16px;padding:13px 6px;border-bottom:1px solid rgba(236,231,223,.12);color:var(--ivory);transition:background-color .2s ease,padding-left .2s ease}
+  .idx-row:hover{background:rgba(229,72,77,.06);padding-left:12px}
+  .idx-num{font-family:var(--mono);font-size:12px;color:var(--gold)}
+  .idx-name{font-family:var(--head);font-size:19px;font-weight:600;min-width:110px}
+  .idx-one{flex:1;font-size:13px;color:rgba(236,231,223,.65)}
+  .idx-metric{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(236,231,223,.55)}
+  .idx-arrow{color:var(--gold)}
+  @media (max-width:720px){ .idx-one{display:none} .idx-name{min-width:0} }
+  #idx-preview{position:fixed;z-index:120;width:250px;pointer-events:none;background:#2A0713;border:1px solid rgba(229,72,77,.4);border-radius:12px;padding:14px 16px;opacity:0;transition:opacity .18s ease;box-shadow:0 18px 44px rgba(0,0,0,.45)}
+  #idx-preview.show{opacity:1}
+  #idx-preview h4{font-family:var(--head);font-size:17px;margin:0 0 5px;color:var(--ivory)}
+  #idx-preview p{font-size:12.5px;margin:0 0 8px;color:rgba(236,231,223,.75)}
+  #idx-preview span{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+  /* B6: terminal replay */
+  .term{background:#160309;border:1px solid rgba(229,72,77,.25);border-radius:10px;overflow:hidden}
+  .term-head{display:flex;align-items:center;gap:6px;padding:8px 12px;border-bottom:1px solid rgba(229,72,77,.18)}
+  .term-head i{width:8px;height:8px;border-radius:50%;background:rgba(229,72,77,.5);display:block}
+  .term-head i:nth-child(2){background:rgba(240,163,168,.5)}
+  .term-head i:nth-child(3){background:rgba(163,177,138,.55)}
+  .term-head span{margin-left:6px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(236,231,223,.55)}
+  .term-body{font-family:var(--mono);font-size:12.5px;line-height:1.75;color:#F0A3A8;padding:12px 14px;margin:0;white-space:pre-wrap;min-height:118px}
+  .term-body::after{content:"▋";color:var(--gold);animation:termblink 1s steps(1) infinite}
+  @keyframes termblink{50%{opacity:0}}
+  /* B8: highlights gallery */
+  .gal-viewport{overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;border-radius:14px}
+  .gal-viewport::-webkit-scrollbar{display:none}
+  .gal-track{display:flex;gap:16px;width:max-content;padding:4px 2px}
+  .gal-panel{flex:0 0 min(78vw,760px);scroll-snap-align:start;background:linear-gradient(160deg,#2A0713,#1D040B);border:1px solid rgba(229,72,77,.28);border-radius:14px;padding:30px 32px;min-height:250px;display:flex;flex-direction:column}
+  .gal-num{font-family:var(--head);font-size:52px;line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(229,72,77,.55)}
+  .gal-panel h3{font-family:var(--head);font-size:27px;font-weight:600;margin:12px 0 8px;color:var(--ivory)}
+  .gal-panel p{font-size:14.5px;color:rgba(236,231,223,.78);max-width:52ch}
+  .gal-big{font-family:var(--head);font-size:40px;color:var(--ivory);margin-top:auto;padding-top:14px}
+  .gal-big span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-top:5px}
+  .gal-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:14px}
+  .gal-chips span{font-family:var(--mono);font-size:11px;letter-spacing:.12em;border:1px solid rgba(229,72,77,.45);border-radius:999px;padding:4px 11px;color:var(--soft)}
+  .gal-hint{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(236,231,223,.45);margin-top:10px}
+  @media (min-width:901px){ .gal-viewport{overflow:hidden} }
+  /* A5: the lab */
+  .lab-line{font-size:14.5px;color:rgba(236,231,223,.75);max-width:60ch;margin-bottom:18px}
+  .lab-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media (max-width:900px){ .lab-grid{grid-template-columns:1fr} }
+  .lab-cell{margin:0;background:#2A0713;border:1px solid rgba(229,72,77,.25);border-radius:12px;overflow:hidden}
+  .lab-cell canvas{display:block;width:100%;height:auto;background:#1D040B}
+  .lab-cell figcaption{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(236,231,223,.6);padding:10px 12px}
+  /* A6: sound-reactive glow */
+  .sound-glow{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(60% 45% at 50% 108%, rgba(229,72,77,.5), rgba(229,72,77,0) 70%);opacity:calc(var(--beat, 0) * 0.35)}
+  /* A7: dissolve overlay */
+  #dissolve{position:fixed;inset:0;z-index:300;pointer-events:none;display:none}
   .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
   .tags span{font-family:var(--mono);font-size:12px;color:var(--ivory);background:rgba(229,72,77,.08);border:1px solid rgba(229,72,77,.18);padding:4px 10px;border-radius:999px}
   .tags span:nth-child(even){color:#E5D9BE;background:rgba(229,217,190,.1);border-color:rgba(229,217,190,.22)}
@@ -188,6 +245,20 @@
   .job h3 span{color:var(--gold)}
   .job p{font-size:14px;margin-bottom:6px}
   .edu-head{font-family:var(--mono);font-size:11px;letter-spacing:.24em;color:var(--gold);margin:28px 0 6px;text-transform:uppercase}
+  #experience .job{display:grid;grid-template-columns:118px 1fr;column-gap:22px;align-items:start}
+  .job .yr{grid-row:1 / span 3;font-family:var(--head);font-size:46px;line-height:.95;font-weight:600;color:transparent;-webkit-text-stroke:1.5px rgba(229,72,77,.5);transition:color .3s ease;padding-top:2px}
+  .job:hover .yr{color:var(--gold)}
+  .job .yr small{display:block;font-family:var(--head);font-size:16px;margin-top:6px;color:transparent;-webkit-text-stroke:1px rgba(229,72,77,.5)}
+  .job:hover .yr small{color:var(--soft)}
+  .job.edu .yr{font-size:31px}
+  #experience .job h3{font-size:20px}
+  @media (max-width:720px){
+    #experience .job{grid-template-columns:64px 1fr;column-gap:14px}
+    .job .yr{font-size:26px;-webkit-text-stroke-width:1px}
+    .job .yr small{font-size:12px}
+    .job.edu .yr{font-size:21px}
+    #experience .job h3{font-size:17px}
+  }
 
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
   .skillbox{border-radius:14px;padding:20px;background:rgba(236,231,223,.03);
@@ -537,6 +608,12 @@
     <section id="projects" class="reveal">
       <div class="ghost-word" aria-hidden="true">SYSTEMS</div>
       <div class="sec-head">Flagship work</div>
+      <nav class="idx" aria-label="Project index">
+        <a class="idx-row" href="#sach" data-name="Sach" data-desc="WhatsApp forwards, fact-checked with citations - a verdict of TRUE, FALSE, MISLEADING, or an honest UNVERIFIED when the evidence is not there." data-metric="79 claims - 0 overclaimed"><span class="idx-num">01</span><span class="idx-name">Sach</span><span class="idx-one">Fact-checker for family WhatsApp</span><span class="idx-metric">79 claims evaluated</span><span class="idx-arrow">→</span></a>
+        <a class="idx-row" href="#quantpilot" data-name="QuantPilot" data-desc="A multi-agent research pipeline where every number on a trade card must trace back to its evidence packet - plus a verifier that catches the model misquoting itself." data-metric="Rank 252 of 547 - demo 12.5 of 15"><span class="idx-num">02</span><span class="idx-name">QuantPilot</span><span class="idx-one">Research agents that show their work</span><span class="idx-metric">Demo 12.5 of 15</span><span class="idx-arrow">→</span></a>
+        <a class="idx-row" href="#cluse" data-name="Cluse" data-desc="A paper-trading desk with conviction sizing, take-profit and stop-loss rules and a drawdown kill-switch. Paper money only, by design - discipline proven before capital." data-metric="Live desk - 0 real orders"><span class="idx-num">03</span><span class="idx-name">Cluse</span><span class="idx-one">Paper-trading desk, live in public</span><span class="idx-metric">Refreshes every 5 min</span><span class="idx-arrow">→</span></a>
+      </nav>
+      <div id="idx-preview" aria-hidden="true"><h4></h4><p></p><span></span></div>
 
       <div class="card" id="sach">
         <div class="card-band band-1" data-num="01" aria-hidden="true"><svg class="band-spark" width="180" height="44" viewBox="0 0 180 44" fill="none" aria-hidden="true"><polyline points="0,34 24,28 48,31 72,20 96,24 120,13 144,17 168,7 180,10" stroke="#E5484D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="180" cy="10" r="3" fill="#E5D9BE"/></svg></div>
@@ -548,9 +625,11 @@
         <div class="tags"><span>AI agents</span><span>Evidence grounding</span><span>Fact-check APIs</span><span>Vercel</span></div>
         <button type="button" class="case-btn" aria-expanded="false">Read the case study</button>
         <div class="case">
-          <div class="case-row"><b>Problem</b><p>A viral forward reaches a family group in seconds; a human fact-check takes days. By then it has been believed, forwarded and acted on.</p></div>
-          <div class="case-row"><b>Architecture</b><p>A three-layer cascade: match the claim against PIB Fact Check's archive and published fact-checks first, then a live AI check grounded in official sources, and if the evidence is not there, an honest UNVERIFIED with a human tipline handoff - never a guess dressed as a verdict.</p></div>
+          <div class="case-row wide"><b>Problem</b><p>A viral forward reaches a family group in seconds; a human fact-check takes days. By then it has been believed, forwarded and acted on.</p></div>
+          <div class="case-row wide"><b>Architecture</b><p>A three-layer cascade: match the claim against PIB Fact Check's archive and published fact-checks first, then a live AI check grounded in official sources, and if the evidence is not there, an honest UNVERIFIED with a human tipline handoff - never a guess dressed as a verdict.</p></div>
           <div class="case-row"><b>Outcome</b><p>Public 79-claim evaluation with zero overclaimed FALSE verdicts, abstention preferred over guessing. Live at sachcheck.in in English and 15 Indian languages, filed in the Code for a Billion judging window.</p></div>
+          <div class="case-row"><b>Proof</b><p>79 claims - 0 overclaimed FALSE - live at sachcheck.in</p></div>
+          <div class="term"><div class="term-head"><i></i><i></i><i></i><span>Sample session</span></div><pre class="term-body" data-lines="$ sach check (pasted WhatsApp forward)|layer 1 - PIB archive match: no exact match|layer 2 - live check, grounded in official sources|3 citations attached|verdict: UNVERIFIED - evidence not conclusive|that is the product working as designed"></pre></div>
         </div>
       </div>
 
@@ -564,9 +643,11 @@
         <div class="tags"><span>Multi-agent systems</span><span>Citation verification</span><span>Python</span><span>Eval design</span></div>
         <button type="button" class="case-btn" aria-expanded="false">Read the case study</button>
         <div class="case">
-          <div class="case-row"><b>Problem</b><p>Research agents sound certain while misquoting their own data - and a trade idea built on a wrong number is worse than no idea at all.</p></div>
-          <div class="case-row"><b>Architecture</b><p>A multi-agent pipeline investigates 12 names across fragmented sources and assembles evidence packets. Every number on a trade card must trace back to its packet, and a separate verifier pass exists to catch the model misquoting its own evidence.</p></div>
+          <div class="case-row wide"><b>Problem</b><p>Research agents sound certain while misquoting their own data - and a trade idea built on a wrong number is worse than no idea at all.</p></div>
+          <div class="case-row wide"><b>Architecture</b><p>A multi-agent pipeline investigates 12 names across fragmented sources and assembles evidence packets. Every number on a trade card must trace back to its packet, and a separate verifier pass exists to catch the model misquoting its own evidence.</p></div>
           <div class="case-row"><b>Outcome</b><p>Open Agent Hackathon 2026: screening rank 252 of 547, with a demo score of 12.5 of 15 - higher than all three Track 02 winners' demos (12.3 each).</p></div>
+          <div class="case-row"><b>Proof</b><p>Rank 252 of 547 - demo 12.5 of 15, above all three Track 02 winners</p></div>
+          <div class="term"><div class="term-head"><i></i><i></i><i></i><span>Sample session</span></div><pre class="term-body" data-lines="&gt; quantpilot run - sweep 12 names|&gt; evidence packets assembled per name|&gt; verifier pass: every figure traced to source|&gt; 1 misquote caught and corrected|&gt; trade cards published - with citations"></pre></div>
         </div>
       </div>
 
@@ -580,36 +661,85 @@
         <div class="tags"><span>Trading systems</span><span>Risk engines</span><span>Discord bots</span><span>Three.js</span></div>
         <button type="button" class="case-btn" aria-expanded="false">Read the case study</button>
         <div class="case">
-          <div class="case-row"><b>Problem</b><p>Strategy ideas are cheap. The hard part is a desk that sizes positions, takes profit, stops out and flattens by rule - proven without risking real capital.</p></div>
-          <div class="case-row"><b>Architecture</b><p>Nasdaq-100 technical setups pass through an intraday news radar and market-regime filters into a risk engine with conviction sizing, take-profit and stop-loss rules and a drawdown kill-switch. Everything flattens at the close; paper money only, by design.</p></div>
+          <div class="case-row wide"><b>Problem</b><p>Strategy ideas are cheap. The hard part is a desk that sizes positions, takes profit, stops out and flattens by rule - proven without risking real capital.</p></div>
+          <div class="case-row wide"><b>Architecture</b><p>Nasdaq-100 technical setups pass through an intraday news radar and market-regime filters into a risk engine with conviction sizing, take-profit and stop-loss rules and a drawdown kill-switch. Everything flattens at the close; paper money only, by design.</p></div>
           <div class="case-row"><b>Outcome</b><p>Runs in public as a live desk: refreshes every 5 minutes in session and republishes itself daily, with every position and exit on the page.</p></div>
+          <div class="case-row"><b>Proof</b><p>Live desk - 5-minute refresh in session - 0 real orders</p></div>
+          <div class="term"><div class="term-head"><i></i><i></i><i></i><span>Sample session</span></div><pre class="term-body" data-lines="&gt; session open - paper account only|&gt; regime filter: risk state checked|&gt; signals sized by conviction - stops set|&gt; kill-switch armed at the drawdown limit|&gt; close: flat. every exit by rule"></pre></div>
         </div>
       </div>
 
+    </section>
+
+    <section id="gallery" aria-label="Highlights">
+      <div class="sec-head">Highlights</div>
+      <div class="gal-viewport" id="gal-viewport">
+        <div class="gal-track" id="gal-track">
+          <article class="gal-panel">
+            <div class="gal-num">01</div>
+            <h3>Sach</h3>
+            <p>A WhatsApp forward, checked in seconds - matched against PIB Fact Check's archive first, then a live AI check grounded in official sources.</p>
+            <div class="gal-chips"><span>TRUE</span><span>FALSE</span><span>MISLEADING</span><span>UNVERIFIED</span></div>
+          </article>
+          <article class="gal-panel">
+            <div class="gal-num">02</div>
+            <h3>QuantPilot</h3>
+            <p>Research agents that show their work - every figure on a trade card traced to an evidence packet, with a verifier pass over the model's own output.</p>
+            <div class="gal-big">12.5 / 15<span>Demo score - above all three Track 02 winners</span></div>
+          </article>
+          <article class="gal-panel">
+            <div class="gal-num">03</div>
+            <h3>Cluse</h3>
+            <p>A paper-trading desk running in public - conviction sizing, take-profit and stop-loss rules, a drawdown kill-switch, flat at every close.</p>
+            <div class="gal-big">5 min<span>Refresh in session - 0 real orders, 100% paper</span></div>
+          </article>
+          <article class="gal-panel">
+            <div class="gal-num">04</div>
+            <h3>Open source, all of it</h3>
+            <p>Every project on this page is public - the code, the evaluations and the failures included. Read it, fork it, argue with it.</p>
+            <div class="gal-big">github.com/pruthvig1998<span>3 flagship repos - sach-check, QuantPilot, cluse-desk-live</span></div>
+          </article>
+        </div>
+      </div>
+      <p class="gal-hint">On desktop, keep scrolling - the highlights travel sideways</p>
+    </section>
+
+    <section id="lab" aria-label="The lab">
+      <div class="sec-head">The lab</div>
+      <p class="lab-line">Three tiny canvas toys - the kind of play that keeps the serious work sharp. All three run on one shared animation loop and pause off-screen.</p>
+      <div class="lab-grid">
+        <figure class="lab-cell"><canvas id="lab-c1" width="480" height="300"></canvas><figcaption>Lab 01 - Constellation - move your cursor through it</figcaption></figure>
+        <figure class="lab-cell"><canvas id="lab-c2" width="480" height="300"></canvas><figcaption>Lab 02 - Wave field - two sources, one interference</figcaption></figure>
+        <figure class="lab-cell"><canvas id="lab-c3" width="480" height="300"></canvas><figcaption>Lab 03 - Orbit sandbox - click to drop a body</figcaption></figure>
+      </div>
     </section>
 
     <section id="experience" class="reveal">
       <div class="sec-head">Experience</div>
 
       <div class="job">
+        <div class="yr" aria-hidden="true">2023<small>to now</small></div>
         <div class="when">JUL 2023 - PRESENT · TORONTO / HYDERABAD</div>
         <h3>Senior GCP DevOps Engineer <span>· UKG</span></h3>
         <p>UTM infrastructure team: <a href="#expertise">GKE and Cloud Run platforms, Terraform/OpenTofu with Terragrunt, Argo CD GitOps</a>, SQL Server 2022 migration, PagerDuty noise reduction, FinOps with Kubecost and Spot VMs.</p>
       </div>
 
       <div class="job">
+        <div class="yr" aria-hidden="true">2020<small>to 2023</small></div>
         <div class="when">DEC 2020 - JUL 2023 · TORONTO (CONTRACT)</div>
         <h3>DevOps Engineer <span>· TD Bank</span></h3>
         <p>Cloud and CI/CD engineering in a regulated banking environment.</p>
       </div>
 
       <div class="job">
+        <div class="yr" aria-hidden="true">2019<small>to 2020</small></div>
         <div class="when">SEP 2019 - DEC 2020 · HYDERABAD</div>
         <h3>DevOps Engineer <span>· Stibo Systems</span></h3>
         <p>Release and infrastructure engineering for enterprise software.</p>
       </div>
 
       <div class="job">
+        <div class="yr" aria-hidden="true">2018<small>to 2019</small></div>
         <div class="when">JUL 2018 - SEP 2019 · HYDERABAD</div>
         <h3>Linux Administrator <span>· Guidewire</span></h3>
         <p>Linux systems administration - where the infrastructure career started.</p>
@@ -617,19 +747,22 @@
 
       <div class="edu-head">Education</div>
 
-      <div class="job">
+      <div class="job edu">
+        <div class="yr" aria-hidden="true">2022</div>
         <div class="when">2022</div>
         <h3>Postgraduate Diploma, Cloud Computing <span>· George Brown College</span></h3>
         <p>One-year postgraduate diploma, completed while working full-time in DevOps.</p>
       </div>
 
-      <div class="job">
+      <div class="job edu">
+        <div class="yr" aria-hidden="true">2021</div>
         <div class="when">2021</div>
         <h3>Postgraduate Diploma, Business Analytics <span>· Cambrian College</span></h3>
         <p>One-year postgraduate diploma, completed alongside the George Brown diploma.</p>
       </div>
 
-      <div class="job">
+      <div class="job edu">
+        <div class="yr" aria-hidden="true">2014<small>to 2018</small></div>
         <div class="when">2014 - 2018 · HYDERABAD</div>
         <h3>BTech, Civil Engineering <span>· CVR College of Engineering</span></h3>
         <p>Bachelor of Technology - the engineering foundation before the move into infrastructure.</p>
@@ -1203,6 +1336,7 @@
         for(var pi = 0; pi < immPulseCount; pi++){
           immPulseData.push({ k: immPulseKeys[pi % immPulseKeys.length], t: Math.random(), sp: 0.14 + Math.random() * 0.22, back: pi % 3 === 0 });
         }
+        var immSpring = { sach: { o: 0, v: 0 }, quantpilot: { o: 0, v: 0 }, cluse: { o: 0, v: 0 } };
         var immDummy = new THREE.Object3D();
         var immCol = new THREE.Color();
         var immStarGeo = new THREE.BufferGeometry();
@@ -1216,6 +1350,41 @@
         immStarGeo.setAttribute("position", new THREE.BufferAttribute(immStarPos, 3));
         var immStars = new THREE.Points(immStarGeo, new THREE.PointsMaterial({ color: 0xF0A3A8, size: 0.02, transparent: true, opacity: 0.5 }));
         group.add(immStars);
+        var immAuroraMat = new THREE.ShaderMaterial({
+          transparent: true, depthWrite: false,
+          uniforms: { uTime: { value: 0 }, uMouse: { value: new THREE.Vector2(0, 0) } },
+          vertexShader: "varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }",
+          fragmentShader: [
+            "uniform float uTime; uniform vec2 uMouse; varying vec2 vUv;",
+            "float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }",
+            "float noise(vec2 p){ vec2 i = floor(p); vec2 f = fract(p); f = f * f * (3.0 - 2.0 * f);",
+            "  return mix(mix(hash(i), hash(i + vec2(1.0, 0.0)), f.x), mix(hash(i + vec2(0.0, 1.0)), hash(i + vec2(1.0, 1.0)), f.x), f.y); }",
+            "float fbm(vec2 p){ float v = 0.0; float a = 0.5; for(int i = 0; i < 5; i++){ v += a * noise(p); p *= 2.03; a *= 0.55; } return v; }",
+            "void main(){",
+            "  vec2 uv = vUv;",
+            "  float m = fbm(uv * 3.0 + vec2(uTime * 0.03, uTime * 0.017) + uMouse * 0.7);",
+            "  float m2 = fbm(uv * 5.0 - vec2(uTime * 0.021, 0.0) + m);",
+            "  vec3 deep = vec3(0.114, 0.016, 0.043);",
+            "  vec3 wine = vec3(0.263, 0.039, 0.106);",
+            "  vec3 rose = vec3(0.898, 0.282, 0.302);",
+            "  vec3 pale = vec3(0.941, 0.639, 0.659);",
+            "  vec3 col = mix(deep, wine, smoothstep(0.25, 0.75, m));",
+            "  col = mix(col, rose, smoothstep(0.55, 0.95, m2) * 0.35);",
+            "  col = mix(col, pale, smoothstep(0.8, 1.05, m + m2 * 0.4) * 0.18);",
+            "  float vig = smoothstep(1.05, 0.35, length(uv - 0.5) * 1.4);",
+            "  gl_FragColor = vec4(col, (0.25 + 0.75 * vig) * 0.85);",
+            "}"
+          ].join("\n")
+        });
+        var immAurora = new THREE.Mesh(new THREE.PlaneGeometry(34, 20), immAuroraMat);
+        immAurora.position.z = -8;
+        scene.add(immAurora);
+        var immMouseT = { x: 0, y: 0 };
+        gcanvas.addEventListener("pointermove", function(e){
+          var r = gcanvas.getBoundingClientRect();
+          immMouseT.x = ((e.clientX - r.left) / Math.max(r.width, 1) - 0.5);
+          immMouseT.y = -((e.clientY - r.top) / Math.max(r.height, 1) - 0.5);
+        });
         scene.add(group);
         var labelEls = {};
         document.querySelectorAll(".imm-label").forEach(function(el){ labelEls[el.getAttribute("data-proj")] = el; });
@@ -1292,7 +1461,13 @@
           Object.keys(nodeDefs).forEach(function(k){
             var nd = nodeDefs[k];
             var ang = nd.a + tNow * 0.07 * nd.sp;
-            var nx = Math.cos(ang) * nd.r, nz = Math.sin(ang) * nd.r;
+            var spr = immSpring[k];
+            var sprTgt = Math.min(0.5, (Math.abs(velX) + Math.abs(velY)) * 26);
+            spr.v += (sprTgt - spr.o) * 0.06;
+            spr.v *= 0.86;
+            spr.o += spr.v;
+            var sRad = nd.r + spr.o * 0.35;
+            var nx = Math.cos(ang) * sRad, nz = Math.sin(ang) * sRad;
             var ny = Math.sin(ang * 2 + nd.a) * 0.13;
             nodeMeshes[k].position.set(nx, ny, nz);
             anchors[k].position.set(nx, ny, nz);
@@ -1321,6 +1496,9 @@
           immPulses.instanceMatrix.needsUpdate = true;
           if(immPulses.instanceColor) immPulses.instanceColor.needsUpdate = true;
           immStars.rotation.y = tNow * 0.01;
+          immAuroraMat.uniforms.uTime.value = tNow;
+          immAuroraMat.uniforms.uMouse.value.x += (immMouseT.x - immAuroraMat.uniforms.uMouse.value.x) * 0.04;
+          immAuroraMat.uniforms.uMouse.value.y += (immMouseT.y - immAuroraMat.uniforms.uMouse.value.y) * 0.04;
           var stageW = stage.clientWidth || 1, stageH = stage.clientHeight || 1;
           var bestKey = null, bestFacing = -2;
           Object.keys(anchors).forEach(function(k){
@@ -1799,6 +1977,8 @@
 </script>
 
 
+<div class="sound-glow" aria-hidden="true"></div>
+<canvas id="dissolve" aria-hidden="true"></canvas>
 <audio id="bg-music" loop preload="auto" src="assets/hero-music.mp3"></audio>
 <button type="button" id="sound-toggle" aria-pressed="false" aria-label="Toggle background music">Sound off</button>
 <script>
@@ -2071,6 +2251,243 @@
       addEventListener("scroll", function(){ if(!ticking){ ticking = true; requestAnimationFrame(update); } }, { passive: true });
       addEventListener("resize", update);
       update();
+    } catch(e){}
+  })();
+</script>
+
+<script>
+  /* ---------- A6: sound-reactive glow (driven by the music itself) ---------- */
+  (function(){
+    try {
+      var audio = document.getElementById("bg-music");
+      if(!audio) return;
+      var AC = window.AudioContext || window.webkitAudioContext;
+      if(!AC) return;
+      var actx = null, analyser = null, data = null, level = 0, running = false;
+      var ensure = function(){
+        if(actx){ if(actx.state === "suspended") actx.resume(); return; }
+        actx = new AC();
+        var src = actx.createMediaElementSource(audio);
+        analyser = actx.createAnalyser();
+        analyser.fftSize = 128;
+        data = new Uint8Array(analyser.frequencyBinCount);
+        src.connect(analyser);
+        analyser.connect(actx.destination);
+      };
+      var loop = function(){
+        if(audio.paused){
+          level *= 0.92;
+          document.documentElement.style.setProperty("--beat", level.toFixed(3));
+          if(level > 0.01) requestAnimationFrame(loop); else running = false;
+          return;
+        }
+        if(analyser && data){
+          analyser.getByteFrequencyData(data);
+          var sum = 0, n = 10, i;
+          for(i = 0; i < n; i++) sum += data[i];
+          var target = Math.min(1, (sum / n) / 200);
+          level += (target - level) * 0.25;
+          document.documentElement.style.setProperty("--beat", level.toFixed(3));
+        }
+        requestAnimationFrame(loop);
+      };
+      audio.addEventListener("play", function(){
+        try { ensure(); if(!running){ running = true; requestAnimationFrame(loop); } } catch(e){}
+      });
+    } catch(e){}
+  })();
+
+  /* ---------- A7: pixel-dissolve transition on in-page navigation ---------- */
+  (function(){
+    try {
+      if(window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      var cv = document.getElementById("dissolve");
+      if(!cv) return;
+      var ctx = cv.getContext("2d");
+      var COLS = 110, ROWS = 62, cells = [], busy = false;
+      var size = function(){ cv.width = innerWidth; cv.height = innerHeight; };
+      size();
+      addEventListener("resize", size);
+      var run = function(target){
+        if(busy){ target.scrollIntoView(); return; }
+        busy = true;
+        cells = [];
+        for(var i = 0; i < COLS * ROWS; i++) cells.push(Math.random());
+        cv.style.display = "block";
+        var cw = cv.width / COLS, ch = cv.height / ROWS;
+        var t0 = performance.now(), COVER = 230, HOLD = 60, OUT = 420, jumped = false;
+        var frame = function(now){
+          var t = now - t0, cov;
+          if(t < COVER) cov = t / COVER;
+          else if(t < COVER + HOLD) cov = 1;
+          else cov = Math.max(0, 1 - (t - COVER - HOLD) / OUT);
+          if(cov >= 1 && !jumped){
+            jumped = true;
+            target.scrollIntoView({ behavior: "auto" });
+            try { history.pushState(null, "", "#" + target.id); } catch(e){}
+          }
+          ctx.clearRect(0, 0, cv.width, cv.height);
+          ctx.fillStyle = "#23060F";
+          for(var i = 0; i < cells.length; i++){
+            var show = jumped ? (cells[i] > cov) : (cells[i] < cov);
+            if(show) ctx.fillRect((i % COLS) * cw, Math.floor(i / COLS) * ch, cw + 1, ch + 1);
+          }
+          if(t < COVER + HOLD + OUT) requestAnimationFrame(frame);
+          else { cv.style.display = "none"; busy = false; }
+        };
+        requestAnimationFrame(frame);
+      };
+      document.querySelectorAll('a[href^="#"]').forEach(function(a){
+        var id = a.getAttribute("href");
+        if(!id || id.length < 2) return;
+        a.addEventListener("click", function(e){
+          var target = document.querySelector(id);
+          if(!target) return;
+          e.preventDefault();
+          run(target);
+        });
+      });
+    } catch(e){}
+  })();
+
+  /* ---------- A5: the lab - three canvas toys, one shared loop ---------- */
+  (function(){
+    try {
+      var c1 = document.getElementById("lab-c1"), c2 = document.getElementById("lab-c2"), c3 = document.getElementById("lab-c3");
+      if(!c1 || !c2 || !c3) return;
+      var W = 480, H = 300, i;
+      var x1 = c1.getContext("2d"), x2 = c2.getContext("2d"), x3 = c3.getContext("2d");
+      var pts = [];
+      for(i = 0; i < 42; i++) pts.push({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - 0.5) * 0.35, vy: (Math.random() - 0.5) * 0.35 });
+      var mouse = { x: -9999, y: -9999 };
+      var toLocal = function(cv, e){ var r = cv.getBoundingClientRect(); return { x: (e.clientX - r.left) * W / Math.max(r.width, 1), y: (e.clientY - r.top) * H / Math.max(r.height, 1) }; };
+      c1.addEventListener("pointermove", function(e){ var p = toLocal(c1, e); mouse.x = p.x; mouse.y = p.y; });
+      c1.addEventListener("pointerleave", function(){ mouse.x = -9999; mouse.y = -9999; });
+      var bodies = [];
+      var addBody = function(x, y){
+        var dx = x - W / 2, dy = y - H / 2, d = Math.max(30, Math.hypot(dx, dy));
+        var sp = Math.sqrt(109 / d);
+        bodies.push({ x: x, y: y, vx: -dy / d * sp, vy: dx / d * sp });
+        if(bodies.length > 14) bodies.shift();
+      };
+      addBody(W / 2 + 90, H / 2); addBody(W / 2 - 120, H / 2 + 20); addBody(W / 2 + 30, H / 2 - 100);
+      c3.addEventListener("pointerdown", function(e){ var p = toLocal(c3, e); addBody(p.x, p.y); });
+      var visible = false;
+      new IntersectionObserver(function(en){ visible = en[0].isIntersecting; }, { threshold: 0.05 }).observe(c1);
+      var t = 0;
+      var frame = function(){
+        requestAnimationFrame(frame);
+        if(!visible || document.hidden) return;
+        t += 0.016;
+        x1.clearRect(0, 0, W, H);
+        pts.forEach(function(p){
+          p.x += p.vx; p.y += p.vy;
+          if(p.x < 0 || p.x > W) p.vx *= -1;
+          if(p.y < 0 || p.y > H) p.vy *= -1;
+          var dm = Math.hypot(p.x - mouse.x, p.y - mouse.y);
+          if(dm < 110 && dm > 1){ p.x += (p.x - mouse.x) / dm * 0.7; p.y += (p.y - mouse.y) / dm * 0.7; }
+        });
+        x1.strokeStyle = "rgba(229,72,77,0.28)"; x1.lineWidth = 1;
+        for(var a = 0; a < pts.length; a++) for(var b = a + 1; b < pts.length; b++){
+          var pa = pts[a], pb = pts[b], dd = Math.hypot(pa.x - pb.x, pa.y - pb.y);
+          if(dd < 90){ x1.globalAlpha = 1 - dd / 90; x1.beginPath(); x1.moveTo(pa.x, pa.y); x1.lineTo(pb.x, pb.y); x1.stroke(); }
+        }
+        x1.globalAlpha = 1; x1.fillStyle = "#F0A3A8";
+        pts.forEach(function(p){ x1.beginPath(); x1.arc(p.x, p.y, 1.8, 0, 7); x1.fill(); });
+        x2.clearRect(0, 0, W, H);
+        x2.fillStyle = "#E5484D";
+        for(var gx = 8; gx < W; gx += 14) for(var gy = 8; gy < H; gy += 14){
+          var d1 = Math.hypot(gx - W * 0.3, gy - H * 0.5), d2 = Math.hypot(gx - W * 0.72, gy - H * 0.5);
+          var v = Math.sin(d1 * 0.055 - t * 2.2) + Math.sin(d2 * 0.055 - t * 2.2);
+          x2.globalAlpha = 0.25 + Math.abs(v) * 0.3;
+          x2.beginPath(); x2.arc(gx, gy, 0.6 + Math.abs(v) * 1.15, 0, 7); x2.fill();
+        }
+        x2.globalAlpha = 1;
+        x3.fillStyle = "rgba(29,4,11,0.16)"; x3.fillRect(0, 0, W, H);
+        x3.fillStyle = "#ECE7DF"; x3.beginPath(); x3.arc(W / 2, H / 2, 5, 0, 7); x3.fill();
+        x3.strokeStyle = "rgba(229,72,77,0.5)"; x3.beginPath(); x3.arc(W / 2, H / 2, 9, 0, 7); x3.stroke();
+        bodies = bodies.filter(function(bd){
+          var dx = W / 2 - bd.x, dy = H / 2 - bd.y, d = Math.hypot(dx, dy);
+          if(d < 13) return false;
+          var acc = 109 / (d * d);
+          bd.vx += dx / d * acc; bd.vy += dy / d * acc;
+          var spd = Math.hypot(bd.vx, bd.vy);
+          if(spd > 3){ bd.vx = bd.vx / spd * 3; bd.vy = bd.vy / spd * 3; }
+          bd.x += bd.vx; bd.y += bd.vy;
+          x3.fillStyle = "#F0A3A8";
+          x3.beginPath(); x3.arc(bd.x, bd.y, 2.4, 0, 7); x3.fill();
+          return bd.x > -20 && bd.x < W + 20 && bd.y > -20 && bd.y < H + 20;
+        });
+      };
+      requestAnimationFrame(frame);
+    } catch(e){}
+  })();
+
+  /* ---------- B8: highlights gallery - pinned horizontal travel (desktop) ---------- */
+  (function(){
+    try {
+      if(!window.gsap || !window.ScrollTrigger) return;
+      if(window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      if(!window.matchMedia("(min-width: 901px)").matches) return;
+      gsap.registerPlugin(ScrollTrigger);
+      var track = document.getElementById("gal-track");
+      var vp = document.getElementById("gal-viewport");
+      if(!track || !vp) return;
+      var dist = function(){ return Math.max(0, track.scrollWidth - vp.clientWidth); };
+      gsap.to(track, { x: function(){ return -dist(); }, ease: "none",
+        scrollTrigger: { trigger: "#gallery", start: "top top", end: function(){ return "+=" + dist(); }, pin: true, scrub: 0.6, anticipatePin: 1, invalidateOnRefresh: true } });
+      addEventListener("load", function(){ ScrollTrigger.refresh(); });
+    } catch(e){}
+  })();
+
+  /* ---------- B3: project index hover preview ---------- */
+  (function(){
+    try {
+      if(!window.matchMedia("(pointer: fine)").matches) return;
+      var pv = document.getElementById("idx-preview");
+      if(!pv) return;
+      var h = pv.querySelector("h4"), p = pv.querySelector("p"), sp = pv.querySelector("span");
+      document.querySelectorAll(".idx-row").forEach(function(row){
+        row.addEventListener("pointerenter", function(){
+          h.textContent = row.getAttribute("data-name") || "";
+          p.textContent = row.getAttribute("data-desc") || "";
+          sp.textContent = row.getAttribute("data-metric") || "";
+          pv.classList.add("show");
+        });
+        row.addEventListener("pointermove", function(e){
+          pv.style.left = Math.min(innerWidth - 270, e.clientX + 22) + "px";
+          pv.style.top = Math.min(innerHeight - 180, e.clientY + 18) + "px";
+        });
+        row.addEventListener("pointerleave", function(){ pv.classList.remove("show"); });
+      });
+    } catch(e){}
+  })();
+
+  /* ---------- B6: terminal replays type when they scroll into view ---------- */
+  (function(){
+    try {
+      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      document.querySelectorAll(".term-body").forEach(function(pre){
+        var lines = (pre.getAttribute("data-lines") || "").split("|");
+        if(reduce){ pre.textContent = lines.join("\n"); return; }
+        var started = false;
+        var io = new IntersectionObserver(function(en){
+          if(!en[0].isIntersecting || started) return;
+          started = true;
+          io.disconnect();
+          var li = 0, ci = 0, out = "";
+          var tick = function(){
+            if(li >= lines.length) return;
+            var line = lines[li];
+            ci++;
+            pre.textContent = out + line.slice(0, ci);
+            if(ci >= line.length){ out += line + "\n"; li++; ci = 0; setTimeout(tick, 260); }
+            else setTimeout(tick, 15);
+          };
+          tick();
+        }, { threshold: 0.4 });
+        io.observe(pre);
+      });
     } catch(e){}
   })();
 </script>
