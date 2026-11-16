@@ -45,7 +45,7 @@
 
   /* ---------- Cinematic hero ---------- */
   .hero{position:relative;min-height:100vh;min-height:100svh;overflow:hidden;display:flex;align-items:center}
-  .hero-bg{position:absolute;inset:0;background:url("assets/hero.jpg") center 38%/cover no-repeat;
+  .hero-bg{position:absolute;inset:0;background:url("assets/hero.jpg") center 38%/cover no-repeat;opacity:.32;
     animation:kenburns 26s ease-in-out infinite alternate;will-change:transform}
   @keyframes kenburns{
     0%{transform:scale(1.02) translate(0,0)}
@@ -365,20 +365,27 @@
   .imm-label.is-active{background:var(--gold);border-color:var(--gold);color:#fff}
   @media (max-width:900px){ .imm-stage{height:52vh;min-height:300px} }
 
-  /* Hero dot-portrait: full-viewport centerpiece */
-  .hero-ghost{position:absolute;inset:0;z-index:1;display:flex;align-items:center;justify-content:center;pointer-events:none;
-    font-family:Georgia,"Times New Roman",serif;font-weight:700;font-size:clamp(110px,21vw,230px);letter-spacing:.03em;white-space:nowrap;
-    color:rgba(229,72,77,.06);-webkit-text-stroke:1.5px rgba(229,72,77,.42);user-select:none}
-  .hero-portrait{position:relative;margin:0 auto;width:min(80vh,94vw)}
-  .portrait-stage{position:relative;aspect-ratio:1/1;z-index:1;cursor:pointer;outline:none}
+  /* Hero dot-portrait: bust point cloud, reel-matched */
+  .hero-ghost{position:absolute;top:29%;left:50%;transform:translate(-50%,-50%);z-index:1;pointer-events:none;
+    font-family:var(--head);font-weight:700;font-size:clamp(130px,23vw,430px);letter-spacing:-.01em;line-height:1;white-space:nowrap;user-select:none;
+    background:linear-gradient(180deg, rgba(238,234,228,.50), rgba(238,234,228,.12));
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero-ghost-red{background:linear-gradient(180deg, #FF7A45 0%, #E5484D 48%, #4A0815 100%);
+    -webkit-background-clip:text;background-clip:text;opacity:0;transition:opacity .9s ease}
+  .hero.revealed .hero-ghost-red{opacity:1}
+  .portrait-wrap{position:relative;text-align:center}
+  .hero-portrait{position:relative;margin:0 auto;width:min(94vw,81vh);aspect-ratio:612/560}
+  .portrait-stage{position:absolute;inset:0;z-index:1;cursor:pointer;outline:none}
   .portrait-stage:focus-visible{box-shadow:0 0 0 2px var(--gold);border-radius:12px}
   #portrait-gl{position:absolute;inset:0;width:100%;height:100%;display:block}
-  #portrait-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;pointer-events:none;border-radius:12px}
-  .portrait-hint{position:relative;z-index:2;display:flex;justify-content:center;align-items:center;gap:18px;margin-top:14px;
-    font-family:var(--mono);font-size:11.5px;text-shadow:0 1px 10px rgba(0,0,0,.6);
-    letter-spacing:.16em;text-transform:uppercase;color:rgba(236,231,223,.85)}
-  .portrait-hint b{color:var(--gold);font-weight:400}
-  @media (max-width:640px){ .portrait-hint span{display:none} }
+  #portrait-img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;pointer-events:none}
+  .reveal-btn{position:relative;z-index:3;margin-top:16px;display:inline-flex;align-items:center;gap:9px;
+    padding:9px 20px;border-radius:999px;border:1px solid rgba(236,231,223,.35);background:rgba(16,2,6,.55);
+    backdrop-filter:blur(6px);color:var(--ivory);font-family:var(--mono);font-size:11px;letter-spacing:.24em;
+    cursor:pointer;transition:border-color .3s ease, color .3s ease}
+  .reveal-btn:hover{border-color:var(--rose);color:#fff}
+  .reveal-btn svg{display:block}
+
   .intro{position:relative;max-width:1240px;margin:0 auto;padding:92px 34px 24px}
   .intro .hero-status{position:static;justify-content:flex-start;margin-top:28px}
   @media (max-width:760px){ .intro{padding:64px 20px 20px} }
@@ -452,14 +459,17 @@
   <div class="hero-bg-wrap" aria-hidden="true"><div class="hero-bg"></div><canvas id="hero-gl" aria-hidden="true"></canvas></div>
   <div class="hero-shade" aria-hidden="true"></div>
     <div class="hero-ghost" aria-hidden="true">PRUTHVI</div>
+  <div class="hero-ghost hero-ghost-red" aria-hidden="true">PRUTHVI</div>
   <div class="hero-inner">
+    <div class="portrait-wrap">
     <figure class="hero-portrait reveal-hero" style="--d:.12s">
       <div class="portrait-stage" id="portrait-stage" role="button" tabindex="0" aria-pressed="false" aria-label="Dot portrait of Pruthvi Garlapati. Activate to reveal the photograph.">
         <canvas id="portrait-gl"></canvas>
-        <img id="portrait-img" src="assets/portrait.jpg" alt="Pruthvi Garlapati" />
+        <img id="portrait-img" src="assets/portrait-bust.png" alt="Pruthvi Garlapati" />
       </div>
-      <figcaption class="portrait-hint"><span>Dot portrait - sampled from the original photo</span><b id="portrait-action">Click to reveal</b></figcaption>
     </figure>
+    <button class="reveal-btn" id="reveal-btn" type="button" aria-pressed="false"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><circle cx="3" cy="3" r="1.7" fill="currentColor"/><circle cx="9" cy="3" r="1.7" fill="currentColor"/><circle cx="3" cy="9" r="1.7" fill="currentColor"/><circle cx="9" cy="9" r="1.7" fill="currentColor"/></svg><span id="reveal-label">REVEAL</span></button>
+    </div>
   </div>
   <div class="hero-scroll" aria-hidden="true"><span>SCROLL</span><span class="line"></span></div>
 </section>
@@ -1459,88 +1469,105 @@
       if(nameEl && descEl && linksEl) selectProj("sach");
     } catch(e){}
 
-    /* ---------- Dot portrait (About) ---------- */
+    /* ---------- Dot portrait: bust point cloud (reel-matched) ---------- */
     try {
+      var heroSec = document.getElementById("hero");
       var pStage = document.getElementById("portrait-stage");
       var pCanvas = document.getElementById("portrait-gl");
       var pImg = document.getElementById("portrait-img");
-      var pAction = document.getElementById("portrait-action");
-      if(pStage && pCanvas && pImg && window.THREE){
+      var rBtn = document.getElementById("reveal-btn");
+      var rLabel = document.getElementById("reveal-label");
+      if(heroSec && pStage && pCanvas && pImg && window.THREE){
         var showPhotoFallback = function(){ pImg.style.opacity = "1"; pCanvas.style.display = "none"; };
         var pimg = new Image();
-        pimg.onload = function(){
-          try { buildPortrait(pimg); }
-          catch(e){ showPhotoFallback(); }
-        };
+        pimg.onload = function(){ try { buildPortrait(pimg); } catch(e){ showPhotoFallback(); } };
         pimg.onerror = showPhotoFallback;
-        pimg.src = "assets/portrait.jpg";
+        pimg.src = "assets/portrait-bust.png";
         var buildPortrait = function(image){
-          var GRID = 176, SIZE = 2.3;
+          var COLS = 190, PW = 2.5;
+          var PH = PW * image.height / image.width;
+          var ROWS = Math.round(COLS * image.height / image.width);
           var sc = document.createElement("canvas");
-          sc.width = GRID; sc.height = GRID;
+          sc.width = COLS; sc.height = ROWS;
           var sctx = sc.getContext("2d", { willReadFrequently: true });
-          sctx.drawImage(image, 0, 0, GRID, GRID);
-          var data = sctx.getImageData(0, 0, GRID, GRID).data;
+          sctx.drawImage(image, 0, 0, COLS, ROWS);
+          var data = sctx.getImageData(0, 0, COLS, ROWS).data;
+          var STOPS = [[0,22,3,0],[0.30,110,18,2],[0.55,199,51,7],[0.80,255,90,20],[1.0,255,158,87]];
+          var ramp = function(l){
+            for(var s = 0; s < STOPS.length - 1; s++){
+              if(l <= STOPS[s+1][0]){
+                var a = (l - STOPS[s][0]) / (STOPS[s+1][0] - STOPS[s][0]);
+                return [STOPS[s][1] + (STOPS[s+1][1]-STOPS[s][1])*a, STOPS[s][2] + (STOPS[s+1][2]-STOPS[s][2])*a, STOPS[s][3] + (STOPS[s+1][3]-STOPS[s][3])*a];
+              }
+            }
+            return [255,158,87];
+          };
           var base = [], scat = [], cols = [];
-          for(var gy = 0; gy < GRID; gy++){
-            for(var gx = 0; gx < GRID; gx++){
-              var idx = (gy * GRID + gx) * 4;
-              var r = data[idx] / 255, g = data[idx + 1] / 255, b = data[idx + 2] / 255;
+          for(var gy = 0; gy < ROWS; gy++){
+            for(var gx = 0; gx < COLS; gx++){
+              var idx = (gy * COLS + gx) * 4;
+              var al = data[idx+3] / 255;
+              if(al < 0.45) continue;
+              var r = data[idx] / 255, g = data[idx+1] / 255, b = data[idx+2] / 255;
               var lum = 0.2126 * r + 0.7152 * g + 0.0722 * b;
-              var nx = gx / (GRID - 1) * 2 - 1, ny = gy / (GRID - 1) * 2 - 1;
-              var rad = Math.sqrt(nx * nx + ny * ny * 1.15);
-              var fall = Math.max(0, 1 - Math.pow(Math.max(0, rad - 0.55) / 0.6, 2));
-              if(fall < 0.06) continue;
-              var px = nx * SIZE * 0.5, py = -ny * SIZE * 0.5, pz = (lum - 0.45) * 0.6;
+              var l2 = Math.min(1, Math.pow(lum, 1.35) * 0.92 * (0.35 + 0.65 * al));
+              var px = (gx / (COLS - 1) - 0.5) * PW, py = (0.5 - gy / (ROWS - 1)) * PH, pz = (l2 - 0.40) * 0.85;
               base.push(px, py, pz);
               var th = Math.random() * Math.PI * 2, ph = Math.acos(2 * Math.random() - 1), rr = 0.7 + Math.random() * 1.5;
               scat.push(px + rr * Math.sin(ph) * Math.cos(th), py + rr * Math.sin(ph) * Math.sin(th), pz + rr * Math.cos(ph));
-              var boost = 0.35 + lum * 0.9;
-              var pr = Math.min(1, (r * 0.82 + 0.16) * boost + 0.05), pg = Math.min(1, (g * 0.82 + 0.03) * boost + 0.02), pb = Math.min(1, (b * 0.82 + 0.05) * boost + 0.03);
-              var glow = 0.25 + lum * 1.05;
-              cols.push(Math.min(1, pr * 0.38 + glow), Math.min(1, pg * 0.38 + glow * 0.16), Math.min(1, pb * 0.38 + glow * 0.2));
+              var c = ramp(l2);
+              cols.push(c[0] / 255, c[1] / 255, c[2] / 255);
             }
           }
-          var count = base.length / 3;
           var geo = new THREE.BufferGeometry();
           var posArr = new Float32Array(base);
           geo.setAttribute("position", new THREE.BufferAttribute(posArr, 3));
           geo.setAttribute("color", new THREE.Float32BufferAttribute(cols, 3));
-          var mat = new THREE.PointsMaterial({ size: 0.021, vertexColors: true, transparent: true, opacity: 1, sizeAttenuation: true, depthWrite: false, blending: THREE.AdditiveBlending });
+          var spc = document.createElement("canvas");
+          spc.width = 64; spc.height = 64;
+          var spx = spc.getContext("2d");
+          var grd = spx.createRadialGradient(32, 32, 0, 32, 32, 32);
+          grd.addColorStop(0, "rgba(255,255,255,1)");
+          grd.addColorStop(0.35, "rgba(255,255,255,.85)");
+          grd.addColorStop(1, "rgba(255,255,255,0)");
+          spx.fillStyle = grd;
+          spx.fillRect(0, 0, 64, 64);
+          var sprite = new THREE.CanvasTexture(spc);
+          var mat = new THREE.PointsMaterial({ size: PW / COLS * 1.05, map: sprite, vertexColors: true, transparent: true, opacity: 1, sizeAttenuation: true, depthWrite: false, blending: THREE.AdditiveBlending });
           var points = new THREE.Points(geo, mat);
           var pScene = new THREE.Scene();
           pScene.add(points);
-          var pCam = new THREE.PerspectiveCamera(38, 1, 0.1, 50);
-          pCam.position.z = 3.4;
+          var pCam = new THREE.PerspectiveCamera(38, image.width / image.height, 0.1, 50);
+          pCam.position.z = 3.42;
           var pRen = new THREE.WebGLRenderer({ canvas: pCanvas, antialias: true, alpha: true });
           pRen.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
           pRen.setClearColor(0x000000, 0);
           var fitP = function(){
             var w = pStage.clientWidth || 1, h = pStage.clientHeight || 1;
             pRen.setSize(w, h, false);
-            pCam.aspect = w / h;
-            pCam.updateProjectionMatrix();
           };
           fitP();
           addEventListener("resize", fitP);
           var tRX = 0, tRY = 0, cRX = 0, cRY = 0;
-          var revealed = false, prog = 0;
-          pStage.addEventListener("pointermove", function(e){
-            var rect = pStage.getBoundingClientRect();
+          heroSec.addEventListener("pointermove", function(e){
+            var rect = heroSec.getBoundingClientRect();
             if(!rect.width) return;
-            tRY = ((e.clientX - rect.left) / rect.width - 0.5) * 1.1;
-            tRX = ((e.clientY - rect.top) / rect.height - 0.5) * -0.6;
+            tRY = ((e.clientX - rect.left) / rect.width - 0.5) * 1.9;
+            tRX = ((e.clientY - rect.top) / rect.height - 0.5) * -0.64;
           }, { passive: true });
-          pStage.addEventListener("pointerleave", function(){ tRX = 0; tRY = 0; });
+          var revealed = false, prog = 0;
           var toggleReveal = function(){
             revealed = !revealed;
+            heroSec.classList.toggle("revealed", revealed);
             pStage.setAttribute("aria-pressed", revealed ? "true" : "false");
-            if(pAction) pAction.textContent = revealed ? "Click for dots" : "Click to reveal";
+            if(rBtn) rBtn.setAttribute("aria-pressed", revealed ? "true" : "false");
+            if(rLabel) rLabel.textContent = revealed ? "HIDE" : "REVEAL";
           };
           pStage.addEventListener("click", toggleReveal);
           pStage.addEventListener("keydown", function(e){
             if(e.key === "Enter" || e.key === " "){ e.preventDefault(); toggleReveal(); }
           });
+          if(rBtn) rBtn.addEventListener("click", toggleReveal);
           var pVisible = true;
           if("IntersectionObserver" in window){
             new IntersectionObserver(function(es){ es.forEach(function(en){ pVisible = en.isIntersecting; }); }, { threshold: 0.05 }).observe(pStage);
@@ -1550,7 +1577,6 @@
             requestAnimationFrame(pLoop);
             if(!pVisible || document.hidden) return;
             prog += ((revealed ? 1 : 0) - prog) * (reduceMotion ? 1 : 0.045);
-            if(Math.abs(prog) < 0.001) prog = revealed ? prog : 0;
             var e2 = prog * prog * (3 - 2 * prog);
             for(var i = 0; i < posArr.length; i++){
               posArr[i] = baseArr[i] + (scatArr[i] - baseArr[i]) * e2;
