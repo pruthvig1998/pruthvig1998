@@ -1,0 +1,39 @@
+name: Guestbook
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  sign:
+    if: startsWith(github.event.issue.title, 'Guestbook')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const user = context.payload.issue.user.login;
+            const date = new Date().toISOString().slice(0, 10);
+            const path = 'README.md';
+            let content = fs.readFileSync(path, 'utf8');
+            const line = `- <a href="https://github.com/${user}"><img src="https://github.com/${user}.png" width="26" alt="${user}" /></a> **@${user}** - ${date}`;
+            const start = '<!--START_SECTION:guestbook-->';
+            const end = '<!--END_SECTION:guestbook-->';
+            const block = content.split(start)[1].split(end)[0];
+            const trimmed = block.replace('*Be the first to sign.*', '').trim();
+            const lines = trimmed ? trimmed.split('\n').filter(Boolean) : [];
+            if (!lines.some(l => l.includes('@' + user))) lines.push(line);
+            content = content.replace(start + block + end, start + '\n' + lines.join('\n') + '\n' + end);
+            fs.writeFileSync(path, content);
+            await github.rest.issues.createComment({ owner: context.repo.owner, repo: context.repo.repo, issue_number: context.payload.issue.number, body: 'Thanks for signing the guestbook - your avatar is on the profile now.' });
+            await github.rest.issues.update({ owner: context.repo.owner, repo: context.repo.repo, issue_number: context.payload.issue.number, state: 'closed' });
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Guestbook: new signature"
+          file_pattern: README.md
