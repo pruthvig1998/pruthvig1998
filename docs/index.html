@@ -482,13 +482,13 @@
 
 <section id="immersion" aria-label="Interactive project navigator">
   <div class="imm-eyebrow">INTERACTIVE</div>
-  <div class="imm-stage"><canvas id="gl3d"></canvas><button type="button" class="imm-label" data-proj="sach">Sach</button><button type="button" class="imm-label" data-proj="quantpilot">QuantPilot</button><button type="button" class="imm-label" data-proj="cluse">Cluse</button><button type="button" class="imm-label" data-proj="nexus">Nexus</button><span class="imm-label hub" aria-hidden="true">Platform core</span></div>
+  <div class="imm-stage"><canvas id="gl3d"></canvas><button type="button" class="imm-label" data-proj="sach">Sach</button><button type="button" class="imm-label" data-proj="quantpilot">QuantPilot</button><button type="button" class="imm-label" data-proj="cluse">Cluse</button><span class="imm-label hub" aria-hidden="true">Platform core</span></div>
   <p class="imm-line">Drag to rotate the system map - tap a node to inspect it.</p>
   <div class="imm-nav" role="tablist" aria-label="Systems">
     <button type="button" class="imm-btn is-active" data-proj="sach" role="tab" aria-selected="true">Sach</button>
     <button type="button" class="imm-btn" data-proj="quantpilot" role="tab" aria-selected="false">QuantPilot</button>
     <button type="button" class="imm-btn" data-proj="cluse" role="tab" aria-selected="false">Cluse</button>
-    <button type="button" class="imm-btn" data-proj="nexus" role="tab" aria-selected="false">Nexus</button>
+
   </div>
   <div class="imm-panel">
     <div class="imm-panel-name" id="imm-name">Sach</div>
@@ -540,18 +540,10 @@
         <div class="kicker">Live system - paper trading only</div>
         <h3><a href="https://pruthvig1998.github.io/cluse-desk-live/" target="_blank" rel="noopener">Cluse - autonomous paper-trading desk <span class="arrow">↗</span></a></h3>
         <p>A Nasdaq-100 options research desk running on virtual money: technical setups, an intraday news radar, market-regime filters, and strict risk rules with a drawdown kill-switch. The public page refreshes every 5 minutes in session, with an interactive 3D diagram of the whole system.</p>
-        <div class="links"><a href="https://pruthvig1998.github.io/cluse-desk-live/" target="_blank" rel="noopener">Live desk</a><a href="https://pruthvig1998.github.io/cluse-desk-live/3d/" target="_blank" rel="noopener">3D system diagram</a><a href="https://github.com/pruthvig1998/cluse-desk-live" target="_blank" rel="noopener">GitHub repo</a><a class="next-link" href="#nexus">Next: Nexus -&gt;</a></div>
+        <div class="links"><a href="https://pruthvig1998.github.io/cluse-desk-live/" target="_blank" rel="noopener">Live desk</a><a href="https://pruthvig1998.github.io/cluse-desk-live/3d/" target="_blank" rel="noopener">3D system diagram</a><a href="https://github.com/pruthvig1998/cluse-desk-live" target="_blank" rel="noopener">GitHub repo</a><a class="next-link" href="#sach">Back to Sach -&gt;</a></div>
         <div class="tags"><span>Trading systems</span><span>Risk engines</span><span>Discord bots</span><span>Three.js</span></div>
       </div>
 
-      <div class="card" id="nexus">
-        <div class="card-band band-4" data-num="04" aria-hidden="true"><svg class="band-spark" width="180" height="44" viewBox="0 0 180 44" fill="none" aria-hidden="true"><polyline points="0,30 24,26 48,28 72,22 96,18 120,20 144,14 168,12 180,8" stroke="#E5484D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="180" cy="8" r="3" fill="#E5D9BE"/></svg></div>
-        <div class="kicker">Trading infrastructure</div>
-        <h3><a href="https://github.com/pruthvig1998/nexus" target="_blank" rel="noopener">Nexus - algorithmic trading system <span class="arrow">↗</span></a></h3>
-        <p>A production-grade long/short algorithmic trading system in Python: multi-strategy, multi-broker, AI-powered signals, and institutional-style risk layers, with full architecture documentation and CI.</p>
-        <div class="links"><a href="https://github.com/pruthvig1998/nexus" target="_blank" rel="noopener">GitHub repo</a><a class="next-link" href="#sach">Back to Sach -&gt;</a></div>
-        <div class="tags"><span>Python</span><span>Multi-broker</span><span>Risk management</span><span>CI/CD</span></div>
-      </div>
     </section>
 
     <section id="experience" class="reveal">
@@ -678,7 +670,7 @@
           <a href="https://www.youtube.com/@PruthviGarlapati" target="_blank" rel="noopener">YouTube</a>
           <a href="https://sachcheck.in" target="_blank" rel="noopener">Sach - live</a>
         </div>
-        <div class="explore"><span>EXPLORE</span><a href="#about">About</a><a href="#projects">Work</a><a href="#experience">Experience</a><a href="#writing">Writing</a><a href="#expertise">Expertise</a><a href="#contact">Contact</a><span>PROJECTS</span><a href="#sach">Sach</a><a href="#quantpilot">QuantPilot</a><a href="#cluse">Cluse</a><a href="#nexus">Nexus</a></div>
+        <div class="explore"><span>EXPLORE</span><a href="#about">About</a><a href="#projects">Work</a><a href="#experience">Experience</a><a href="#writing">Writing</a><a href="#expertise">Expertise</a><a href="#contact">Contact</a><span>PROJECTS</span><a href="#sach">Sach</a><a href="#quantpilot">QuantPilot</a><a href="#cluse">Cluse</a></div>
         <div class="live-line"><span class="live-dot"></span>Open to Senior GCP / Platform roles</div>
         <div class="live-clock"><span class="lc-label">TORONTO</span><span id="toronto-clock">--:--:--</span></div>
       </div>
@@ -1137,8 +1129,8 @@
         ring2.rotation.set(0.9, 0, 0.4);
         group.add(ring2);
         var nodeDefs = {
-          sach: { r: 1.78, a: 0.4, sp: 1.0 }, quantpilot: { r: 1.98, a: 1.95, sp: 0.82 },
-          cluse: { r: 1.86, a: 3.5, sp: 0.92 }, nexus: { r: 2.02, a: 5.05, sp: 0.74 }
+          sach: { r: 1.78, a: 0.4, sp: 1.0 }, quantpilot: { r: 1.98, a: 2.49, sp: 0.82 },
+          cluse: { r: 1.86, a: 4.59, sp: 0.92 }
         };
         var nodeMeshes = {}, nodeMats = {}, anchors = {};
         Object.keys(nodeDefs).forEach(function(k){
@@ -1289,13 +1281,9 @@
         cluse: { name: "Cluse", x: 0.2, y: 3.8,
           desc: "Live paper-trading desk. Nasdaq-100 options on paper money only, strict risk rules, flattened at the close.",
           proof: "Live in session - refreshes every 5 minutes",
-          links: [["Live desk", "https://pruthvig1998.github.io/cluse-desk-live/"], ["3D diagram", "https://pruthvig1998.github.io/cluse-desk-live/3d/"], ["GitHub repo", "https://github.com/pruthvig1998/cluse-desk-live"], ["Full case", "#cluse"]] },
-        nexus: { name: "Nexus", x: 0.45, y: 5.4,
-          desc: "Algorithmic trading system in Python: multi-strategy, multi-broker, AI-powered signals and institutional-style risk layers.",
-          proof: "Multi-broker - risk layers - CI on every push",
-          links: [["GitHub repo", "https://github.com/pruthvig1998/nexus"], ["Full case", "#nexus"]] }
+          links: [["Live desk", "https://pruthvig1998.github.io/cluse-desk-live/"], ["3D diagram", "https://pruthvig1998.github.io/cluse-desk-live/3d/"], ["GitHub repo", "https://github.com/pruthvig1998/cluse-desk-live"], ["Full case", "#cluse"]] }
       };
-      var ORDER = ["sach", "quantpilot", "cluse", "nexus"];
+      var ORDER = ["sach", "quantpilot", "cluse"];
       var nameEl = document.getElementById("imm-name");
       var descEl = document.getElementById("imm-desc");
       var proofEl = document.getElementById("imm-proof");
