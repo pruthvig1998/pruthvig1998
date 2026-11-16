@@ -365,6 +365,9 @@
     opacity:0;pointer-events:none;transition:opacity .25s,background .25s,border-color .25s;z-index:3;white-space:nowrap}
   .imm-label.front{pointer-events:auto}
   .imm-label.is-active{background:var(--gold);border-color:var(--gold);color:#fff}
+  .imm-label.hub{left:50%;top:46%;opacity:.92;pointer-events:none;cursor:default;
+    font-size:10px;letter-spacing:.22em;color:rgba(236,231,223,.85);border-color:rgba(236,231,223,.35);background:rgba(29,4,11,.55)}
+  .imm-panel-proof{font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-top:10px}
   @media (max-width:900px){ .imm-stage{height:52vh;min-height:300px} }
 
   /* Hero dot-portrait: bust point cloud, reel-matched */
@@ -376,7 +379,7 @@
     -webkit-background-clip:text;background-clip:text;opacity:0;transition:opacity .9s ease}
   .hero.revealed .hero-ghost-red{opacity:1}
   .portrait-wrap{position:relative;text-align:center}
-  .hero-portrait{position:relative;margin:0 auto;width:min(94vw,81vh);aspect-ratio:587/486}
+  .hero-portrait{position:relative;margin:0 auto;width:min(94vw,81vh);aspect-ratio:510/460}
   .portrait-stage{position:absolute;inset:0;z-index:1;cursor:pointer;outline:none}
   .portrait-stage:focus-visible{box-shadow:0 0 0 2px var(--gold);border-radius:12px}
   #portrait-gl{position:absolute;inset:0;width:100%;height:100%;display:block}
@@ -498,8 +501,8 @@
 
 <section id="immersion" aria-label="Interactive project navigator">
   <div class="imm-eyebrow">INTERACTIVE</div>
-  <div class="imm-stage"><canvas id="gl3d"></canvas><button type="button" class="imm-label" data-proj="sach">Sach</button><button type="button" class="imm-label" data-proj="quantpilot">QuantPilot</button><button type="button" class="imm-label" data-proj="cluse">Cluse</button><button type="button" class="imm-label" data-proj="nexus">Nexus</button></div>
-  <p class="imm-line">Drag to rotate - or pick a system.</p>
+  <div class="imm-stage"><canvas id="gl3d"></canvas><button type="button" class="imm-label" data-proj="sach">Sach</button><button type="button" class="imm-label" data-proj="quantpilot">QuantPilot</button><button type="button" class="imm-label" data-proj="cluse">Cluse</button><button type="button" class="imm-label" data-proj="nexus">Nexus</button><span class="imm-label hub" aria-hidden="true">Platform core</span></div>
+  <p class="imm-line">Drag to rotate the system map - tap a node to inspect it.</p>
   <div class="imm-nav" role="tablist" aria-label="Systems">
     <button type="button" class="imm-btn is-active" data-proj="sach" role="tab" aria-selected="true">Sach</button>
     <button type="button" class="imm-btn" data-proj="quantpilot" role="tab" aria-selected="false">QuantPilot</button>
@@ -509,6 +512,7 @@
   <div class="imm-panel">
     <div class="imm-panel-name" id="imm-name">Sach</div>
     <p class="imm-panel-line" id="imm-desc">Live WhatsApp-forward fact-checker. Paste a forward, get a cited TRUE / FALSE / MISLEADING / UNVERIFIED verdict.</p>
+    <div class="imm-panel-proof" id="imm-proof">79-claim evaluation - 0 overclaimed verdicts</div>
     <div class="imm-panel-links" id="imm-links"><a href="https://sachcheck.in">Live site</a><a href="https://sachcheck.in/impact">Impact page</a><a href="#sach">Full case</a></div>
   </div>
 </section>
@@ -1278,33 +1282,58 @@
         fill.position.set(4.5, -3, -2.5);
         scene.add(fill);
         var group = new THREE.Group();
-        var knotGeo = new THREE.TorusKnotGeometry(1.05, 0.34, 220, 36);
-        var solid = new THREE.Mesh(knotGeo, new THREE.MeshStandardMaterial({
-          color: 0x430A1B, roughness: 0.32, metalness: 0.25, emissive: 0x1D040B, emissiveIntensity: 0.6
-        }));
-        group.add(solid);
-        var wire = new THREE.Mesh(knotGeo, new THREE.MeshBasicMaterial({
-          color: 0xE5484D, wireframe: true, transparent: true, opacity: 0.26
-        }));
-        wire.scale.setScalar(1.015);
-        group.add(wire);
-        var core = new THREE.Mesh(
-          new THREE.IcosahedronGeometry(0.52, 1),
-          new THREE.MeshBasicMaterial({ color: 0xF0A3A8, wireframe: true, transparent: true, opacity: 0.5 })
+        var hub = new THREE.Group();
+        var hubWire = new THREE.Mesh(
+          new THREE.IcosahedronGeometry(0.36, 1),
+          new THREE.MeshBasicMaterial({ color: 0xF0A3A8, wireframe: true, transparent: true, opacity: 0.65 })
         );
-        group.add(core);
-        scene.add(group);
-        var anchors = {};
-        var anchorDefs = {
-          sach: [-0.88, 0.75, 1.28], quantpilot: [-1.25, 0.55, -0.91],
-          cluse: [0.95, -0.8, -1.23], nexus: [1.2, -0.7, 0.98]
+        hub.add(hubWire);
+        var hubCore = new THREE.Mesh(
+          new THREE.SphereGeometry(0.17, 24, 18),
+          new THREE.MeshStandardMaterial({ color: 0x430A1B, roughness: 0.3, metalness: 0.3, emissive: 0xE5484D, emissiveIntensity: 0.55 })
+        );
+        hub.add(hubCore);
+        group.add(hub);
+        var orbit = new THREE.Group();
+        orbit.rotation.x = 0.42;
+        group.add(orbit);
+        var ringPts = [];
+        for(var ri2 = 0; ri2 <= 96; ri2++){ var ra = ri2 / 96 * Math.PI * 2; ringPts.push(new THREE.Vector3(Math.cos(ra) * 1.9, 0, Math.sin(ra) * 1.9)); }
+        var ring = new THREE.Line(
+          new THREE.BufferGeometry().setFromPoints(ringPts),
+          new THREE.LineBasicMaterial({ color: 0xE5484D, transparent: true, opacity: 0.38 })
+        );
+        orbit.add(ring);
+        var ring2 = new THREE.Line(
+          new THREE.BufferGeometry().setFromPoints(ringPts.map(function(p){ return p.clone().multiplyScalar(0.78); })),
+          new THREE.LineBasicMaterial({ color: 0xF0A3A8, transparent: true, opacity: 0.16 })
+        );
+        ring2.rotation.set(0.9, 0, 0.4);
+        group.add(ring2);
+        var nodeDefs = {
+          sach: { r: 1.78, a: 0.4, sp: 1.0 }, quantpilot: { r: 1.98, a: 1.95, sp: 0.82 },
+          cluse: { r: 1.86, a: 3.5, sp: 0.92 }, nexus: { r: 2.02, a: 5.05, sp: 0.74 }
         };
-        Object.keys(anchorDefs).forEach(function(k){
+        var nodeMeshes = {}, nodeMats = {}, anchors = {};
+        Object.keys(nodeDefs).forEach(function(k){
+          var mt = new THREE.MeshStandardMaterial({
+            color: 0x430A1B, roughness: 0.3, metalness: 0.3, emissive: 0xE5484D, emissiveIntensity: 0.3
+          });
+          var ms = new THREE.Mesh(new THREE.SphereGeometry(0.13, 24, 18), mt);
+          orbit.add(ms);
+          nodeMeshes[k] = ms; nodeMats[k] = mt;
           var o = new THREE.Object3D();
-          o.position.set(anchorDefs[k][0], anchorDefs[k][1], anchorDefs[k][2]);
-          group.add(o);
+          orbit.add(o);
           anchors[k] = o;
         });
+        var spokeGeo = new THREE.BufferGeometry();
+        var spokePos = new Float32Array(8 * 3);
+        spokeGeo.setAttribute("position", new THREE.BufferAttribute(spokePos, 3));
+        var spokes = new THREE.LineSegments(spokeGeo, new THREE.LineBasicMaterial({
+          color: 0xE5484D, transparent: true, opacity: 0.42
+        }));
+        orbit.add(spokes);
+        scene.add(group);
         var labelEls = {};
         document.querySelectorAll(".imm-label").forEach(function(el){ labelEls[el.getAttribute("data-proj")] = el; });
         var v3 = new THREE.Vector3();
@@ -1370,8 +1399,25 @@
           }
           group.rotation.x = rotX;
           group.rotation.y = rotY;
-          core.rotation.y = -rotY * 0.7;
-          core.rotation.x = rotX * 0.5;
+          hub.rotation.y = -rotY * 0.7 + performance.now() * 0.00012;
+          hub.rotation.x = rotX * 0.5;
+          var tNow = performance.now() * 0.001;
+          var sIdx = 0;
+          Object.keys(nodeDefs).forEach(function(k){
+            var nd = nodeDefs[k];
+            var ang = nd.a + tNow * 0.07 * nd.sp;
+            var nx = Math.cos(ang) * nd.r, nz = Math.sin(ang) * nd.r;
+            var ny = Math.sin(ang * 2 + nd.a) * 0.13;
+            nodeMeshes[k].position.set(nx, ny, nz);
+            anchors[k].position.set(nx, ny, nz);
+            var on = (k === lastHudKey);
+            nodeMats[k].emissiveIntensity += ((on ? 1.5 : 0.3) - nodeMats[k].emissiveIntensity) * 0.12;
+            var sc2 = on ? 1.3 : 1.0;
+            nodeMeshes[k].scale.setScalar(nodeMeshes[k].scale.x + (sc2 - nodeMeshes[k].scale.x) * 0.12);
+            spokePos[sIdx++] = 0; spokePos[sIdx++] = 0; spokePos[sIdx++] = 0;
+            spokePos[sIdx++] = nx; spokePos[sIdx++] = ny; spokePos[sIdx++] = nz;
+          });
+          spokeGeo.attributes.position.needsUpdate = true;
           var stageW = stage.clientWidth || 1, stageH = stage.clientHeight || 1;
           var bestKey = null, bestFacing = -2;
           Object.keys(anchors).forEach(function(k){
@@ -1408,20 +1454,25 @@
       var PROJ = {
         sach: { name: "Sach", x: 0.35, y: 0.6,
           desc: "Live WhatsApp-forward fact-checker. Paste a forward, get a cited TRUE / FALSE / MISLEADING / UNVERIFIED verdict.",
-          links: [["Live site", "https://sachcheck.in"], ["Impact page", "https://sachcheck.in/impact"], ["Full case", "#sach"]] },
+          proof: "79-claim evaluation - 0 overclaimed verdicts",
+          links: [["Live site", "https://sachcheck.in"], ["Impact page", "https://sachcheck.in/impact"], ["GitHub repo", "https://github.com/pruthvig1998/sach-check"], ["Full case", "#sach"]] },
         quantpilot: { name: "QuantPilot", x: 0.55, y: 2.2,
           desc: "Autonomous options-research agent. Hackathon screening rank 252 of 547; its demo scored 12.5 of 15, ahead of all three track winners.",
-          links: [["Live Explorer", "https://pruthvig1998.github.io/QuantPilot/explorer/"], ["Full case", "#quantpilot"]] },
+          proof: "Demo 12.5 / 15 - screening rank 252 of 547",
+          links: [["Live Explorer", "https://pruthvig1998.github.io/QuantPilot/explorer/"], ["GitHub repo", "https://github.com/pruthvig1998/QuantPilot"], ["Full case", "#quantpilot"]] },
         cluse: { name: "Cluse", x: 0.2, y: 3.8,
           desc: "Live paper-trading desk. Nasdaq-100 options on paper money only, strict risk rules, flattened at the close.",
-          links: [["Live desk", "https://pruthvig1998.github.io/cluse-desk-live/"], ["3D diagram", "https://pruthvig1998.github.io/cluse-desk-live/3d/"], ["Full case", "#cluse"]] },
+          proof: "Live in session - refreshes every 5 minutes",
+          links: [["Live desk", "https://pruthvig1998.github.io/cluse-desk-live/"], ["3D diagram", "https://pruthvig1998.github.io/cluse-desk-live/3d/"], ["GitHub repo", "https://github.com/pruthvig1998/cluse-desk-live"], ["Full case", "#cluse"]] },
         nexus: { name: "Nexus", x: 0.45, y: 5.4,
-          desc: "Open-source agent tooling and experiments, built in the open.",
+          desc: "Algorithmic trading system in Python: multi-strategy, multi-broker, AI-powered signals and institutional-style risk layers.",
+          proof: "Multi-broker - risk layers - CI on every push",
           links: [["GitHub repo", "https://github.com/pruthvig1998/nexus"], ["Full case", "#nexus"]] }
       };
       var ORDER = ["sach", "quantpilot", "cluse", "nexus"];
       var nameEl = document.getElementById("imm-name");
       var descEl = document.getElementById("imm-desc");
+      var proofEl = document.getElementById("imm-proof");
       var linksEl = document.getElementById("imm-links");
       var panelEl = document.querySelector(".imm-panel");
       var btns = Array.prototype.slice.call(document.querySelectorAll(".imm-btn"));
@@ -1444,6 +1495,7 @@
         var apply = function(){
           if(nameEl) nameEl.textContent = p.name;
           if(descEl) descEl.textContent = p.desc;
+          if(proofEl) proofEl.textContent = p.proof || "";
           if(linksEl){
             linksEl.innerHTML = "";
             p.links.forEach(function(pair){
