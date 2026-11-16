@@ -104,6 +104,14 @@ Live demos: [Sach](https://sachcheck.in) - [Sach impact page](https://sachcheck.
   <img alt="Breakout - contribution graph brick breaker" src="https://raw.githubusercontent.com/pruthvig1998/pruthvig1998/output/breakout-contribution-graph-dark.svg" />
 </div>
 
+<div align="center">
+  <img alt="Tetris - contribution graph block stacker" src="https://raw.githubusercontent.com/pruthvig1998/pruthvig1998/output/tetris-contribution-graph-dark.svg" />
+</div>
+
+<div align="center">
+  <img alt="Puzzle Bobble - contribution graph bubble shooter" src="https://raw.githubusercontent.com/pruthvig1998/pruthvig1998/output/puzzle-bobble-contribution-graph-dark.svg" />
+</div>
+
 <p align="center"><sub>LIVE DATA - REGENERATED DAILY FROM MY GITHUB ACTIVITY</sub></p>
 
 <div align="center">
