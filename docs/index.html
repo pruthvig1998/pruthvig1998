@@ -368,6 +368,16 @@
   footer .explore a{color:var(--muted);text-decoration:none}
   footer .explore a:hover{color:var(--gold)}
   footer .explore span{color:var(--gold);letter-spacing:.12em}
+
+  /* Background music toggle */
+  #sound-toggle{position:fixed;left:18px;bottom:18px;z-index:80;display:inline-flex;align-items:center;gap:8px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
+    background:rgba(11,2,6,.72);border:1px solid rgba(236,231,223,.16);border-radius:999px;padding:9px 15px;cursor:pointer;
+    transition:color .2s,border-color .2s}
+  #sound-toggle::before{content:"";width:6px;height:6px;border-radius:50%;background:rgba(236,231,223,.3);transition:background .2s}
+  #sound-toggle.on{color:var(--ivory);border-color:rgba(229,72,77,.55)}
+  #sound-toggle.on::before{background:#E5484D}
+  #sound-toggle:hover{color:var(--ivory);border-color:rgba(229,72,77,.5)}
 </style>
 </head>
 <body>
@@ -1462,5 +1472,79 @@
 </script>
 
 
+<audio id="bg-music" loop preload="none" src="assets/hero-music.mp3"></audio>
+<button type="button" id="sound-toggle" aria-pressed="false" aria-label="Toggle background music">Sound off</button>
+<script>
+  // Background music: slowed phonk in the reel's mood (Pixabay free license).
+  // Browsers block autoplay with sound, so playback starts on the first
+  // interaction (tap, click, scroll or key) and loops at low volume.
+  // The toggle pauses/resumes; the choice is remembered on this device.
+  (function(){
+    try {
+      var audio = document.getElementById("bg-music");
+      var btn = document.getElementById("sound-toggle");
+      if(!audio || !btn) return;
+      var TARGET = 0.45, started = false, fadeTimer = null, userOff = false;
+      try { userOff = localStorage.getItem("pg-music") === "off"; } catch(e){}
+      var fadeTo = function(target, done){
+        if(fadeTimer) clearInterval(fadeTimer);
+        var step = (target - audio.volume) / 12;
+        if(step === 0){ if(done) done(); return; }
+        fadeTimer = setInterval(function(){
+          var v = audio.volume + step;
+          if((step > 0 && v >= target) || (step < 0 && v <= target)){
+            v = target; clearInterval(fadeTimer); fadeTimer = null; if(done) done();
+          }
+          audio.volume = Math.max(0, Math.min(1, v));
+        }, 40);
+      };
+      var setBtn = function(on){
+        btn.classList.toggle("on", on);
+        btn.setAttribute("aria-pressed", on ? "true" : "false");
+        btn.textContent = on ? "Sound on" : "Sound off";
+      };
+      var start = function(){
+        if(started) return;
+        started = true;
+        audio.volume = 0;
+        var pr = audio.play();
+        if(pr && pr.catch) pr.catch(function(){ started = false; });
+        fadeTo(TARGET);
+        setBtn(true);
+      };
+      var disarm = function(){
+        removeEventListener("pointerdown", go);
+        removeEventListener("keydown", go);
+        removeEventListener("touchstart", go);
+        removeEventListener("scroll", go);
+      };
+      var go = function(e){
+        if(e && e.target === btn) return;
+        start();
+        disarm();
+      };
+      if(!userOff){
+        addEventListener("pointerdown", go);
+        addEventListener("keydown", go);
+        addEventListener("touchstart", go, { passive: true });
+        addEventListener("scroll", go, { passive: true });
+      }
+      btn.addEventListener("click", function(){
+        if(!started || audio.paused){
+          userOff = false;
+          try { localStorage.setItem("pg-music", "on"); } catch(err){}
+          if(!started) start();
+          else { var pr2 = audio.play(); if(pr2 && pr2.catch) pr2.catch(function(){}); fadeTo(TARGET); setBtn(true); }
+        } else {
+          userOff = true;
+          try { localStorage.setItem("pg-music", "off"); } catch(err){}
+          fadeTo(0, function(){ audio.pause(); });
+          setBtn(false);
+        }
+      });
+      setBtn(false);
+    } catch(e){}
+  })();
+</script>
 </body>
 </html>
