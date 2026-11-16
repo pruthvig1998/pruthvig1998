@@ -452,7 +452,7 @@
     <figure class="hero-portrait reveal-hero" style="--d:.12s">
       <div class="portrait-stage" id="portrait-stage" role="button" tabindex="0" aria-pressed="false" aria-label="Dot portrait of Pruthvi Garlapati. Activate to reveal the photograph.">
         <canvas id="portrait-gl"></canvas>
-        <img id="portrait-img" src="assets/portrait-bust.png" alt="Pruthvi Garlapati" />
+        <img id="portrait-img" src="assets/portrait-bust-v13.png" alt="Pruthvi Garlapati" />
       </div>
     </figure>
     <button class="reveal-btn" id="reveal-btn" type="button" aria-pressed="false"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><circle cx="3" cy="3" r="1.7" fill="currentColor"/><circle cx="9" cy="3" r="1.7" fill="currentColor"/><circle cx="3" cy="9" r="1.7" fill="currentColor"/><circle cx="9" cy="9" r="1.7" fill="currentColor"/></svg><span id="reveal-label">REVEAL</span></button>
@@ -1363,7 +1363,7 @@
         var pimg = new Image();
         pimg.onload = function(){ try { buildPortrait(pimg); } catch(e){ showPhotoFallback(); } };
         pimg.onerror = showPhotoFallback;
-        pimg.src = "assets/portrait-bust.png";
+        pimg.src = "assets/portrait-bust-v13.png";
         var buildPortrait = function(image){
           var COLS = 190, PW = 2.5;
           var PH = PW * image.height / image.width;
