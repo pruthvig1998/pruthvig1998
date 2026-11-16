@@ -463,7 +463,7 @@
   .portrait-stage:focus-visible{box-shadow:0 0 0 2px var(--gold);border-radius:12px}
   #portrait-gl{position:absolute;inset:0;width:100%;height:100%;display:block}
   #portrait-img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;pointer-events:none;
-    transform:perspective(900px) rotateY(calc(var(--look-x,0) * 18deg)) rotateX(calc(var(--look-y,0) * 12deg)) translate3d(calc(var(--look-x,0) * 22px), calc(var(--look-y,0) * 14px), 0);
+    transform:perspective(900px) rotateY(calc(var(--look-x,0) * 18deg)) rotateX(calc(var(--look-y,0) * 12deg)) translate3d(calc(var(--look-x,0) * 26px), calc(var(--look-y,0) * 16px), 0);
     transform-origin:57% 30%;will-change:transform;
     -webkit-mask-image:linear-gradient(180deg, #000 88%, transparent 99%);mask-image:linear-gradient(180deg, #000 88%, transparent 99%)}
   /* About: scroll-driven 3D model layer */
@@ -1825,10 +1825,10 @@
             var e2 = prog * prog * (3 - 2 * prog);
             var nowP = performance.now();
             if(!reduceMotion && nowP - lastPtr > 3500){
-              nTX = Math.sin(nowP * 0.00042) * 0.3;
+              nTX = Math.sin(nowP * 0.00042) * 0.42;
               nTY = Math.cos(nowP * 0.00031) * 0.18;
             }
-            nX += (nTX - nX) * 0.08;
+            nX += (nTX - nX) * 0.12;
             nY += (nTY - nY) * 0.08;
             var lookK = 1 - e2;
             for(var i = 0; i < posArr.length; i++){
@@ -1852,8 +1852,8 @@
               heroSec.style.setProperty("--look-y", nY.toFixed(3));
               lastVarX = nX; lastVarY = nY;
             }
-            group.rotation.y = nX * 0.96;
-            group.rotation.x = nY * 0.52;
+            group.rotation.y = nX * 0.38;
+            group.rotation.x = nY * 0.20;
             if(photoGroup){
               photoGroup.rotation.y = nX * 0.55;
               photoGroup.rotation.x = nY * 0.30;
