@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gaze Lab - dummy test page (not the portfolio)</title>
+<style>
+  :root{ --wine:#1D040B; --wine2:#430A1B; --rose:#E5484D; --soft:#F0A3A8; --pale:#F6D5D8; --ivory:#ECE7DF; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ background:var(--wine); color:var(--ivory); font-family:Georgia, 'Times New Roman', serif; min-height:100vh; display:flex; flex-direction:column; align-items:center; }
+  header{ padding:18px 16px 4px; text-align:center; }
+  header h1{ font-size:20px; font-weight:normal; letter-spacing:.04em; }
+  header p{ font-size:13px; color:var(--soft); margin-top:4px; font-style:italic; }
+  #stage-wrap{ flex:1; width:100%; display:flex; align-items:center; justify-content:center; padding:10px; perspective:900px; }
+  #stack{ position:relative; width:min(92vw, 560px); aspect-ratio:681/570; will-change:transform; }
+  #eyes{ position:absolute; inset:0; width:100%; height:100%; }
+  #face{ position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+  #panel{ width:min(94vw, 640px); background:var(--wine2); border:1px solid rgba(240,163,168,.25); border-radius:10px; padding:12px 16px 14px; margin:0 0 22px; font-size:13px; }
+  #panel .row{ display:flex; flex-wrap:wrap; gap:10px 18px; align-items:center; margin:6px 0; }
+  #panel label{ color:var(--pale); display:flex; gap:6px; align-items:center; }
+  #panel input[type=range]{ accent-color:var(--rose); width:110px; }
+  #panel button{ background:var(--rose); color:#fff; border:0; border-radius:6px; padding:5px 12px; font-family:inherit; font-size:13px; cursor:pointer; }
+  #panel button.ghost{ background:transparent; border:1px solid var(--soft); color:var(--soft); }
+  #readout{ font-family:ui-monospace, Menlo, monospace; font-size:12px; color:var(--soft); min-height:16px; }
+  .val{ color:var(--ivory); font-family:ui-monospace, Menlo, monospace; font-size:12px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Gaze Lab</h1>
+  <p>Dummy test page. Move your cursor anywhere - the eyes and head follow. Nothing here touches the portfolio.</p>
+</header>
+<div id="stage-wrap">
+  <div id="stack">
+    <canvas id="eyes" width="1362" height="1140"></canvas>
+    <img id="face" src="face-top.png" alt="">
+  </div>
+</div>
+<div id="panel">
+  <div class="row">
+    <label>Pupil travel <input id="travel" type="range" min="4" max="14" step="0.5" value="10"><span class="val" id="travel-v">10</span></label>
+    <label>Head motion <input id="headamt" type="range" min="0" max="1.5" step="0.1" value="1"><span class="val" id="headamt-v">1.0</span></label>
+    <label>Pupil spring <input id="stiff" type="range" min="200" max="700" step="20" value="420"><span class="val" id="stiff-v">420</span></label>
+  </div>
+  <div class="row">
+    <label><input type="checkbox" id="blink-on" checked> Blink</label>
+    <label><input type="checkbox" id="idle-on" checked> Idle glances</label>
+    <label><input type="checkbox" id="sacc-on" checked> Micro-saccades</label>
+    <button id="tour" type="button">Corner tour</button>
+    <button id="centre" class="ghost" type="button">Centre</button>
+  </div>
+  <div class="row"><span id="readout">loading...</span></div>
+</div>
+<script>
+"use strict";
+const META = {"S": 2, "W": 681, "H": 570, "layout": {"R_plate": {"x": 0, "y": 0, "w": 76, "h": 44}, "R_disc": {"x": 320, "y": 10.75, "w": 22.5, "h": 22.5, "r": 11.25}, "R_lid": {"x": 456, "y": 0, "w": 76, "h": 44}, "L_plate": {"x": 160, "y": 0, "w": 76, "h": 44}, "L_disc": {"x": 388, "y": 11.25, "w": 21.5, "h": 21.5, "r": 10.75}, "L_lid": {"x": 616, "y": 0, "w": 76, "h": 44}, "R_ball": {"x": 640, "y": 14.8, "w": 48.0, "h": 34.4}, "L_ball": {"x": 770, "y": 15.3, "w": 47.0, "h": 33.4}}, "travel": [10.0, 3.2], "eyes": [{"name": "R", "icx": 348, "icy": 166, "acx": 346, "acy": 163, "arx": 18, "ary": 8, "bx": 307, "by": 141, "iris_r": 10.5}, {"name": "L", "icx": 430, "icy": 168, "acx": 428, "acy": 163, "arx": 23, "ary": 9, "bx": 385, "by": 138, "iris_r": 10.0}]};
+const S = META.S, EYES = META.eyes, LAY = META.layout;
+const cv = document.getElementById('eyes'), ctx = cv.getContext('2d');
+const stack = document.getElementById('stack');
+const readout = document.getElementById('readout');
+const sheet = new Image();
+let ready = false;
+sheet.onload = () => { ready = true; };
+sheet.src = 'eyes-sheet.png';
+
+const ui = {
+  travel: document.getElementById('travel'), headamt: document.getElementById('headamt'),
+  stiff: document.getElementById('stiff'), blink: document.getElementById('blink-on'),
+  idle: document.getElementById('idle-on'), sacc: document.getElementById('sacc-on')
+};
+for (const k of ['travel', 'headamt', 'stiff']) {
+  const v = document.getElementById(k + '-v');
+  ui[k].addEventListener('input', () => { v.textContent = ui[k].value; });
+}
+const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// pointer state
+let ptrX = innerWidth / 2, ptrY = innerHeight / 2, lastPtr = -1e9, hasPtr = false;
+addEventListener('pointermove', e => { ptrX = e.clientX; ptrY = e.clientY; lastPtr = performance.now(); hasPtr = true; }, { passive: true });
+
+// corner tour: virtual pointer
+let tourPts = null, tourIdx = 0, tourUntil = 0;
+document.getElementById('tour').addEventListener('click', () => {
+  const w = innerWidth, h = innerHeight, m = 60;
+  tourPts = [[m, m], [w - m, m], [w - m, h - m], [m, h - m], [w / 2, h / 2]];
+  tourIdx = 0; tourUntil = performance.now() + 1100;
+});
+document.getElementById('centre').addEventListener('click', () => {
+  tourPts = [[innerWidth / 2, innerHeight / 2]]; tourIdx = 0; tourUntil = performance.now() + 1500;
+});
+
+// springs: shared gaze (pupils) + head
+function Spring(k, c, m) { return { x: 0, y: 0, vx: 0, vy: 0, k, c, m }; }
+const gaze = Spring(420, 22, 0.45);
+const head = Spring(115, 20, 0.85);
+function stepSpring(s, tx, ty, dt) {
+  const n = Math.max(1, Math.ceil(dt / (1 / 480)));
+  const h = dt / n;
+  for (let i = 0; i < n; i++) {
+    s.vx += (-s.k * (s.x - tx) - s.c * s.vx) / s.m * h;
+    s.vy += (-s.k * (s.y - ty) - s.c * s.vy) / s.m * h;
+    s.x += s.vx * h; s.y += s.vy * h;
+  }
+}
+
+// idle glances
+const GLANCES = [[-0.7, -0.3], [0.6, -0.45], [0.85, 0.2], [-0.5, 0.35], [0.3, 0.5], [-0.85, -0.1], [0, 0]];
+let glance = null, glanceUntil = 0;
+// micro-saccades
+let sacX = 0, sacY = 0, sacUntil = 0;
+// blink
+let nextBlink = performance.now() + 2600, blinkStart = -1, doublePending = false;
+
+function sprite(name) { const r = LAY[name]; return [r.x * S, r.y * S, r.w * S, r.h * S]; }
+
+function drawEye(e, gx, gy, blinkCov) {
+  const bx = e.bx * S, by = e.by * S;
+  ctx.clearRect(bx - 4, by - 4, 76 * S + 8, 44 * S + 8);
+  const pl = sprite(e.name + '_plate');
+  ctx.drawImage(sheet, pl[0], pl[1], pl[2], pl[3], bx, by, pl[2], pl[3]);
+  const bl = sprite(e.name + '_ball'), brd = LAY[e.name + '_ball'];
+  ctx.drawImage(sheet, bl[0], bl[1], bl[2], bl[3], (e.icx + gx - brd.w / 2) * S, (e.icy + gy - brd.h / 2) * S, bl[2], bl[3]);
+  const dr = LAY[e.name + '_disc'].r;
+  const ds = sprite(e.name + '_disc');
+  const dx = (e.icx + gx - dr) * S, dy = (e.icy + gy - dr) * S;
+  ctx.drawImage(sheet, ds[0], ds[1], ds[2], ds[3], dx, dy, ds[2], ds[3]);
+  if (blinkCov > 0.001) {
+    const ld = sprite(e.name + '_lid');
+    ctx.save();
+    ctx.beginPath();
+    ctx.ellipse(e.acx * S, e.acy * S, (e.arx - 1) * S, (e.ary - 0.5) * S, 0, 0, Math.PI * 2);
+    ctx.clip();
+    const slide = (1 - blinkCov) * (2 * e.ary + 4);
+    ctx.drawImage(sheet, ld[0], ld[1], ld[2], ld[3], bx, by - slide * S, ld[2], ld[3]);
+    ctx.restore();
+  }
+}
+
+let lastT = performance.now(), lastDrawn = { x: 1e9, y: 1e9, h: 1e9, b: -1 };
+function frame(now) {
+  requestAnimationFrame(frame);
+  if (!ready || document.hidden) { lastT = now; return; }
+  let dt = Math.min(0.05, (now - lastT) / 1000); lastT = now;
+  if (dt <= 0) dt = 0.016;
+
+  // virtual pointer (corner tour)
+  if (tourPts) {
+    if (now > tourUntil) { tourIdx++; tourUntil = now + 1100; }
+    if (tourIdx >= tourPts.length) { tourPts = null; }
+    else { ptrX = tourPts[tourIdx][0]; ptrY = tourPts[tourIdx][1]; lastPtr = now; hasPtr = true; }
+  }
+
+  // per-eye targets from the canvas rect
+  const rect = cv.getBoundingClientRect();
+  const scaleX = META.W / rect.width, scaleY = META.H / rect.height;
+  let txs = 0, tys = 0;
+  const perEye = EYES.map(e => {
+    const ex = rect.left + (e.icx / META.W) * rect.width;
+    const ey = rect.top + (e.icy / META.H) * rect.height;
+    const vx = (ptrX - ex) * scaleX, vy = (ptrY - ey) * scaleY;
+    const dist = Math.hypot(vx, vy);
+    const mag = Math.min(1, dist * 0.004);
+    let nx = dist > 0 ? vx / dist : 0, ny = dist > 0 ? vy / dist : 0;
+    return { nx: nx * mag, ny: ny * mag };
+  });
+  for (const p of perEye) { txs += p.nx; tys += p.ny; }
+  let tx = txs / perEye.length, ty = tys / perEye.length;
+
+  // idle glancing after 3s stillness
+  let state = 'tracking';
+  const still = now - lastPtr > 3000;
+  if (ui.idle.checked && !reduced && still && hasPtr !== null) {
+    state = 'idle glancing';
+    if (!glance || now > glanceUntil) {
+      glance = GLANCES[Math.floor(Math.random() * GLANCES.length)];
+      glanceUntil = now + 900 + Math.random() * 1300;
+    }
+    tx = glance[0]; ty = glance[1];
+  } else { glance = null; }
+
+  // micro-saccades
+  if (ui.sacc.checked && !reduced && now > sacUntil) {
+    sacX = (Math.random() - 0.5) * 0.1; sacY = (Math.random() - 0.5) * 0.08;
+    sacUntil = now + 250 + Math.random() * 650;
+  }
+  if (!ui.sacc.checked) { sacX = 0; sacY = 0; }
+
+  // blink state machine
+  let blinkCov = 0;
+  if (ui.blink.checked && !reduced) {
+    if (blinkStart < 0 && now >= nextBlink) blinkStart = now;
+    if (blinkStart >= 0) {
+      const t = now - blinkStart;
+      if (t < 70) blinkCov = t / 70;
+      else if (t < 95) blinkCov = 1;
+      else if (t < 205) blinkCov = 1 - (t - 95) / 110;
+      else {
+        blinkStart = -1;
+        if (!doublePending && Math.random() < 0.18) { nextBlink = now + 240; doublePending = true; }
+        else { nextBlink = now + 2400 + Math.random() * 3600; doublePending = false; }
+      }
+      state = blinkCov > 0.02 ? 'blink' : state;
+    }
+  }
+
+  gaze.k = parseFloat(ui.stiff.value);
+  gaze.c = reduced ? 2 * Math.sqrt(gaze.k * gaze.m) : 22;
+  stepSpring(gaze, tx + sacX, ty + sacY, dt);
+  stepSpring(head, gaze.x, gaze.y, dt);
+
+  const travel = parseFloat(ui.travel.value);
+  const gx = gaze.x * travel, gy = gaze.y * travel * 0.32;
+  const ha = parseFloat(ui.headamt.value);
+  const hx = head.x * ha, hy = head.y * ha;
+
+  const moved = Math.abs(gx - lastDrawn.x) + Math.abs(gy - lastDrawn.y) + Math.abs(hx - lastDrawn.h) + Math.abs(blinkCov - lastDrawn.b);
+  if (moved > 0.004 || blinkCov > 0 || state === 'idle glancing') {
+    for (let i = 0; i < EYES.length; i++) {
+      const e = EYES[i];
+      const ex = gx + (perEye[i].nx - tx) * travel * 0.35;
+      const ey = gy + (perEye[i].ny - ty) * travel * 0.32 * 0.35;
+      drawEye(e, ex, ey, blinkCov);
+    }
+    stack.style.transform = 'translate(' + (hx * 9).toFixed(2) + 'px,' + (hy * 6).toFixed(2) + 'px) rotate(' + (hx * 1.4).toFixed(3) + 'deg)';
+    lastDrawn = { x: gx, y: gy, h: hx, b: blinkCov };
+    readout.textContent = 'state: ' + state + '  gaze: ' + gaze.x.toFixed(2) + ', ' + gaze.y.toFixed(2) + '  pupils: ' + gx.toFixed(1) + 'px, ' + gy.toFixed(1) + 'px';
+  }
+}
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>
