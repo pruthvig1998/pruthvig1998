@@ -5,6 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pruthvi Garlapati - Senior GCP DevOps Engineer</title>
 <meta name="description" content="Senior GCP DevOps Engineer at UKG. Platform engineering, Kubernetes, Terraform, and AI agent systems that have to show their work: Sach, QuantPilot, Cluse.">
+<meta name="theme-color" content="#1D040B">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23430A1B'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='34' fill='%23ECE7DF' text-anchor='middle'%3EP%3C/text%3E%3Ccircle cx='50' cy='14' r='5' fill='%23E5484D'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pruthvi Garlapati">
+<meta property="og:title" content="Pruthvi Garlapati - Senior GCP DevOps Engineer">
+<meta property="og:description" content="Platforms that Run Themselves. Senior GCP DevOps Engineer at UKG building AI agent systems that show their work: Sach, QuantPilot, Cluse.">
+<meta property="og:url" content="https://pruthvig1998.github.io/pruthvig1998/">
+<meta property="og:image" content="https://pruthvig1998.github.io/pruthvig1998/assets/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pruthvi Garlapati - Senior GCP DevOps Engineer">
+<meta name="twitter:description" content="Platforms that Run Themselves. Senior GCP DevOps Engineer at UKG building AI agent systems that show their work: Sach, QuantPilot, Cluse.">
+<meta name="twitter:image" content="https://pruthvig1998.github.io/pruthvig1998/assets/og-card.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Pruthvi Garlapati","jobTitle":"Senior GCP DevOps Engineer","worksFor":{"@type":"Organization","name":"UKG"},"url":"https://pruthvig1998.github.io/pruthvig1998/","image":"https://pruthvig1998.github.io/pruthvig1998/assets/og-card.png","sameAs":["https://github.com/pruthvig1998","https://www.linkedin.com/in/pruthvi-g/","https://www.credly.com/users/prudhvi-garlapati","https://dev.to/pruthvig1998","https://www.youtube.com/@PruthviGarlapati"],"knowsAbout":["Google Cloud Platform","Kubernetes","Terraform","Argo CD","Platform Engineering","AI Agents"]}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -333,6 +350,8 @@
   .menu-close span{position:absolute;left:50%;top:50%;width:18px;height:2px;background:var(--text)}
   .menu-close span:first-child{transform:translate(-50%,-50%) rotate(45deg)}
   .menu-close span:last-child{transform:translate(-50%,-50%) rotate(-45deg)}
+  #scroll-progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:200;
+    background:linear-gradient(90deg, #430A1B, #E5484D, #F0A3A8);box-shadow:0 0 12px rgba(229,72,77,.55)}
 
   /* Interactive 3D stage, directly after the hero */
   #immersion{position:relative;padding:96px 20px 84px;text-align:center;overflow:hidden;
@@ -369,6 +388,11 @@
     font-size:10px;letter-spacing:.22em;color:rgba(236,231,223,.85);border-color:rgba(236,231,223,.35);background:rgba(29,4,11,.55)}
   .imm-panel-proof{font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-top:10px}
   @media (max-width:900px){ .imm-stage{height:52vh;min-height:300px} }
+
+  .writing-item{padding:16px 0;border-bottom:1px solid rgba(236,231,223,.08)}
+  .writing-item h3{font-family:Georgia,"Times New Roman",serif;font-size:21px;font-weight:400;color:var(--ivory);margin:0 0 4px}
+  .writing-item p{margin:0;color:rgba(236,231,223,.75);font-size:15px;line-height:1.55}
+  .writing-item .src{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
 
   /* Hero dot-portrait: bust point cloud, reel-matched */
   .hero-ghost{position:absolute;top:29%;left:50%;transform:translate(-50%,-50%);z-index:1;pointer-events:none;
@@ -431,6 +455,7 @@
 </style>
 </head>
 <body>
+<div id="scroll-progress" aria-hidden="true"></div>
 <div id="preloader" aria-hidden="true"><div class="pre-inner"><div class="pre-logo">PG</div><div class="pre-line"><span></span></div></div></div>
 <div id="progress"></div>
 <div id="cursor-dot"></div>
@@ -601,6 +626,21 @@
       </div>
     </section>
 
+    <section id="writing" class="reveal">
+      <div class="sec-head">Writing</div>
+      <p>Build notes from the two solo systems - the honest versions, numbers included.</p>
+      <div class="writing-item">
+        <div class="src">Sach - fact-checking</div>
+        <h3>Every family WhatsApp group in India has the same problem</h3>
+        <p>Why I built a fact-checker that has to cite its verdicts, and what its 79-claim evaluation actually showed. <a href="https://dev.to/pruthvig1998/every-family-whatsapp-group-in-india-has-the-same-problem-1jf6" target="_blank" rel="noopener">Read on dev.to</a> - <a href="https://www.linkedin.com/in/pruthvi-g/recent-activity/all/" target="_blank" rel="noopener">the launch post on LinkedIn</a>.</p>
+      </div>
+      <div class="writing-item">
+        <div class="src">QuantPilot - agent evaluation</div>
+        <h3>What a 66.5 out of 100 taught me</h3>
+        <p>The QuantPilot build story from the Open Agent Hackathon: a demo that outscored all three track winners, and the innovation gap that kept it out of the finals. <a href="https://dev.to/pruthvig1998/proud-to-share-quantpilot-my-solo-build-for-the-open-agent-hackathon-2026-1p22" target="_blank" rel="noopener">Read on dev.to</a> - <a href="https://www.linkedin.com/feed/update/urn:li:activity:7526341625153822720/" target="_blank" rel="noopener">the original on LinkedIn</a>.</p>
+      </div>
+    </section>
+
     <section id="expertise" class="reveal">
       <div class="ghost-word" aria-hidden="true">AGENTS</div>
       <div class="sec-head">Expertise</div>
@@ -638,7 +678,7 @@
           </ul>
         </div>
       </div>
-      <p style="margin-top:22px"><b>Certifications:</b> <a href="https://www.linkedin.com/in/pruthvi-g/" target="_blank" rel="noopener">Google Cloud Professional Cloud DevOps Engineer</a> - <a href="https://www.linkedin.com/in/pruthvi-g/" target="_blank" rel="noopener">PagerDuty Foundational Practitioner</a>.<br>
+      <p style="margin-top:22px"><b>Certifications:</b> <a href="https://www.credly.com/users/prudhvi-garlapati" target="_blank" rel="noopener">Google Cloud Professional Cloud DevOps Engineer</a> - <a href="https://www.linkedin.com/in/pruthvi-g/" target="_blank" rel="noopener">PagerDuty Foundational Practitioner</a>.<br>
       <b>Education:</b> BTech, CVR College of Engineering, Hyderabad - PG diplomas in Cloud Computing (George Brown) and Business Analytics (Cambrian).</p>
     </section>
 
@@ -657,9 +697,12 @@
         <div class="socials">
           <a href="https://github.com/pruthvig1998" target="_blank" rel="noopener">GitHub</a>
           <a href="https://www.linkedin.com/in/pruthvi-g/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://www.credly.com/users/prudhvi-garlapati" target="_blank" rel="noopener">Credly</a>
+          <a href="https://dev.to/pruthvig1998" target="_blank" rel="noopener">dev.to</a>
+          <a href="https://www.youtube.com/@PruthviGarlapati" target="_blank" rel="noopener">YouTube</a>
           <a href="https://sachcheck.in" target="_blank" rel="noopener">Sach - live</a>
         </div>
-        <div class="explore"><span>EXPLORE</span><a href="#about">About</a><a href="#projects">Work</a><a href="#experience">Experience</a><a href="#expertise">Expertise</a><a href="#contact">Contact</a><span>PROJECTS</span><a href="#sach">Sach</a><a href="#quantpilot">QuantPilot</a><a href="#cluse">Cluse</a><a href="#nexus">Nexus</a></div>
+        <div class="explore"><span>EXPLORE</span><a href="#about">About</a><a href="#projects">Work</a><a href="#experience">Experience</a><a href="#writing">Writing</a><a href="#expertise">Expertise</a><a href="#contact">Contact</a><span>PROJECTS</span><a href="#sach">Sach</a><a href="#quantpilot">QuantPilot</a><a href="#cluse">Cluse</a><a href="#nexus">Nexus</a></div>
         <div class="live-line"><span class="live-dot"></span>Open to Senior GCP / Platform roles</div>
         <div class="live-clock"><span class="lc-label">TORONTO</span><span id="toronto-clock">--:--:--</span></div>
       </div>
@@ -1700,5 +1743,22 @@
   })();
 </script>
 
+<script>
+  try {
+    var spBar = document.getElementById("scroll-progress");
+    if(spBar){
+      var spTick = false;
+      var spUpdate = function(){
+        spTick = false;
+        var h = document.documentElement;
+        var max = Math.max(1, h.scrollHeight - h.clientHeight);
+        spBar.style.width = Math.min(100, Math.max(0, (window.scrollY || 0) / max * 100)) + "%";
+      };
+      addEventListener("scroll", function(){ if(!spTick){ spTick = true; requestAnimationFrame(spUpdate); } }, { passive: true });
+      addEventListener("resize", spUpdate);
+      spUpdate();
+    }
+  } catch(e){}
+</script>
 </body>
 </html>
