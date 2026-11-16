@@ -344,6 +344,18 @@
   #gl3d{display:block;width:100%;height:100%;touch-action:pan-y;cursor:grab}
   #gl3d.grabbing{cursor:grabbing}
   .imm-line{font-family:Georgia,"Times New Roman",serif;font-size:19px;color:rgba(236,231,223,.85);margin:4px 0 0}
+  .imm-nav{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:20px auto 2px;max-width:720px}
+  .imm-btn{font-family:var(--mono);font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ivory);
+    background:transparent;border:1px solid rgba(229,72,77,.45);border-radius:999px;padding:9px 18px;cursor:pointer;transition:background .25s,border-color .25s,color .25s}
+  .imm-btn:hover{border-color:var(--gold);color:#fff}
+  .imm-btn.is-active{background:var(--gold);border-color:var(--gold);color:#fff}
+  .imm-panel{max-width:640px;margin:16px auto 0;transition:opacity .13s ease}
+  .imm-panel.swap{opacity:0}
+  .imm-panel-name{font-family:Georgia,"Times New Roman",serif;font-size:27px;color:var(--ivory)}
+  .imm-panel-line{font-size:15.5px;line-height:1.55;color:rgba(236,231,223,.78);margin:6px 0 0}
+  .imm-panel-links{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:center;margin-top:12px}
+  .imm-panel-links a{font-family:var(--mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(229,72,77,.4);padding-bottom:2px}
+  .imm-panel-links a:hover{color:var(--soft);border-color:var(--soft)}
   @media (max-width:900px){ .imm-stage{height:52vh;min-height:300px} }
 
   /* Deepened card spotlight: same three-layer stack as the feature-pack
@@ -435,10 +447,21 @@
   <div class="hero-status"><span class="live-dot"></span><a href="#contact">Available for new opportunities - Senior GCP / Platform roles</a></div>
 </section>
 
-<section id="immersion" aria-label="Interactive 3D form">
+<section id="immersion" aria-label="Interactive project navigator">
   <div class="imm-eyebrow">INTERACTIVE</div>
   <div class="imm-stage"><canvas id="gl3d"></canvas></div>
-  <p class="imm-line">Drag to rotate.</p>
+  <p class="imm-line">Drag to rotate - or pick a system.</p>
+  <div class="imm-nav" role="tablist" aria-label="Systems">
+    <button type="button" class="imm-btn is-active" data-proj="sach" role="tab" aria-selected="true">Sach</button>
+    <button type="button" class="imm-btn" data-proj="quantpilot" role="tab" aria-selected="false">QuantPilot</button>
+    <button type="button" class="imm-btn" data-proj="cluse" role="tab" aria-selected="false">Cluse</button>
+    <button type="button" class="imm-btn" data-proj="nexus" role="tab" aria-selected="false">Nexus</button>
+  </div>
+  <div class="imm-panel">
+    <div class="imm-panel-name" id="imm-name">Sach</div>
+    <p class="imm-panel-line" id="imm-desc">Live WhatsApp-forward fact-checker. Paste a forward, get a cited TRUE / FALSE / MISLEADING / UNVERIFIED verdict.</p>
+    <div class="imm-panel-links" id="imm-links"><a href="https://sachcheck.in">Live site</a><a href="https://sachcheck.in/impact">Impact page</a><a href="#sach">Full case</a></div>
+  </div>
 </section>
 
 <div class="wrap">
@@ -1188,8 +1211,10 @@
         };
         fitStage();
         addEventListener("resize", fitStage);
+        var downX = null, downY = null;
         gcanvas.addEventListener("pointerdown", function(e){
           dragging = true; lastPX = e.clientX; lastPY = e.clientY; velX = 0; velY = 0;
+          downX = e.clientX; downY = e.clientY;
           gcanvas.classList.add("grabbing");
           try { gcanvas.setPointerCapture(e.pointerId); } catch(err){}
         });
@@ -1202,8 +1227,12 @@
           rotX = Math.max(-1.2, Math.min(1.2, rotX + velX));
         });
         var endDrag = function(){ dragging = false; gcanvas.classList.remove("grabbing"); };
-        gcanvas.addEventListener("pointerup", endDrag);
-        gcanvas.addEventListener("pointercancel", endDrag);
+        gcanvas.addEventListener("pointerup", function(e){
+          if(downX !== null && Math.hypot(e.clientX - downX, e.clientY - downY) < 6 && window.__immNext) window.__immNext();
+          downX = null; downY = null;
+          endDrag();
+        });
+        gcanvas.addEventListener("pointercancel", function(){ downX = null; downY = null; endDrag(); });
         var stageVisible = true;
         if("IntersectionObserver" in window){
           new IntersectionObserver(function(es){
@@ -1214,10 +1243,17 @@
           requestAnimationFrame(spin);
           if(!stageVisible || document.hidden) return;
           if(!dragging){
-            if(!reduceMotion) rotY += 0.0032;
             rotX += velX; rotY += velY;
             velX *= 0.95; velY *= 0.95;
-            if(!reduceMotion) rotX += (0.35 - rotX) * 0.002;
+            if(Math.abs(velX) < 0.001 && Math.abs(velY) < 0.001){
+              var tgt = window.__immTarget || { x: 0.35, y: 0.6 };
+              var ty = tgt.y;
+              while(ty - rotY > Math.PI) ty -= Math.PI * 2;
+              while(rotY - ty > Math.PI) ty += Math.PI * 2;
+              rotY += (ty - rotY) * 0.045;
+              rotX += (tgt.x - rotX) * 0.045;
+              if(!reduceMotion && Math.abs(ty - rotY) < 0.02){ rotY += 0.0016; tgt.y = rotY; }
+            }
           }
           group.rotation.x = rotX;
           group.rotation.y = rotY;
@@ -1227,6 +1263,62 @@
         };
         spin();
       }
+    } catch(e){}
+
+    /* ---------- Immersion navigator UI ---------- */
+    try {
+      var PROJ = {
+        sach: { name: "Sach", x: 0.35, y: 0.6,
+          desc: "Live WhatsApp-forward fact-checker. Paste a forward, get a cited TRUE / FALSE / MISLEADING / UNVERIFIED verdict.",
+          links: [["Live site", "https://sachcheck.in"], ["Impact page", "https://sachcheck.in/impact"], ["Full case", "#sach"]] },
+        quantpilot: { name: "QuantPilot", x: 0.55, y: 2.2,
+          desc: "Autonomous options-research agent. Hackathon screening rank 252 of 547; its demo scored 12.5 of 15, ahead of all three track winners.",
+          links: [["Live Explorer", "https://pruthvig1998.github.io/QuantPilot/explorer/"], ["Full case", "#quantpilot"]] },
+        cluse: { name: "Cluse", x: 0.2, y: 3.8,
+          desc: "Live paper-trading desk. Nasdaq-100 options on paper money only, strict risk rules, flattened at the close.",
+          links: [["Live desk", "https://pruthvig1998.github.io/cluse-desk-live/"], ["3D diagram", "https://pruthvig1998.github.io/cluse-desk-live/3d/"], ["Full case", "#cluse"]] },
+        nexus: { name: "Nexus", x: 0.45, y: 5.4,
+          desc: "Open-source agent tooling and experiments, built in the open.",
+          links: [["GitHub repo", "https://github.com/pruthvig1998/nexus"], ["Full case", "#nexus"]] }
+      };
+      var ORDER = ["sach", "quantpilot", "cluse", "nexus"];
+      var nameEl = document.getElementById("imm-name");
+      var descEl = document.getElementById("imm-desc");
+      var linksEl = document.getElementById("imm-links");
+      var panelEl = document.querySelector(".imm-panel");
+      var btns = Array.prototype.slice.call(document.querySelectorAll(".imm-btn"));
+      var curProj = "sach";
+      var selectProj = function(key2){
+        var p = PROJ[key2];
+        if(!p) return;
+        curProj = key2;
+        window.__immTarget = { x: p.x, y: p.y };
+        btns.forEach(function(b){
+          var on = b.getAttribute("data-proj") === key2;
+          b.classList.toggle("is-active", on);
+          b.setAttribute("aria-selected", on ? "true" : "false");
+        });
+        var apply = function(){
+          if(nameEl) nameEl.textContent = p.name;
+          if(descEl) descEl.textContent = p.desc;
+          if(linksEl){
+            linksEl.innerHTML = "";
+            p.links.forEach(function(pair){
+              var a = document.createElement("a");
+              a.href = pair[1];
+              a.textContent = pair[0];
+              if(pair[1].indexOf("http") === 0){ a.target = "_blank"; a.rel = "noopener"; }
+              linksEl.appendChild(a);
+            });
+          }
+          if(panelEl) panelEl.classList.remove("swap");
+        };
+        if(panelEl){ panelEl.classList.add("swap"); setTimeout(apply, 130); }
+        else apply();
+      };
+      window.__immNext = function(){ selectProj(ORDER[(ORDER.indexOf(curProj) + 1) % ORDER.length]); };
+      btns.forEach(function(b){ b.addEventListener("click", function(){ selectProj(b.getAttribute("data-proj")); }); });
+      if(nameEl && descEl && linksEl) selectProj("sach");
     } catch(e){}
 
     /* ---------- Deepened card tilt + cursor glow ---------- */
