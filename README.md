@@ -1,16 +1,12 @@
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/banner.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/banner-light.svg" /><img src="assets/banner.svg" width="100%" alt="Pruthvi Garlapati - Senior GCP DevOps Engineer" /></picture>
 
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/hero-panel.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/hero-panel-light.svg" /><img src="assets/hero-panel.svg" width="100%" alt="Pruthvi Garlapati - I build AI agents that have to show their work. Sach: 79 claims in its public evaluation, 0 overclaimed FALSE verdicts. QuantPilot demo 12.5 of 15, above all Track 02 winners." /></picture>
+
 <div align="center">
-
-**Senior GCP DevOps Engineer at UKG** - GKE · Terraform · Argo CD · Cloud Run. I build AI agents that have to show their work: Sach, QuantPilot, Cluse - built solo, live in production.
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Pruthvi%20Garlapati-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/pruthvi-g/)
-[![Live product](https://img.shields.io/badge/Live%20product-sachcheck.in-C2321F?style=for-the-badge&logo=whatsapp&logoColor=white)](https://sachcheck.in)
-[![Portfolio site](https://img.shields.io/badge/Portfolio-full%20site-8E2438?style=for-the-badge&logo=googlechrome&logoColor=white)](https://pruthvig1998.github.io/pruthvig1998/)
-
+<a href="https://www.linkedin.com/in/pruthvi-g/"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/btn-linkedin.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/btn-linkedin-light.svg" /><img src="assets/btn-linkedin.svg" width="280" alt="LinkedIn - Pruthvi Garlapati" /></picture></a>
+<a href="https://sachcheck.in"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/btn-sach.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/btn-sach-light.svg" /><img src="assets/btn-sach.svg" width="280" alt="Sach - live product at sachcheck.in" /></picture></a>
+<a href="https://pruthvig1998.github.io/pruthvig1998/"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/btn-portfolio.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/btn-portfolio-light.svg" /><img src="assets/btn-portfolio.svg" width="280" alt="Portfolio - full site with live demos" /></picture></a>
 </div>
-
-**[View my full portfolio site](https://pruthvig1998.github.io/pruthvig1998/)** - flagship projects, experience timeline and live demos in one page.
 
 <div align="center">
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/whoami.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/whoami-light.svg" /><img src="assets/whoami.svg" width="100%" alt="whoami - terminal profile" /></picture>
