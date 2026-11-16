@@ -364,21 +364,18 @@
   .imm-label.is-active{background:var(--gold);border-color:var(--gold);color:#fff}
   @media (max-width:900px){ .imm-stage{height:52vh;min-height:300px} }
 
-  /* About: text + dot-portrait panel */
-  .about-grid{display:grid;grid-template-columns:1fr;gap:30px}
-  @media (min-width:920px){ .about-grid{grid-template-columns:minmax(0,1fr) 330px;align-items:start} }
-  .portrait-panel{position:relative;margin:0;border:1px solid rgba(229,72,77,.35);border-radius:18px;overflow:hidden;
-    background:radial-gradient(420px 300px at 50% 30%, rgba(229,72,77,.14), transparent 70%),linear-gradient(180deg,#23060F,#1D040B)}
-  .portrait-ghost{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:0;
-    font-family:Georgia,"Times New Roman",serif;font-weight:700;font-size:74px;letter-spacing:.06em;
-    color:transparent;-webkit-text-stroke:1px rgba(229,72,77,.28);user-select:none}
+  /* Hero dot-portrait centerpiece */
+  .hero-portrait{position:relative;margin:26px 0 6px;align-self:center;width:min(56vh,470px,86vw)}
+  .portrait-ghost{position:absolute;top:0;left:0;right:0;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;z-index:0;
+    font-family:Georgia,"Times New Roman",serif;font-weight:700;font-size:clamp(72px,16vw,128px);letter-spacing:.05em;white-space:nowrap;
+    color:transparent;-webkit-text-stroke:1px rgba(229,72,77,.32);user-select:none}
   .portrait-stage{position:relative;aspect-ratio:1/1;z-index:1;cursor:pointer;outline:none}
-  .portrait-stage:focus-visible{box-shadow:inset 0 0 0 2px var(--gold)}
+  .portrait-stage:focus-visible{box-shadow:0 0 0 2px var(--gold);border-radius:12px}
   #portrait-gl{position:absolute;inset:0;width:100%;height:100%;display:block}
-  #portrait-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;pointer-events:none}
-  .portrait-hint{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:10px;
-    padding:11px 16px;border-top:1px solid rgba(229,72,77,.25);font-family:var(--mono);font-size:11.5px;
-    letter-spacing:.16em;text-transform:uppercase;color:rgba(236,231,223,.75)}
+  #portrait-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;pointer-events:none;border-radius:12px}
+  .portrait-hint{position:relative;z-index:2;display:flex;justify-content:center;align-items:center;gap:18px;
+    padding:12px 4px 0;font-family:var(--mono);font-size:11.5px;
+    letter-spacing:.16em;text-transform:uppercase;color:rgba(236,231,223,.8)}
   .portrait-hint b{color:var(--gold);font-weight:400}
 
   /* Deepened card spotlight: same three-layer stack as the feature-pack
@@ -451,6 +448,14 @@
   <div class="hero-shade" aria-hidden="true"></div>
   <div class="hero-inner">
     <div class="hero-eyebrow">SENIOR GCP DEVOPS ENGINEER - UKG</div>
+    <figure class="hero-portrait reveal-hero" style="--d:.12s">
+      <div class="portrait-ghost" aria-hidden="true">DEVOPS</div>
+      <div class="portrait-stage" id="portrait-stage" role="button" tabindex="0" aria-pressed="false" aria-label="Dot portrait of Pruthvi Garlapati. Activate to reveal the photograph.">
+        <canvas id="portrait-gl"></canvas>
+        <img id="portrait-img" src="assets/portrait.jpg" alt="Pruthvi Garlapati" />
+      </div>
+      <figcaption class="portrait-hint"><span>Dot portrait - sampled from the original photo</span><b id="portrait-action">Click to reveal</b></figcaption>
+    </figure>
     <div class="hero-name-display" id="hero-name">Pruthvi Garlapati.</div>
     <h1 class="hero-title">Platforms that<br>Run <span class="accent">Themselves.</span></h1>
     <p class="hero-sub">Senior GCP DevOps Engineer at UKG. I build cloud platforms for a living, and AI agent systems that have to show their work as proof of craft.</p>
@@ -493,24 +498,12 @@
 
     <section id="about" class="reveal">
       <div class="sec-head">About</div>
-      <div class="about-grid">
-      <div class="about-text">
       <p>I am a <b>Senior GCP DevOps Engineer at UKG</b>, building cloud platform infrastructure since 2018 - currently on the UTM infrastructure team, working on GKE platforms, a SQL Server 2022 migration, and PagerDuty noise reduction. Based between Hyderabad and Toronto, Canadian permanent resident.</p>
       <p>In parallel I design and ship <b>AI agent systems end to end, solo</b>: <a href="#sach">a public-interest fact-checker used from WhatsApp</a>, <a href="#quantpilot">an autonomous options-research agent</a>, and <a href="#cluse">a live paper-trading desk</a>. One rule runs through all of them: <span class="hl">every claim an agent makes must be traceable to evidence, and "I could not verify this" is a valid answer.</span></p>
       <div class="proof">
         <div class="cell"><div class="n">8+</div><div class="l">YEARS IN INFRASTRUCTURE, SINCE 2018</div></div>
         <div class="cell"><div class="n">3</div><div class="l">AI SYSTEMS LIVE IN PRODUCTION</div></div>
         <div class="cell"><div class="n">0</div><div class="l">OVERCLAIMED VERDICTS IN SACH'S 79-CLAIM EVAL</div></div>
-      </div>
-      </div>
-      <figure class="portrait-panel">
-        <div class="portrait-ghost" aria-hidden="true">DEVOPS</div>
-        <div class="portrait-stage" id="portrait-stage" role="button" tabindex="0" aria-pressed="false" aria-label="Dot portrait of Pruthvi Garlapati. Activate to reveal the photograph.">
-          <canvas id="portrait-gl"></canvas>
-          <img id="portrait-img" src="assets/portrait.jpg" alt="Pruthvi Garlapati" loading="lazy" />
-        </div>
-        <figcaption class="portrait-hint"><span>Dot portrait - sampled from the original photo</span><b id="portrait-action">Click to reveal</b></figcaption>
-      </figure>
       </div>
     </section>
 
@@ -1503,7 +1496,7 @@
           var posArr = new Float32Array(base);
           geo.setAttribute("position", new THREE.BufferAttribute(posArr, 3));
           geo.setAttribute("color", new THREE.Float32BufferAttribute(cols, 3));
-          var mat = new THREE.PointsMaterial({ size: 0.021, vertexColors: true, transparent: true, opacity: 1, sizeAttenuation: true, depthWrite: false });
+          var mat = new THREE.PointsMaterial({ size: 0.0235, vertexColors: true, transparent: true, opacity: 1, sizeAttenuation: true, depthWrite: false });
           var points = new THREE.Points(geo, mat);
           var pScene = new THREE.Scene();
           pScene.add(points);
