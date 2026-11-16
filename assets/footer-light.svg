@@ -1,0 +1,12 @@
+<svg width="1200" height="120" viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Footer">
+  <defs><linearGradient id="fbg" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#F1E4DC"/><stop offset="1" stop-color="#FBF4EF"/></linearGradient></defs>
+  <rect width="1200" height="120" rx="16" fill="url(#fbg)"/>
+  <path fill="#E5484D" fill-opacity="0.14" d="M0,64 C200,34 400,94 600,64 C800,34 1000,94 1200,64 L1200,120 L0,120 Z">
+    <animate attributeName="d" values="M0,64 C200,34 400,94 600,64 C800,34 1000,94 1200,64 L1200,120 L0,120 Z;M0,54 C200,84 400,44 600,74 C800,94 1000,44 1200,74 L1200,120 L0,120 Z;M0,64 C200,34 400,94 600,64 C800,34 1000,94 1200,64 L1200,120 L0,120 Z" dur="11s" repeatCount="indefinite"/>
+  </path>
+  <path fill="#D8B4B8" fill-opacity="0.06" d="M0,84 C240,58 420,104 660,84 C880,64 1040,100 1200,82 L1200,120 L0,120 Z">
+    <animate attributeName="d" values="M0,84 C240,58 420,104 660,84 C880,64 1040,100 1200,82 L1200,120 L0,120 Z;M0,74 C240,98 420,64 660,92 C880,104 1040,66 1200,90 L1200,120 L0,120 Z;M0,84 C240,58 420,104 660,84 C880,64 1040,100 1200,82 L1200,120 L0,120 Z" dur="14s" repeatCount="indefinite"/>
+  </path>
+  <text x="600" y="52" text-anchor="middle" font-family="Courier New, monospace" font-size="14" letter-spacing="4" fill="#6E6259">BUILT IN THE OPEN - EVERY CLAIM TRACEABLE TO EVIDENCE</text>
+</svg>
