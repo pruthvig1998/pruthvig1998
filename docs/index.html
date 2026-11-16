@@ -1671,10 +1671,6 @@
               var hgx = (gx - 108) / 34, hgy = (gy - 52) / 30;
               var hgate = Math.exp(-(hgx * hgx + hgy * hgy));
               pz += hdome * hgate * 0.9;
-              var nnx = (gx - 108) / 7, nny = (gy - 58) / 16;
-              pz += Math.exp(-(nnx * nnx + nny * nny)) * 0.22;
-              var bbx = (gx - 108) / 26, bby = (gy - 40) / 5;
-              pz += Math.exp(-(bbx * bbx + bby * bby)) * 0.10;
               base.push(px, py, pz);
               var dwx = (gx - 108) / 30, dwy = (gy - 50) / 24;
               var ew = Math.exp(-(dwx * dwx + dwy * dwy));
