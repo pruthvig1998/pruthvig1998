@@ -407,6 +407,8 @@
   #sound-toggle::before{content:"";width:6px;height:6px;border-radius:50%;background:rgba(236,231,223,.3);transition:background .2s}
   #sound-toggle.on{color:var(--ivory);border-color:rgba(229,72,77,.55)}
   #sound-toggle.on::before{background:#E5484D}
+  #sound-toggle.waiting{animation:snd-pulse 2.2s ease-in-out infinite}
+  @keyframes snd-pulse{0%,100%{border-color:rgba(229,72,77,.30)}50%{border-color:rgba(240,163,168,.85)}}
   #sound-toggle:hover{color:var(--ivory);border-color:rgba(229,72,77,.5)}
 </style>
 </head>
@@ -1715,8 +1717,9 @@
       var audio = document.getElementById("bg-music");
       var btn = document.getElementById("sound-toggle");
       if(!audio || !btn) return;
-      var TARGET = 0.45, on = false, fadeTimer = null, userOff = false;
-      try { userOff = localStorage.getItem("pg-music") === "off"; } catch(e){}
+      var TARGET = 0.45, on = false, fadeTimer = null, userOff = false, waiting = false;
+      var KEY = "pg-music2";
+      try { userOff = localStorage.getItem(KEY) === "off"; } catch(e){}
       var fadeTo = function(target, done){
         if(fadeTimer) clearInterval(fadeTimer);
         var step = (target - audio.volume) / 12;
@@ -1729,10 +1732,11 @@
           audio.volume = Math.max(0, Math.min(1, v));
         }, 40);
       };
-      var setBtn = function(on){
-        btn.classList.toggle("on", on);
-        btn.setAttribute("aria-pressed", on ? "true" : "false");
-        btn.textContent = on ? "Sound on" : "Sound off";
+      var setBtn = function(mode){
+        btn.classList.toggle("on", mode !== "off");
+        btn.classList.toggle("waiting", mode === "waiting");
+        btn.setAttribute("aria-pressed", mode === "off" ? "false" : "true");
+        btn.textContent = mode === "on" ? "Sound on" : (mode === "waiting" ? "Tap for sound" : "Sound off");
       };
       var startLoud = function(){
         audio.muted = false;
@@ -1742,66 +1746,79 @@
           if(pr && pr.catch) pr.catch(function(){});
         }
         fadeTo(TARGET);
-        on = true;
-        setBtn(true);
+        on = true; waiting = false;
+        setBtn("on");
       };
-      var armOnce = function(fn){
-        var wrapped = function(e){
-          if(e && e.target === btn) return;
-          removeEventListener("pointerdown", wrapped);
-          removeEventListener("keydown", wrapped);
-          removeEventListener("touchstart", wrapped);
-          fn();
+      var disarm = function(){};
+      var armUnlock = function(){
+        var soft = function(){
+          if(!waiting) return;
+          audio.muted = false;
         };
-        addEventListener("pointerdown", wrapped);
-        addEventListener("keydown", wrapped);
-        addEventListener("touchstart", wrapped, { passive: true });
+        var unlock = function(e){
+          if(e && e.target === btn) return;
+          if(!waiting) return;
+          waiting = false;
+          audio.muted = false;
+          audio.volume = 0;
+          if(audio.paused){
+            var pr = audio.play();
+            if(pr && pr.catch) pr.catch(function(){});
+          }
+          fadeTo(TARGET);
+          on = true;
+          setBtn("on");
+          disarm();
+        };
+        var gestures = ["pointerdown", "touchstart", "touchend", "click", "keydown"];
+        gestures.forEach(function(t){ addEventListener(t, unlock, { passive: true }); });
+        addEventListener("wheel", soft, { passive: true });
+        addEventListener("scroll", soft, { passive: true });
+        disarm = function(){
+          gestures.forEach(function(t){ removeEventListener(t, unlock); });
+          removeEventListener("wheel", soft);
+          removeEventListener("scroll", soft);
+        };
       };
       if(!userOff){
-        setBtn(true);
+        audio.muted = false;
         audio.volume = 0;
         var pr0 = audio.play();
+        var fellBack = function(){
+          audio.muted = true;
+          audio.volume = TARGET;
+          waiting = true;
+          var prm = audio.play();
+          if(prm && prm.catch) prm.catch(function(){});
+          setBtn("waiting");
+          armUnlock();
+        };
         if(pr0 && pr0.then){
           pr0.then(function(){
             on = true;
             fadeTo(TARGET);
-            setBtn(true);
-          }).catch(function(){
-            audio.muted = true;
-            audio.volume = TARGET;
-            var prm = audio.play();
-            if(prm && prm.then){
-              prm.then(function(){
-                on = true;
-                setBtn(true);
-                armOnce(function(){ audio.muted = false; });
-              }).catch(function(){
-                armOnce(startLoud);
-              });
-            } else {
-              on = true;
-              setBtn(true);
-              armOnce(function(){ audio.muted = false; });
-            }
-          });
+            setBtn("on");
+          }).catch(fellBack);
         } else {
           on = true;
           fadeTo(TARGET);
-          setBtn(true);
+          setBtn("on");
         }
       } else {
-        setBtn(false);
+        setBtn("off");
       }
       btn.addEventListener("click", function(){
-        if(on && !audio.paused){
+        if(on && !audio.paused && !waiting){
           userOff = true;
-          try { localStorage.setItem("pg-music", "off"); } catch(err){}
+          try { localStorage.setItem(KEY, "off"); } catch(err){}
           on = false;
           fadeTo(0, function(){ audio.pause(); });
-          setBtn(false);
+          setBtn("off");
         } else {
           userOff = false;
-          try { localStorage.setItem("pg-music", "on"); } catch(err){}
+          waiting = false;
+          try { localStorage.setItem(KEY, "on"); } catch(err){}
+          disarm();
           startLoud();
         }
       });
