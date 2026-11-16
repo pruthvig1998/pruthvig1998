@@ -325,7 +325,7 @@
   .writing-item .src{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
 
   /* Hero dot-portrait: bust point cloud, reel-matched */
-  .hero-ghost{position:absolute;top:29%;left:50%;transform:translate(-50%,-50%);z-index:1;pointer-events:none;
+  .hero-ghost{position:absolute;top:29%;left:50%;transform:translate(-50%,-50%) translate3d(calc(var(--look-x,0) * -16px), calc(var(--look-y,0) * -9px), 0);z-index:1;pointer-events:none;
     font-family:var(--head);font-weight:700;font-size:clamp(130px,23vw,430px);letter-spacing:-.01em;line-height:1;white-space:nowrap;user-select:none;
     background:linear-gradient(180deg, rgba(238,234,228,.50), rgba(238,234,228,.12));
     -webkit-background-clip:text;background-clip:text;color:transparent}
@@ -338,7 +338,14 @@
   .portrait-stage:focus-visible{box-shadow:0 0 0 2px var(--gold);border-radius:12px}
   #portrait-gl{position:absolute;inset:0;width:100%;height:100%;display:block}
   #portrait-img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;pointer-events:none;
+    transform:perspective(900px) rotateY(calc(var(--look-x,0) * 6deg)) rotateX(calc(var(--look-y,0) * 4.5deg)) translate3d(calc(var(--look-x,0) * 9px), calc(var(--look-y,0) * 6px), 0);
+    transform-origin:57% 30%;will-change:transform;
     -webkit-mask-image:linear-gradient(180deg, #000 88%, transparent 99%);mask-image:linear-gradient(180deg, #000 88%, transparent 99%)}
+  /* About: scroll-driven 3D model layer */
+  #about{position:relative;isolation:isolate}
+  #about-gl{position:absolute;inset:-30px -16px;width:calc(100% + 32px);height:calc(100% + 60px);z-index:0;pointer-events:none}
+  #about .sec-head, #about p, #about .proof{position:relative;z-index:1}
+  #about .proof .cell{transform-style:preserve-3d;will-change:transform,opacity}
   .reveal-btn{position:relative;z-index:3;margin-top:16px;display:inline-flex;align-items:center;gap:9px;
     padding:9px 20px;border-radius:999px;border:1px solid rgba(236,231,223,.35);background:rgba(16,2,6,.55);
     backdrop-filter:blur(6px);color:var(--ivory);font-family:var(--mono);font-size:11px;letter-spacing:.24em;
@@ -468,6 +475,7 @@
   <main>
 
     <section id="about" class="reveal">
+      <canvas id="about-gl" aria-hidden="true"></canvas>
       <div class="sec-head">About</div>
       <p>I am a <b>Senior GCP DevOps Engineer at UKG</b>, building cloud platform infrastructure since 2018 - currently on the UTM infrastructure team, working on GKE platforms, a SQL Server 2022 migration, and PagerDuty noise reduction. Based between Hyderabad and Toronto, Canadian permanent resident.</p>
       <p>In parallel I design and ship <b>AI agent systems end to end, solo</b>: <a href="#sach">a public-interest fact-checker used from WhatsApp</a>, <a href="#quantpilot">an autonomous options-research agent</a>, and <a href="#cluse">a live paper-trading desk</a>. One rule runs through all of them: <span class="hl">every claim an agent makes must be traceable to evidence, and "I could not verify this" is a valid answer.</span></p>
@@ -692,7 +700,7 @@
     try {
       if(window.gsap && window.ScrollTrigger){
         gsap.registerPlugin(ScrollTrigger);
-        gsap.utils.toArray(".card, .job, .skillbox, .proof .cell").forEach(function(el, i){
+        gsap.utils.toArray(".card, .job, .skillbox").forEach(function(el, i){
           gsap.fromTo(el, { opacity: 0, y: 16 }, {
             opacity: 1, y: 0, duration: 0.6, ease: "power3.out", delay: (i % 3) * 0.05,
             scrollTrigger: { trigger: el, start: "top 88%" }
@@ -1328,8 +1336,8 @@
             }
             return [255,158,87];
           };
-          var base = [], scat = [], cols = [];
-          var base2 = [], scat2 = [], cols2 = [];
+          var base = [], scat = [], cols = [], wts = [];
+          var base2 = [], scat2 = [], cols2 = [], wts2 = [];
           for(var gy = 0; gy < ROWS; gy++){
             for(var gx = 0; gx < COLS; gx++){
               var idx = (gy * COLS + gx) * 4;
@@ -1343,11 +1351,16 @@
               var l2 = Math.min(1, (0.16 + 0.88 * Math.pow(lum, 1.3)) * (0.35 + 0.65 * al) * fadeY);
               var px = (gx / (COLS - 1) - 0.5) * PW, py = (0.5 - gy / (ROWS - 1)) * PH, pz = (l2 - 0.40) * 0.85;
               base.push(px, py, pz);
+              var dwx = (gx - 108) / 30, dwy = (gy - 50) / 24;
+              var ew = Math.exp(-(dwx * dwx + dwy * dwy));
+              var exx = (gx - 108) / 15, eyy = (gy - 43) / 8;
+              ew += 0.55 * Math.exp(-(exx * exx + eyy * eyy));
+              wts.push(Math.min(1.15, ew));
               var th = Math.random() * Math.PI * 2, ph = Math.acos(2 * Math.random() - 1), rr = 0.15 + Math.random() * 0.45;
               scat.push(px + rr * Math.sin(ph) * Math.cos(th), py + rr * Math.sin(ph) * Math.sin(th), pz + rr * Math.cos(ph));
               var c = ramp(l2);
               cols.push(c[0] / 255, c[1] / 255, c[2] / 255);
-              if(l2 > 0.5){ base2.push(px, py, pz); scat2.push(scat[scat.length-3], scat[scat.length-2], scat[scat.length-1]); cols2.push(c[0] / 255, c[1] / 255, c[2] / 255); }
+              if(l2 > 0.5){ base2.push(px, py, pz); scat2.push(scat[scat.length-3], scat[scat.length-2], scat[scat.length-1]); cols2.push(c[0] / 255, c[1] / 255, c[2] / 255); wts2.push(wts[wts.length - 1]); }
             }
           }
           var geo = new THREE.BufferGeometry();
@@ -1368,7 +1381,7 @@
           var points = new THREE.Points(geo, mat);
           var group = new THREE.Group();
           group.add(points);
-          var posArr2 = null, baseArr2 = null, scatArr2 = null, mat2 = null;
+          var posArr2 = null, baseArr2 = null, scatArr2 = null, mat2 = null, wArr2 = null;
           if(base2.length){
             var geo2 = new THREE.BufferGeometry();
             posArr2 = new Float32Array(base2);
@@ -1379,6 +1392,7 @@
             group.add(points2);
             baseArr2 = new Float32Array(base2);
             scatArr2 = new Float32Array(scat2);
+            wArr2 = new Float32Array(wts2);
           }
           var pScene = new THREE.Scene();
           pScene.add(group);
@@ -1393,13 +1407,15 @@
           };
           fitP();
           addEventListener("resize", fitP);
-          var tRX = 0, tRY = 0, cRX = 0, cRY = 0;
+          var nTX = 0, nTY = 0, nX = 0, nY = 0, lastPtr = -1e9, lastVarX = 9, lastVarY = 9;
           heroSec.addEventListener("pointermove", function(e){
             var rect = heroSec.getBoundingClientRect();
             if(!rect.width) return;
-            tRY = ((e.clientX - rect.left) / rect.width - 0.5) * 1.9;
-            tRX = ((e.clientY - rect.top) / rect.height - 0.5) * -0.64;
+            nTX = Math.max(-1, Math.min(1, ((e.clientX - rect.left) / rect.width - 0.5) * 2));
+            nTY = Math.max(-1, Math.min(1, ((e.clientY - rect.top) / rect.height - 0.5) * 2));
+            lastPtr = performance.now();
           }, { passive: true });
+          heroSec.addEventListener("pointerleave", function(){ lastPtr = -1e9; });
           var revealed = false, prog = 0;
           var toggleReveal = function(){
             revealed = !revealed;
@@ -1417,28 +1433,43 @@
           if("IntersectionObserver" in window){
             new IntersectionObserver(function(es){ es.forEach(function(en){ pVisible = en.isIntersecting; }); }, { threshold: 0.05 }).observe(pStage);
           }
-          var baseArr = new Float32Array(base), scatArr = new Float32Array(scat);
+          var baseArr = new Float32Array(base), scatArr = new Float32Array(scat), wArr = new Float32Array(wts);
           var pLoop = function(){
             requestAnimationFrame(pLoop);
             if(!pVisible || document.hidden) return;
             prog += ((revealed ? 1 : 0) - prog) * (reduceMotion ? 1 : 0.045);
             var e2 = prog * prog * (3 - 2 * prog);
+            var nowP = performance.now();
+            if(!reduceMotion && nowP - lastPtr > 3500){
+              nTX = Math.sin(nowP * 0.00042) * 0.55;
+              nTY = Math.cos(nowP * 0.00031) * 0.30;
+            }
+            nX += (nTX - nX) * 0.055;
+            nY += (nTY - nY) * 0.055;
+            var lookK = 1 - e2;
             for(var i = 0; i < posArr.length; i++){
-              posArr[i] = baseArr[i] + (scatArr[i] - baseArr[i]) * e2;
+              var d3 = (i / 3) | 0, w3 = wArr[d3], ph3 = i % 3;
+              var off3 = ph3 === 0 ? nX * w3 * 0.17 : (ph3 === 1 ? -nY * w3 * 0.11 : w3 * (Math.abs(nX) + Math.abs(nY)) * 0.035);
+              posArr[i] = baseArr[i] + (scatArr[i] - baseArr[i]) * e2 + off3 * lookK;
             }
             geo.attributes.position.needsUpdate = true;
-            if(posArr2){
+            if(posArr2 && wArr2){
               for(var j = 0; j < posArr2.length; j++){
-                posArr2[j] = baseArr2[j] + (scatArr2[j] - baseArr2[j]) * e2;
+                var d4 = (j / 3) | 0, w4 = wArr2[d4], ph4 = j % 3;
+                var off4 = ph4 === 0 ? nX * w4 * 0.17 : (ph4 === 1 ? -nY * w4 * 0.11 : w4 * (Math.abs(nX) + Math.abs(nY)) * 0.035);
+                posArr2[j] = baseArr2[j] + (scatArr2[j] - baseArr2[j]) * e2 + off4 * lookK;
               }
               mat2.opacity = 0.5 * (1 - e2);
             }
             mat.opacity = 1 - e2 * 0.92;
             pImg.style.opacity = e2.toFixed(3);
-            cRY += (tRY - cRY) * 0.06;
-            cRX += (tRX - cRX) * 0.06;
-            group.rotation.y = cRY;
-            group.rotation.x = cRX;
+            if(Math.abs(nX - lastVarX) > 0.003 || Math.abs(nY - lastVarY) > 0.003){
+              heroSec.style.setProperty("--look-x", nX.toFixed(3));
+              heroSec.style.setProperty("--look-y", nY.toFixed(3));
+              lastVarX = nX; lastVarY = nY;
+            }
+            group.rotation.y = nX * 0.30;
+            group.rotation.x = nY * 0.13;
             pRen.render(pScene, pCam);
           };
           pLoop();
@@ -1472,19 +1503,136 @@
 </script>
 
 
-<audio id="bg-music" loop preload="none" src="assets/hero-music.mp3"></audio>
+<script>
+  // About: scroll-driven 3D wireframe models (wine/rose) + 3D proof-cell tilt.
+  (function(){
+    try {
+      var sec = document.getElementById("about");
+      var canvas = document.getElementById("about-gl");
+      if(!sec || !canvas || !window.THREE) return;
+      var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+      renderer.setClearColor(0x000000, 0);
+      var scene = new THREE.Scene();
+      var cam = new THREE.PerspectiveCamera(42, 1, 0.1, 60);
+      cam.position.set(0, 0, 9);
+      var group = new THREE.Group();
+      scene.add(group);
+      var wire = function(geo, color, op){
+        return new THREE.Mesh(geo, new THREE.MeshBasicMaterial({ color: color, wireframe: true, transparent: true, opacity: op }));
+      };
+      var models = [];
+      var add = function(m, x, y, z, rx, ry, bob, ph){
+        m.position.set(x, y, z);
+        group.add(m);
+        models.push({ m: m, rx: rx, ry: ry, bob: bob, ph: ph, y0: y });
+      };
+      add(wire(new THREE.IcosahedronGeometry(1.15, 1), 0xE5484D, 0.30), -3.1, 0.7, 0, 0.0035, 0.005, 0.9, 0);
+      var mTor = wire(new THREE.TorusGeometry(0.85, 0.30, 10, 28), 0xF0A3A8, 0.22);
+      add(mTor, 3.2, 1.0, -0.6, 0.004, 0.006, 1.3, 2);
+      add(wire(new THREE.OctahedronGeometry(0.8, 0), 0x8E2438, 0.36), 2.9, -1.1, 0.2, 0.006, 0.004, 1.1, 4);
+      var mRing = wire(new THREE.TorusGeometry(1.5, 0.05, 8, 64), 0xB03046, 0.20);
+      mRing.rotation.x = 1.1;
+      add(mRing, -3.0, -1.2, -0.8, 0.002, 0.003, 0.7, 1);
+      var mSmall = wire(new THREE.IcosahedronGeometry(0.45, 0), 0xF0A3A8, 0.30);
+      add(mSmall, 0.4, 1.5, -1.2, 0.007, 0.005, 1.6, 3);
+      add(wire(new THREE.OctahedronGeometry(0.35, 0), 0xE5484D, 0.28), -0.8, -1.6, -0.5, 0.005, 0.007, 1.9, 5);
+      var pn = 130, parr = new Float32Array(pn * 3);
+      for(var i = 0; i < pn; i++){
+        parr[i * 3] = (Math.random() - 0.5) * 11;
+        parr[i * 3 + 1] = (Math.random() - 0.5) * 5.4;
+        parr[i * 3 + 2] = -1.5 + Math.random() * 1.5;
+      }
+      var pgeo = new THREE.BufferGeometry();
+      pgeo.setAttribute("position", new THREE.BufferAttribute(parr, 3));
+      var pts = new THREE.Points(pgeo, new THREE.PointsMaterial({ color: 0xF0A3A8, size: 0.045, transparent: true, opacity: 0.5, depthWrite: false }));
+      group.add(pts);
+      if(window.matchMedia && window.matchMedia("(max-width: 720px)").matches){ mTor.visible = false; mSmall.visible = false; }
+      var fit = function(){
+        var w = canvas.clientWidth || sec.clientWidth || 1, h = canvas.clientHeight || sec.clientHeight || 1;
+        renderer.setSize(w, h, false);
+        cam.aspect = w / h;
+        cam.updateProjectionMatrix();
+      };
+      fit();
+      addEventListener("resize", fit);
+      var target = 0, prog = 0;
+      var measure = function(){
+        var r = sec.getBoundingClientRect();
+        var vh = window.innerHeight || 1;
+        target = Math.min(1, Math.max(0, (vh - r.top) / (vh + r.height)));
+      };
+      var cells = Array.prototype.slice.call(sec.querySelectorAll(".proof .cell"));
+      var paintCells = function(){
+        var vh = window.innerHeight || 1;
+        cells.forEach(function(c){
+          var r = c.getBoundingClientRect();
+          var t = Math.min(1, Math.max(0, (vh * 0.92 - r.top) / (vh * 0.38)));
+          var e = 1 - Math.pow(1 - t, 3);
+          c.style.opacity = (0.15 + 0.85 * e).toFixed(3);
+          c.style.transform = "perspective(850px) rotateX(" + ((1 - e) * 26).toFixed(2) + "deg) translateY(" + ((1 - e) * 26).toFixed(1) + "px)";
+        });
+      };
+      var visible = false;
+      if("IntersectionObserver" in window){
+        new IntersectionObserver(function(es){ es.forEach(function(en){ visible = en.isIntersecting; }); }, { rootMargin: "240px" }).observe(sec);
+      } else visible = true;
+      if(reduce){
+        measure(); prog = target;
+        group.rotation.y = (prog - 0.5) * 1.7;
+        group.rotation.x = (prog - 0.5) * 0.55;
+        renderer.render(scene, cam);
+        cells.forEach(function(c){ c.style.opacity = "1"; c.style.transform = "none"; });
+        addEventListener("scroll", function(){
+          measure();
+          group.rotation.y = (target - 0.5) * 1.7;
+          group.rotation.x = (target - 0.5) * 0.55;
+          renderer.render(scene, cam);
+        }, { passive: true });
+        return;
+      }
+      var t0 = performance.now();
+      var loop = function(){
+        requestAnimationFrame(loop);
+        measure();
+        paintCells();
+        if(!visible || document.hidden) return;
+        prog += (target - prog) * 0.07;
+        var t = (performance.now() - t0) / 1000;
+        group.rotation.y = (prog - 0.5) * 1.7;
+        group.rotation.x = (prog - 0.5) * 0.55;
+        cam.position.y = (prog - 0.5) * -1.1;
+        cam.lookAt(0, 0, 0);
+        models.forEach(function(o){
+          if(!o.m.visible) return;
+          o.m.rotation.x += o.rx;
+          o.m.rotation.y += o.ry;
+          o.m.position.y = o.y0 + Math.sin(t * o.bob + o.ph) * 0.09;
+        });
+        pts.rotation.y = prog * 0.6;
+        renderer.render(scene, cam);
+      };
+      loop();
+    } catch(e){}
+  })();
+</script>
+
+
+<audio id="bg-music" loop preload="auto" src="assets/hero-music.mp3"></audio>
 <button type="button" id="sound-toggle" aria-pressed="false" aria-label="Toggle background music">Sound off</button>
 <script>
   // Background music: slowed phonk in the reel's mood (Pixabay free license).
-  // Browsers block autoplay with sound, so playback starts on the first
-  // interaction (tap, click, scroll or key) and loops at low volume.
-  // The toggle pauses/resumes; the choice is remembered on this device.
+  // ON by default: plays with sound immediately where the browser allows
+  // it; where audible autoplay is blocked (first visit), the track starts
+  // muted and unmutes on the first tap, click or key press. The toggle
+  // pauses/resumes; an explicit off is remembered on this device.
   (function(){
     try {
       var audio = document.getElementById("bg-music");
       var btn = document.getElementById("sound-toggle");
       if(!audio || !btn) return;
-      var TARGET = 0.45, started = false, fadeTimer = null, userOff = false;
+      var TARGET = 0.45, on = false, fadeTimer = null, userOff = false;
       try { userOff = localStorage.getItem("pg-music") === "off"; } catch(e){}
       var fadeTo = function(target, done){
         if(fadeTimer) clearInterval(fadeTimer);
@@ -1503,46 +1651,77 @@
         btn.setAttribute("aria-pressed", on ? "true" : "false");
         btn.textContent = on ? "Sound on" : "Sound off";
       };
-      var start = function(){
-        if(started) return;
-        started = true;
-        audio.volume = 0;
-        var pr = audio.play();
-        if(pr && pr.catch) pr.catch(function(){ started = false; });
+      var startLoud = function(){
+        audio.muted = false;
+        if(audio.paused){
+          audio.volume = 0;
+          var pr = audio.play();
+          if(pr && pr.catch) pr.catch(function(){});
+        }
         fadeTo(TARGET);
+        on = true;
         setBtn(true);
       };
-      var disarm = function(){
-        removeEventListener("pointerdown", go);
-        removeEventListener("keydown", go);
-        removeEventListener("touchstart", go);
-        removeEventListener("scroll", go);
-      };
-      var go = function(e){
-        if(e && e.target === btn) return;
-        start();
-        disarm();
+      var armOnce = function(fn){
+        var wrapped = function(e){
+          if(e && e.target === btn) return;
+          removeEventListener("pointerdown", wrapped);
+          removeEventListener("keydown", wrapped);
+          removeEventListener("touchstart", wrapped);
+          fn();
+        };
+        addEventListener("pointerdown", wrapped);
+        addEventListener("keydown", wrapped);
+        addEventListener("touchstart", wrapped, { passive: true });
       };
       if(!userOff){
-        addEventListener("pointerdown", go);
-        addEventListener("keydown", go);
-        addEventListener("touchstart", go, { passive: true });
-        addEventListener("scroll", go, { passive: true });
+        setBtn(true);
+        audio.volume = 0;
+        var pr0 = audio.play();
+        if(pr0 && pr0.then){
+          pr0.then(function(){
+            on = true;
+            fadeTo(TARGET);
+            setBtn(true);
+          }).catch(function(){
+            audio.muted = true;
+            audio.volume = TARGET;
+            var prm = audio.play();
+            if(prm && prm.then){
+              prm.then(function(){
+                on = true;
+                setBtn(true);
+                armOnce(function(){ audio.muted = false; });
+              }).catch(function(){
+                armOnce(startLoud);
+              });
+            } else {
+              on = true;
+              setBtn(true);
+              armOnce(function(){ audio.muted = false; });
+            }
+          });
+        } else {
+          on = true;
+          fadeTo(TARGET);
+          setBtn(true);
+        }
+      } else {
+        setBtn(false);
       }
       btn.addEventListener("click", function(){
-        if(!started || audio.paused){
-          userOff = false;
-          try { localStorage.setItem("pg-music", "on"); } catch(err){}
-          if(!started) start();
-          else { var pr2 = audio.play(); if(pr2 && pr2.catch) pr2.catch(function(){}); fadeTo(TARGET); setBtn(true); }
-        } else {
+        if(on && !audio.paused){
           userOff = true;
           try { localStorage.setItem("pg-music", "off"); } catch(err){}
+          on = false;
           fadeTo(0, function(){ audio.pause(); });
           setBtn(false);
+        } else {
+          userOff = false;
+          try { localStorage.setItem("pg-music", "on"); } catch(err){}
+          startLoud();
         }
       });
-      setBtn(false);
     } catch(e){}
   })();
 </script>
