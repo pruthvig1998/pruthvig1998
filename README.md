@@ -2,13 +2,10 @@
 
 <div align="center">
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=21&pause=1200&color=E5484D&center=true&vCenter=true&width=820&lines=Senior+GCP+DevOps+Engineer+at+UKG;GKE+%C2%B7+Terraform+%C2%B7+Argo+CD+%C2%B7+Cloud+Run;I+build+AI+agents+that+have+to+show+their+work;Sach+%C2%B7+QuantPilot+%C2%B7+Cluse+-+built+solo%2C+live+in+production" alt="What Pruthvi does" />
-
-<br/>
+**Senior GCP DevOps Engineer at UKG** - GKE · Terraform · Argo CD · Cloud Run. I build AI agents that have to show their work: Sach, QuantPilot, Cluse - built solo, live in production.
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Pruthvi%20Garlapati-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/pruthvi-g/)
 [![Live product](https://img.shields.io/badge/Live%20product-sachcheck.in-C2321F?style=for-the-badge&logo=whatsapp&logoColor=white)](https://sachcheck.in)
-[![Profile views](https://komarev.com/ghpvc/?username=pruthvig1998&label=Profile%20views&color=8E2438&style=for-the-badge)](https://github.com/pruthvig1998)
 [![Portfolio site](https://img.shields.io/badge/Portfolio-full%20site-8E2438?style=for-the-badge&logo=googlechrome&logoColor=white)](https://pruthvig1998.github.io/pruthvig1998/)
 
 </div>
@@ -113,14 +110,6 @@ Live demos: [Sach](https://sachcheck.in) - [Sach impact page](https://sachcheck.
 </div>
 
 <p align="center"><sub>LIVE DATA - REGENERATED DAILY FROM MY GITHUB ACTIVITY</sub></p>
-
-<div align="center">
-<img src="github-metrics.svg" width="480" alt="GitHub metrics - real contributions, habits, languages and activity" />
-</div>
-
-<div align="center">
-<img src="https://streak-stats.demolab.com?user=pruthvig1998&background=23060F&border=E5484D&stroke=3A0A18&ring=E5484D&fire=E5484D&currStreakNum=ECE7DF&sideNums=ECE7DF&currStreakLabel=F0A3A8&sideLabels=C4A0A6&dates=9C968B&hide_border=true" width="480" alt="Contribution streak - current and longest" />
-</div>
 
 <div align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/divider.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/divider-light.svg" /><img src="assets/divider.svg" width="100%" alt="" /></picture></div>
 
