@@ -1654,7 +1654,7 @@
           sacY = (Math.random() - 0.5) * 0.10;
           sacNext = nowP + 1500 + Math.random() * 2500;
         }
-        var R0 = 0.28 * window.innerWidth;
+        var R0 = 0.16 * window.innerWidth;
         for(var gi = 0; gi < GEYES.length; gi++){
           var e = GEYES[gi];
           if(ptrActive && ptrX >= 0){
@@ -1670,7 +1670,7 @@
           }
           e.x += (e.tx - e.x) * ke;
           e.y += (e.ty - e.y) * ke;
-          var dx = e.x * 6, dy = e.y * 2;
+          var dx = e.x * 9, dy = e.y * 2.5;
           var m = Math.hypot(dx, dy);
           var moved = Math.abs(dx - e.ldx) + Math.abs(dy - e.ldy);
           if(moved >= 0.02 || (m < 0.02 && e.lm >= 0.02)){
