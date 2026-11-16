@@ -275,6 +275,17 @@
   .contact-box::before{top:-1px;left:-1px;border-top:2px solid var(--gold);border-left:2px solid var(--gold);border-top-left-radius:16px}
   .contact-box::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--ivory);border-right:2px solid var(--ivory);border-bottom-right-radius:16px}
   .contact-box h3{font-family:var(--head);font-size:22px;font-weight:600;margin-bottom:10px}
+  .chan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+  @media (max-width:900px){ .chan-grid{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:560px){ .chan-grid{grid-template-columns:1fr} }
+  .chan{display:block;border:1px solid rgba(236,231,223,.12);border-radius:14px;padding:18px;background:rgba(29,4,11,.35);transition:border-color .25s ease,transform .25s ease,background-color .25s ease}
+  .chan:hover{border-color:rgba(229,72,77,.55);transform:translateY(-3px);background:rgba(229,72,77,.05)}
+  .chan .mono{display:block;font-family:var(--head);font-size:30px;line-height:1;color:transparent;-webkit-text-stroke:1.2px rgba(229,72,77,.6);transition:color .25s ease}
+  .chan:hover .mono{color:var(--gold)}
+  .chan h4{font-family:var(--head);font-size:17px;font-weight:600;color:var(--ivory);margin:10px 0 3px}
+  .chan .handle{font-family:var(--mono);font-size:12px;color:var(--soft);letter-spacing:.03em;word-break:break-all}
+  .chan p{font-size:13px;color:rgba(236,231,223,.65);margin:7px 0 0}
+  .chan .go{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--gold);text-transform:uppercase;display:block;margin-top:10px}
   .btn{display:inline-block;margin-top:14px;margin-right:8px;background:rgba(229,72,77,.04);color:var(--ivory);border:1px solid rgba(229,72,77,.65);padding:12px 22px;border-radius:8px;font-family:var(--mono);font-size:14px;transition:background-color .2s ease,color .2s ease,border-color .2s ease}
   .btn:hover{background:rgba(229,72,77,.14);color:#fff;border-color:var(--gold)}
 
@@ -438,7 +449,7 @@
   .writing-item .src{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
 
   /* Hero dot-portrait: bust point cloud, reel-matched */
-  .hero-ghost{position:absolute;top:29%;left:50%;transform:translate(-50%,-50%) translate3d(calc(var(--look-x,0) * -16px), calc(var(--look-y,0) * -9px), 0);z-index:1;pointer-events:none;
+  .hero-ghost{position:absolute;top:29%;left:50%;transform:translate(-50%,-50%) translate3d(calc(var(--look-x,0) * -24px), calc(var(--look-y,0) * -13px), 0);z-index:1;pointer-events:none;
     font-family:var(--head);font-weight:700;font-size:clamp(130px,23vw,430px);letter-spacing:-.01em;line-height:1;white-space:nowrap;user-select:none;
     background:linear-gradient(180deg, rgba(238,234,228,.50), rgba(238,234,228,.12));
     -webkit-background-clip:text;background-clip:text;color:transparent}
@@ -451,7 +462,7 @@
   .portrait-stage:focus-visible{box-shadow:0 0 0 2px var(--gold);border-radius:12px}
   #portrait-gl{position:absolute;inset:0;width:100%;height:100%;display:block}
   #portrait-img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;pointer-events:none;
-    transform:perspective(900px) rotateY(calc(var(--look-x,0) * 6deg)) rotateX(calc(var(--look-y,0) * 4.5deg)) translate3d(calc(var(--look-x,0) * 9px), calc(var(--look-y,0) * 6px), 0);
+    transform:perspective(900px) rotateY(calc(var(--look-x,0) * 13deg)) rotateX(calc(var(--look-y,0) * 9deg)) translate3d(calc(var(--look-x,0) * 16px), calc(var(--look-y,0) * 10px), 0);
     transform-origin:57% 30%;will-change:transform;
     -webkit-mask-image:linear-gradient(180deg, #000 88%, transparent 99%);mask-image:linear-gradient(180deg, #000 88%, transparent 99%)}
   /* About: scroll-driven 3D model layer */
@@ -830,8 +841,14 @@
       <div class="contact-box">
         <h3>Open to Senior GCP / Platform roles</h3>
         <p>Toronto hybrid or Canada remote. The fastest way to evaluate my work is <a href="#projects">the live products above</a> - <a href="https://sachcheck.in" target="_blank" rel="noopener">Sach</a> takes about 10 seconds to try. For roles or collaboration, LinkedIn is the best channel.</p>
-        <a class="btn" href="https://www.linkedin.com/in/pruthvi-g/" target="_blank" rel="noopener">Connect on LinkedIn</a>
-        <a class="btn" href="https://github.com/pruthvig1998" target="_blank" rel="noopener">GitHub profile</a>
+        <div class="chan-grid">
+          <a class="chan" href="https://www.linkedin.com/in/pruthvi-g/" target="_blank" rel="noopener"><span class="mono">in</span><h4>LinkedIn</h4><span class="handle">linkedin.com/in/pruthvi-g</span><p>For roles and collaboration - the fastest response.</p><span class="go">Connect →</span></a>
+          <a class="chan" href="https://github.com/pruthvig1998" target="_blank" rel="noopener"><span class="mono">gh</span><h4>GitHub</h4><span class="handle">github.com/pruthvig1998</span><p>Every project public - code, evaluations and all.</p><span class="go">View profile →</span></a>
+          <a class="chan" href="https://sachcheck.in" target="_blank" rel="noopener"><span class="mono">Sa</span><h4>Sach - live product</h4><span class="handle">sachcheck.in</span><p>Try the work directly - a verdict in about 10 seconds.</p><span class="go">Try it →</span></a>
+          <a class="chan" href="https://www.credly.com/users/prudhvi-garlapati" target="_blank" rel="noopener"><span class="mono">Cr</span><h4>Credly</h4><span class="handle">credly.com/users/prudhvi-garlapati</span><p>84 badges - certifications, publicly verifiable.</p><span class="go">Verify →</span></a>
+          <a class="chan" href="https://dev.to/pruthvig1998" target="_blank" rel="noopener"><span class="mono">dv</span><h4>dev.to</h4><span class="handle">dev.to/pruthvig1998</span><p>The build stories, written up in full.</p><span class="go">Read →</span></a>
+          <a class="chan" href="https://www.youtube.com/@PruthviGarlapati" target="_blank" rel="noopener"><span class="mono">Yt</span><h4>YouTube</h4><span class="handle">youtube.com/@PruthviGarlapati</span><p>Builds and demos on video.</p><span class="go">Watch →</span></a>
+        </div>
       </div>
     </section>
 
@@ -1742,19 +1759,19 @@
               nTX = Math.sin(nowP * 0.00042) * 0.55;
               nTY = Math.cos(nowP * 0.00031) * 0.30;
             }
-            nX += (nTX - nX) * 0.055;
-            nY += (nTY - nY) * 0.055;
+            nX += (nTX - nX) * 0.08;
+            nY += (nTY - nY) * 0.08;
             var lookK = 1 - e2;
             for(var i = 0; i < posArr.length; i++){
               var d3 = (i / 3) | 0, w3 = wArr[d3], ph3 = i % 3;
-              var off3 = ph3 === 0 ? nX * w3 * 0.17 : (ph3 === 1 ? -nY * w3 * 0.11 : w3 * (Math.abs(nX) + Math.abs(nY)) * 0.035);
+              var off3 = ph3 === 0 ? nX * w3 * 0.30 : (ph3 === 1 ? -nY * w3 * 0.20 : w3 * (Math.abs(nX) + Math.abs(nY)) * 0.06);
               posArr[i] = baseArr[i] + (scatArr[i] - baseArr[i]) * e2 + off3 * lookK;
             }
             geo.attributes.position.needsUpdate = true;
             if(posArr2 && wArr2){
               for(var j = 0; j < posArr2.length; j++){
                 var d4 = (j / 3) | 0, w4 = wArr2[d4], ph4 = j % 3;
-                var off4 = ph4 === 0 ? nX * w4 * 0.17 : (ph4 === 1 ? -nY * w4 * 0.11 : w4 * (Math.abs(nX) + Math.abs(nY)) * 0.035);
+                var off4 = ph4 === 0 ? nX * w4 * 0.30 : (ph4 === 1 ? -nY * w4 * 0.20 : w4 * (Math.abs(nX) + Math.abs(nY)) * 0.06);
                 posArr2[j] = baseArr2[j] + (scatArr2[j] - baseArr2[j]) * e2 + off4 * lookK;
               }
               mat2.opacity = 0.5 * (1 - e2);
@@ -1766,8 +1783,8 @@
               heroSec.style.setProperty("--look-y", nY.toFixed(3));
               lastVarX = nX; lastVarY = nY;
             }
-            group.rotation.y = nX * 0.30;
-            group.rotation.x = nY * 0.13;
+            group.rotation.y = nX * 0.5;
+            group.rotation.x = nY * 0.22;
             pRen.render(pScene, pCam);
           };
           pLoop();
