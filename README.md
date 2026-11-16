@@ -9,7 +9,7 @@
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Pruthvi%20Garlapati-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/pruthvi-g/)
 [![Live product](https://img.shields.io/badge/Live%20product-sachcheck.in-C2321F?style=for-the-badge&logo=whatsapp&logoColor=white)](https://sachcheck.in)
 [![Profile views](https://komarev.com/ghpvc/?username=pruthvig1998&label=Profile%20views&color=8E2438&style=for-the-badge)](https://github.com/pruthvig1998)
-[![Portfolio site](https://img.shields.io/badge/Portfolio-full%20site-38BDF8?style=for-the-badge&logo=googlechrome&logoColor=white)](https://pruthvig1998.github.io/pruthvig1998/)
+[![Portfolio site](https://img.shields.io/badge/Portfolio-full%20site-8E2438?style=for-the-badge&logo=googlechrome&logoColor=white)](https://pruthvig1998.github.io/pruthvig1998/)
 
 </div>
 
@@ -122,6 +122,8 @@ I write up what I build - the decisions, the numbers, and what the scores actual
 
 - **The QuantPilot build story** - [what a 66.5 out of 100 taught me](https://www.linkedin.com/feed/update/urn:li:activity:7526341625153822720/) - the honest version, certificate attached, no win claimed.
 - **The Sach launch post** - [LinkedIn](https://www.linkedin.com/in/pruthvi-g/recent-activity/all/) - the 55-second demo film and why a fact-checker must cite its verdicts.
+- **The Sach story on dev.to** - [Every family WhatsApp group in India has the same problem](https://dev.to/pruthvig1998/every-family-whatsapp-group-in-india-has-the-same-problem-1jf6) - why a fact-checker must cite its verdicts.
+- **The QuantPilot story on dev.to** - [Proud to share QuantPilot, my solo build for the Open Agent Hackathon 2026](https://dev.to/pruthvig1998/proud-to-share-quantpilot-my-solo-build-for-the-open-agent-hackathon-2026-1p22).
 - Full CV and experience history - [LinkedIn](https://www.linkedin.com/in/pruthvi-g/), kept current there.
 
 ## 06 - Latest activity
