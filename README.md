@@ -1,1 +1,150 @@
-PHBpY3R1cmU+PHNvdXJjZSBtZWRpYT0iKHByZWZlcnMtY29sb3Itc2NoZW1lOiBkYXJrKSIgc3Jjc2V0PSJhc3NldHMvYmFubmVyLnN2ZyIgLz48c291cmNlIG1lZGlhPSIocHJlZmVycy1jb2xvci1zY2hlbWU6IGxpZ2h0KSIgc3Jjc2V0PSJhc3NldHMvYmFubmVyLWxpZ2h0LnN2ZyIgLz48aW1nIHNyYz0iYXNzZXRzL2Jhbm5lci5zdmciIHdpZHRoPSIxMDAlIiBhbHQ9IlBydXRodmkgR2FybGFwYXRpIC0gU2VuaW9yIEdDUCBEZXZPcHMgRW5naW5lZXIiIC8+PC9waWN0dXJlPgoKPGRpdiBhbGlnbj0iY2VudGVyIj4KCioqU2VuaW9yIEdDUCBEZXZPcHMgRW5naW5lZXIgYXQgVUtHKiogLSBHS0UgwrcgVGVycmFmb3JtIMK3IEFyZ28gQ0QgwrcgQ2xvdWQgUnVuLiBJIGJ1aWxkIEFJIGFnZW50cyB0aGF0IGhhdmUgdG8gc2hvdyB0aGVpciB3b3JrOiBTYWNoLCBRdWFudFBpbG90LCBDbHVzZSAtIGJ1aWx0IHNvbG8sIGxpdmUgaW4gcHJvZHVjdGlvbi4KClshW0xpbmtlZEluXShodHRwczovL2ltZy5zaGllbGRzLmlvL2JhZGdlL0xpbmtlZEluLVBydXRodmklMjBHYXJsYXBhdGktMEE2NkMyP3N0eWxlPWZvci10aGUtYmFkZ2UmbG9nbz1saW5rZWRpbiZsb2dvQ29sb3I9d2hpdGUpXShodHRwczovL3d3dy5saW5rZWRpbi5jb20vaW4vcHJ1dGh2aS1nLykKWyFbTGl2ZSBwcm9kdWN0XShodHRwczovL2ltZy5zaGllbGRzLmlvL2JhZGdlL0xpdmUlMjBwcm9kdWN0LXNhY2hjaGVjay5pbi1DMjMyMUY/c3R5bGU9Zm9yLXRoZS1iYWRnZSZsb2dvPXdoYXRzYXBwJmxvZ29Db2xvcj13aGl0ZSldKGh0dHBzOi8vc2FjaGNoZWNrLmluKQpbIVtQb3J0Zm9saW8gc2l0ZV0oaHR0cHM6Ly9pbWcuc2hpZWxkcy5pby9iYWRnZS9Qb3J0Zm9saW8tZnVsbCUyMHNpdGUtOEUyNDM4P3N0eWxlPWZvci10aGUtYmFkZ2UmbG9nbz1nb29nbGVjaHJvbWUmbG9nb0NvbG9yPXdoaXRlKV0oaHR0cHM6Ly9wcnV0aHZpZzE5OTguZ2l0aHViLmlvL3BydXRodmlnMTk5OC8pCgo8L2Rpdj4KCioqW1ZpZXcgbXkgZnVsbCBwb3J0Zm9saW8gc2l0ZV0oaHR0cHM6Ly9wcnV0aHZpZzE5OTguZ2l0aHViLmlvL3BydXRodmlnMTk5OC8pKiogLSBmbGFnc2hpcCBwcm9qZWN0cywgZXhwZXJpZW5jZSB0aW1lbGluZSBhbmQgbGl2ZSBkZW1vcyBpbiBvbmUgcGFnZS4KCjxkaXYgYWxpZ249ImNlbnRlciI+CjxwaWN0dXJlPjxzb3VyY2UgbWVkaWE9IihwcmVmZXJzLWNvbG9yLXNjaGVtZTogZGFyaykiIHNyY3NldD0iYXNzZXRzL3dob2FtaS5zdmciIC8+PHNvdXJjZSBtZWRpYT0iKHByZWZlcnMtY29sb3Itc2NoZW1lOiBsaWdodCkiIHNyY3NldD0iYXNzZXRzL3dob2FtaS1saWdodC5zdmciIC8+PGltZyBzcmM9ImFzc2V0cy93aG9hbWkuc3ZnIiB3aWR0aD0iMTAwJSIgYWx0PSJ3aG9hbWkgLSB0ZXJtaW5hbCBwcm9maWxlIiAvPjwvcGljdHVyZT4KPC9kaXY+CgojIyAwMSAtIEFib3V0Cgo8ZGl2IGFsaWduPSJjZW50ZXIiPgo8cGljdHVyZT48c291cmNlIG1lZGlhPSIocHJlZmVycy1jb2xvci1zY2hlbWU6IGRhcmspIiBzcmNzZXQ9ImFzc2V0cy9hYm91dC5zdmciIC8+PHNvdXJjZSBtZWRpYT0iKHByZWZlcnMtY29sb3Itc2NoZW1lOiBsaWdodCkiIHNyY3NldD0iYXNzZXRzL2Fib3V0LWxpZ2h0LnN2ZyIgLz48aW1nIHNyYz0iYXNzZXRzL2Fib3V0LnN2ZyIgd2lkdGg9IjEwMCUiIGFsdD0iQWJvdXQgUHJ1dGh2aSBHYXJsYXBhdGkgLSBTZW5pb3IgR0NQIERldk9wcyBFbmdpbmVlciBhdCBVS0csIEFJIGFnZW50IHN5c3RlbXMgYnVpbGRlciIgLz48L3BpY3R1cmU+CjwvZGl2PgoKKipOb3cgLSBOb3ZlbWJlciAyMDI2KioKCnwgfCB8CnwtLS18LS0tfAp8ICoqQnVpbGRpbmcqKiB8IEFJIGFnZW50IHN5c3RlbXMgdGhhdCBzaG93IHRoZWlyIHdvcmsgLSBTYWNoIGlzIGluIHRoZSBDb2RlIGZvciBhIEJpbGxpb24ganVkZ2luZyB3aW5kb3cgKHdpbm5lcnMgRGVjIDUpIHwKfCAqKk1haW50YWluaW5nKiogfCBDbHVzZSwgdGhlIGxpdmUgcGFwZXItdHJhZGluZyByZXNlYXJjaCBkZXNrIC0gaXQgcmVwdWJsaXNoZXMgaXRzZWxmIGRhaWx5IHwKfCAqKkF0IHdvcmsqKiB8IFVUTSBpbmZyYXN0cnVjdHVyZSBhdCBVS0cgLSBHS0UsIENsb3VkIFJ1biwgU1FMIFNlcnZlciAyMDIyIG1pZ3JhdGlvbiwgUGFnZXJEdXR5IG5vaXNlIHJlZHVjdGlvbiB8CnwgKipPcGVuIHRvKiogfCBTZW5pb3IgR0NQIC8gUGxhdGZvcm0gcm9sZXMgLSBUb3JvbnRvIGh5YnJpZCwgQ2FuYWRhIHJlbW90ZSB8CgpDcmVkZW50aWFsczogKipHb29nbGUgQ2xvdWQgUHJvZmVzc2lvbmFsIENsb3VkIERldk9wcyBFbmdpbmVlcioqIChKYW4gMjAyNCkgLSB2ZXJpZmlhYmxlIGluIG15IFtDcmVkbHkgYmFkZ2Ugd2FsbGV0XShodHRwczovL3d3dy5jcmVkbHkuY29tL3VzZXJzL3BydWRodmktZ2FybGFwYXRpKTsgKipQYWdlckR1dHkgRm91bmRhdGlvbmFsIFByYWN0aXRpb25lcioqIChGZWIgMjAyNSkgLSBsaXN0ZWQgd2l0aCBpc3N1ZXIgbGluayBvbiBteSBbTGlua2VkSW5dKGh0dHBzOi8vd3d3LmxpbmtlZGluLmNvbS9pbi9wcnV0aHZpLWcvKS4KCkVkdWNhdGlvbjogKipCVGVjaCwgQ2l2aWwgRW5naW5lZXJpbmcqKiAtIENWUiBDb2xsZWdlIG9mIEVuZ2luZWVyaW5nLCBIeWRlcmFiYWQgKDIwMTQtMjAxOCk7ICoqUG9zdGdyYWR1YXRlIERpcGxvbWEsIENsb3VkIENvbXB1dGluZyoqIC0gR2VvcmdlIEJyb3duIENvbGxlZ2UgKDIwMjIpOyAqKlBvc3RncmFkdWF0ZSBEaXBsb21hLCBCdXNpbmVzcyBBbmFseXRpY3MqKiAtIENhbWJyaWFuIENvbGxlZ2UgKDIwMjEpLgoKPGRpdiBhbGlnbj0iY2VudGVyIj48cGljdHVyZT48c291cmNlIG1lZGlhPSIocHJlZmVycy1jb2xvci1zY2hlbWU6IGRhcmspIiBzcmNzZXQ9ImFzc2V0cy9kaXZpZGVyLnN2ZyIgLz48c291cmNlIG1lZGlhPSIocHJlZmVycy1jb2xvci1zY2hlbWU6IGxpZ2h0KSIgc3Jjc2V0PSJhc3NldHMvZGl2aWRlci1saWdodC5zdmciIC8+PGltZyBzcmM9ImFzc2V0cy9kaXZpZGVyLnN2ZyIgd2lkdGg9IjEwMCUiIGFsdD0iIiAvPjwvcGljdHVyZT48L2Rpdj4KCiMjIDAyIC0gRmxhZ3NoaXAgd29yawoKPGRpdiBhbGlnbj0iY2VudGVyIj4KPGEgaHJlZj0iaHR0cHM6Ly9naXRodWIuY29tL3BydXRodmlnMTk5OC9zYWNoLWNoZWNrIj48cGljdHVyZT48c291cmNlIG1lZGlhPSIocHJlZmVycy1jb2xvci1zY2hlbWU6IGRhcmspIiBzcmNzZXQ9ImFzc2V0cy9jYXJkLXNhY2guc3ZnIiAvPjxzb3VyY2UgbWVkaWE9IihwcmVmZXJzLWNvbG9yLXNjaGVtZTogbGlnaHQpIiBzcmNzZXQ9ImFzc2V0cy9jYXJkLXNhY2gtbGlnaHQuc3ZnIiAvPjxpbWcgc3JjPSJhc3NldHMvY2FyZC1zYWNoLnN2ZyIgd2lkdGg9IjEwMCUiIGFsdD0iU2FjaCAtIFdoYXRzQXBwIGZvcndhcmQgZmFjdC1jaGVja2VyIiAvPjwvcGljdHVyZT48L2E+CjwvZGl2PgoKPGRpdiBhbGlnbj0iY2VudGVyIj4KPGltZyBzcmM9Imh0dHBzOi8vaW1nLnNoaWVsZHMuaW8vZ2l0aHViL3N0YXJzL3BydXRodmlnMTk5OC9zYWNoLWNoZWNrP3N0eWxlPWZsYXQmbGFiZWxDb2xvcj00MzBBMUImY29sb3I9RTU0ODREIiBhbHQ9IlNhY2ggc3RhcnMiIC8+IDxpbWcgc3JjPSJodHRwczovL2ltZy5zaGllbGRzLmlvL2dpdGh1Yi9mb3Jrcy9wcnV0aHZpZzE5OTgvc2FjaC1jaGVjaz9zdHlsZT1mbGF0JmxhYmVsQ29sb3I9NDMwQTFCJmNvbG9yPUU1NDg0RCIgYWx0PSJTYWNoIGZvcmtzIiAvPgo8L2Rpdj4KCjxkaXYgYWxpZ249ImNlbnRlciI+CjxhIGhyZWY9Imh0dHBzOi8vZ2l0aHViLmNvbS9wcnV0aHZpZzE5OTgvUXVhbnRQaWxvdCI+PHBpY3R1cmU+PHNvdXJjZSBtZWRpYT0iKHByZWZlcnMtY29sb3Itc2NoZW1lOiBkYXJrKSIgc3Jjc2V0PSJhc3NldHMvY2FyZC1xdWFudHBpbG90LnN2ZyIgLz48c291cmNlIG1lZGlhPSIocHJlZmVycy1jb2xvci1zY2hlbWU6IGxpZ2h0KSIgc3Jjc2V0PSJhc3NldHMvY2FyZC1xdWFudHBpbG90LWxpZ2h0LnN2ZyIgLz48aW1nIHNyYz0iYXNzZXRzL2NhcmQtcXVhbnRwaWxvdC5zdmciIHdpZHRoPSIxMDAlIiBhbHQ9IlF1YW50UGlsb3QgLSBhdXRvbm9tb3VzIG9wdGlvbnMgcmVzZWFyY2ggYWdlbnQiIC8+PC9waWN0dXJlPjwvYT4KPC9kaXY+Cgo8ZGl2IGFsaWduPSJjZW50ZXIiPgo8aW1nIHNyYz0iaHR0cHM6Ly9pbWcuc2hpZWxkcy5pby9naXRodWIvc3RhcnMvcHJ1dGh2aWcxOTk4L1F1YW50UGlsb3Q/c3R5bGU9ZmxhdCZsYWJlbENvbG9yPTQzMEExQiZjb2xvcj1FNTQ4NEQiIGFsdD0iUXVhbnRQaWxvdCBzdGFycyIgLz4gPGltZyBzcmM9Imh0dHBzOi8vaW1nLnNoaWVsZHMuaW8vZ2l0aHViL2ZvcmtzL3BydXRodmlnMTk5OC9RdWFudFBpbG90P3N0eWxlPWZsYXQmbGFiZWxDb2xvcj00MzBBMUImY29sb3I9RTU0ODREIiBhbHQ9IlF1YW50UGlsb3QgZm9ya3MiIC8+CjwvZGl2PgoKPGRpdiBhbGlnbj0iY2VudGVyIj4KPGEgaHJlZj0iaHR0cHM6Ly9naXRodWIuY29tL3BydXRodmlnMTk5OC9jbHVzZS1kZXNrLWxpdmUiPjxwaWN0dXJlPjxzb3VyY2UgbWVkaWE9IihwcmVmZXJzLWNvbG9yLXNjaGVtZTogZGFyaykiIHNyY3NldD0iYXNzZXRzL2NhcmQtY2x1c2Uuc3ZnIiAvPjxzb3VyY2UgbWVkaWE9IihwcmVmZXJzLWNvbG9yLXNjaGVtZTogbGlnaHQpIiBzcmNzZXQ9ImFzc2V0cy9jYXJkLWNsdXNlLWxpZ2h0LnN2ZyIgLz48aW1nIHNyYz0iYXNzZXRzL2NhcmQtY2x1c2Uuc3ZnIiB3aWR0aD0iMTAwJSIgYWx0PSJDbHVzZSBkZXNrLCBsaXZlIC0gcGFwZXItdHJhZGluZyByZXNlYXJjaCBkZXNrIiAvPjwvcGljdHVyZT48L2E+CjwvZGl2PgoKPGRpdiBhbGlnbj0iY2VudGVyIj4KPGltZyBzcmM9Imh0dHBzOi8vaW1nLnNoaWVsZHMuaW8vZ2l0aHViL3N0YXJzL3BydXRodmlnMTk5OC9jbHVzZS1kZXNrLWxpdmU/c3R5bGU9ZmxhdCZsYWJlbENvbG9yPTQzMEExQiZjb2xvcj1FNTQ4NEQiIGFsdD0iQ2x1c2Ugc3RhcnMiIC8+IDxpbWcgc3JjPSJodHRwczovL2ltZy5zaGllbGRzLmlvL2dpdGh1Yi9mb3Jrcy9wcnV0aHZpZzE5OTgvY2x1c2UtZGVzay1saXZlP3N0eWxlPWZsYXQmbGFiZWxDb2xvcj00MzBBMUImY29sb3I9RTU0ODREIiBhbHQ9IkNsdXNlIGZvcmtzIiAvPgo8L2Rpdj4KCjxkaXYgYWxpZ249ImNlbnRlciI+CjxhIGhyZWY9Imh0dHBzOi8vZ2l0aHViLmNvbS9wcnV0aHZpZzE5OTgvbmV4dXMiPjxwaWN0dXJlPjxzb3VyY2UgbWVkaWE9IihwcmVmZXJzLWNvbG9yLXNjaGVtZTogZGFyaykiIHNyY3NldD0iYXNzZXRzL2NhcmQtbmV4dXMuc3ZnIiAvPjxzb3VyY2UgbWVkaWE9IihwcmVmZXJzLWNvbG9yLXNjaGVtZTogbGlnaHQpIiBzcmNzZXQ9ImFzc2V0cy9jYXJkLW5leHVzLWxpZ2h0LnN2ZyIgLz48aW1nIHNyYz0iYXNzZXRzL2NhcmQtbmV4dXMuc3ZnIiB3aWR0aD0iMTAwJSIgYWx0PSJOZXh1cyAtIGFsZ29yaXRobWljIHRyYWRpbmcgc3lzdGVtIiAvPjwvcGljdHVyZT48L2E+CjwvZGl2PgoKPGRpdiBhbGlnbj0iY2VudGVyIj4KPGltZyBzcmM9Imh0dHBzOi8vaW1nLnNoaWVsZHMuaW8vZ2l0aHViL3N0YXJzL3BydXRodmlnMTk5OC9uZXh1cz9zdHlsZT1mbGF0JmxhYmVsQ29sb3I9NDMwQTFCJmNvbG9yPUU1NDg0RCIgYWx0PSJOZXh1cyBzdGFycyIgLz4gPGltZyBzcmM9Imh0dHBzOi8vaW1nLnNoaWVsZHMuaW8vZ2l0aHViL2ZvcmtzL3BydXRodmlnMTk5OC9uZXh1cz9zdHlsZT1mbGF0JmxhYmVsQ29sb3I9NDMwQTFCJmNvbG9yPUU1NDg0RCIgYWx0PSJOZXh1cyBmb3JrcyIgLz4KPC9kaXY+CgpMaXZlIGRlbW9zOiBbU2FjaF0oaHR0cHM6Ly9zYWNoY2hlY2suaW4pIC0gW1NhY2ggaW1wYWN0IHBhZ2VdKGh0dHBzOi8vc2FjaGNoZWNrLmluL2ltcGFjdCkgLSBbU2FjaCA1NXMgZGVtb10oaHR0cHM6Ly95b3V0dS5iZS9aRk80QlpYb2tMNCkgLSBbUXVhbnRQaWxvdCBFeHBsb3Jlcl0oaHR0cHM6Ly9wcnV0aHZpZzE5OTguZ2l0aHViLmlvL1F1YW50UGlsb3QvZXhwbG9yZXIvKSAtIFtDbHVzZSBsaXZlIGRlc2tdKGh0dHBzOi8vcHJ1dGh2aWcxOTk4LmdpdGh1Yi5pby9jbHVzZS1kZXNrLWxpdmUvKSAtIFtDbHVzZSAzRCBkaWFncmFtXShodHRwczovL3BydXRodmlnMTk5OC5naXRodWIuaW8vY2x1c2UtZGVzay1saXZlLzNkLykKCiMjIDAzIC0gQ29yZSBleHBlcnRpc2UKCjxkaXYgYWxpZ249ImNlbnRlciI+CjxwaWN0dXJlPjxzb3VyY2UgbWVkaWE9IihwcmVmZXJzLWNvbG9yLXNjaGVtZTogZGFyaykiIHNyY3NldD0iYXNzZXRzL3N0YWNrLnN2ZyIgLz48c291cmNlIG1lZGlhPSIocHJlZmVycy1jb2xvci1zY2hlbWU6IGxpZ2h0KSIgc3Jjc2V0PSJhc3NldHMvc3RhY2stbGlnaHQuc3ZnIiAvPjxpbWcgc3JjPSJhc3NldHMvc3RhY2suc3ZnIiB3aWR0aD0iMTAwJSIgYWx0PSJTdGFjayBzY2FuIC0gY2xvdWQgcGxhdGZvcm0sIGluZnJhc3RydWN0dXJlIGFzIGNvZGUsIHJlbGlhYmlsaXR5LCBBSSBhZ2VudCBzeXN0ZW1zIiAvPjwvcGljdHVyZT4KPC9kaXY+Cgo8ZGl2IGFsaWduPSJjZW50ZXIiPjxwaWN0dXJlPjxzb3VyY2UgbWVkaWE9IihwcmVmZXJzLWNvbG9yLXNjaGVtZTogZGFyaykiIHNyY3NldD0iYXNzZXRzL2RpdmlkZXIuc3ZnIiAvPjxzb3VyY2UgbWVkaWE9IihwcmVmZXJzLWNvbG9yLXNjaGVtZTogbGlnaHQpIiBzcmNzZXQ9ImFzc2V0cy9kaXZpZGVyLWxpZ2h0LnN2ZyIgLz48aW1nIHNyYz0iYXNzZXRzL2RpdmlkZXIuc3ZnIiB3aWR0aD0iMTAwJSIgYWx0PSIiIC8+PC9waWN0dXJlPjwvZGl2PgoKIyMgMDQgLSBHaXRIdWIgYWN0aXZpdHkKCjxkaXYgYWxpZ249ImNlbnRlciI+CjxwaWN0dXJlPjxzb3VyY2UgbWVkaWE9IihwcmVmZXJzLWNvbG9yLXNjaGVtZTogZGFyaykiIHNyY3NldD0iYXNzZXRzL2FjdGl2aXR5LnN2ZyIgLz48c291cmNlIG1lZGlhPSIocHJlZmVycy1jb2xvci1zY2hlbWU6IGxpZ2h0KSIgc3Jjc2V0PSJhc3NldHMvYWN0aXZpdHktbGlnaHQuc3ZnIiAvPjxpbWcgc3JjPSJhc3NldHMvYWN0aXZpdHkuc3ZnIiB3aWR0aD0iMTAwJSIgYWx0PSJTeXN0ZW0gdGVsZW1ldHJ5IC0gbGl2ZSBzeXN0ZW1zIGFuZCBsYW5ndWFnZSBtaXgiIC8+PC9waWN0dXJlPgo8L2Rpdj4KCjxkaXYgYWxpZ249ImNlbnRlciI+CjxwaWN0dXJlPjxzb3VyY2UgbWVkaWE9IihwcmVmZXJzLWNvbG9yLXNjaGVtZTogZGFyaykiIHNyY3NldD0iYXNzZXRzL2NpdHkuc3ZnIiAvPjxzb3VyY2UgbWVkaWE9IihwcmVmZXJzLWNvbG9yLXNjaGVtZTogbGlnaHQpIiBzcmNzZXQ9ImFzc2V0cy9jaXR5LWxpZ2h0LnN2ZyIgLz48aW1nIHNyYz0iYXNzZXRzL2NpdHkuc3ZnIiB3aWR0aD0iMTAwJSIgYWx0PSJDb21taXQgY2l0eSAtIG1haW4tYnJhbmNoIGNvbW1pdHMgcGVyIHB1YmxpYyByZXBvc2l0b3J5IiAvPjwvcGljdHVyZT4KPC9kaXY+Cgo8ZGl2IGFsaWduPSJjZW50ZXIiPgo8cGljdHVyZT48c291cmNlIG1lZGlhPSIocHJlZmVycy1jb2xvci1zY2hlbWU6IGRhcmspIiBzcmNzZXQ9ImFzc2V0cy90aW1lbGluZS5zdmciIC8+PHNvdXJjZSBtZWRpYT0iKHByZWZlcnMtY29sb3Itc2NoZW1lOiBsaWdodCkiIHNyY3NldD0iYXNzZXRzL3RpbWVsaW5lLWxpZ2h0LnN2ZyIgLz48aW1nIHNyYz0iYXNzZXRzL3RpbWVsaW5lLnN2ZyIgd2lkdGg9IjEwMCUiIGFsdD0iTWlsZXN0b25lIHRpbWVsaW5lIC0gT2N0b2JlciB0byBEZWNlbWJlciAyMDI2IiAvPjwvcGljdHVyZT4KPC9kaXY+Cgo8ZGl2IGFsaWduPSJjZW50ZXIiPgogIDxpbWcgYWx0PSJHYWxhZ2EgLSBjb250cmlidXRpb24gZ3JhcGggc3BhY2Ugc2hvb3RlciIgc3JjPSJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vcHJ1dGh2aWcxOTk4L3BydXRodmlnMTk5OC9vdXRwdXQvZ2FsYWdhLWNvbnRyaWJ1dGlvbi1ncmFwaC1kYXJrLnN2ZyIgLz4KPC9kaXY+Cgo8ZGl2IGFsaWduPSJjZW50ZXIiPgogIDxpbWcgYWx0PSJCcmVha291dCAtIGNvbnRyaWJ1dGlvbiBncmFwaCBicmljayBicmVha2VyIiBzcmM9Imh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9wcnV0aHZpZzE5OTgvcHJ1dGh2aWcxOTk4L291dHB1dC9icmVha291dC1jb250cmlidXRpb24tZ3JhcGgtZGFyay5zdmciIC8+CjwvZGl2PgoKPGRpdiBhbGlnbj0iY2VudGVyIj4KICA8aW1nIGFsdD0iVGV0cmlzIC0gY29udHJpYnV0aW9uIGdyYXBoIGJsb2NrIHN0YWNrZXIiIHNyYz0iaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL3BydXRodmlnMTk5OC9wcnV0aHZpZzE5OTgvb3V0cHV0L3RldHJpcy1jb250cmlidXRpb24tZ3JhcGgtZGFyay5zdmciIC8+CjwvZGl2PgoKPGRpdiBhbGlnbj0iY2VudGVyIj4KICA8aW1nIGFsdD0iUHV6emxlIEJvYmJsZSAtIGNvbnRyaWJ1dGlvbiBncmFwaCBidWJibGUgc2hvb3RlciIgc3JjPSJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vcHJ1dGh2aWcxOTk4L3BydXRodmlnMTk5OC9vdXRwdXQvcHV6emxlLWJvYmJsZS1jb250cmlidXRpb24tZ3JhcGgtZGFyay5zdmciIC8+CjwvZGl2PgoKPHAgYWxpZ249ImNlbnRlciI+PHN1Yj5MSVZFIERBVEEgLSBSRUdFTkVSQVRFRCBEQUlMWSBGUk9NIE1ZIEdJVEhVQiBBQ1RJVklUWTwvc3ViPjwvcD4KCjxkaXYgYWxpZ249ImNlbnRlciI+PHBpY3R1cmU+PHNvdXJjZSBtZWRpYT0iKHByZWZlcnMtY29sb3Itc2NoZW1lOiBkYXJrKSIgc3Jjc2V0PSJhc3NldHMvZGl2aWRlci5zdmciIC8+PHNvdXJjZSBtZWRpYT0iKHByZWZlcnMtY29sb3Itc2NoZW1lOiBsaWdodCkiIHNyY3NldD0iYXNzZXRzL2RpdmlkZXItbGlnaHQuc3ZnIiAvPjxpbWcgc3JjPSJhc3NldHMvZGl2aWRlci5zdmciIHdpZHRoPSIxMDAlIiBhbHQ9IiIgLz48L3BpY3R1cmU+PC9kaXY+CgojIyAwNSAtIFdyaXRpbmcKCkkgd3JpdGUgdXAgd2hhdCBJIGJ1aWxkIC0gdGhlIGRlY2lzaW9ucywgdGhlIG51bWJlcnMsIGFuZCB3aGF0IHRoZSBzY29yZXMgYWN0dWFsbHkgc2FpZC4KCi0gKipUaGUgUXVhbnRQaWxvdCBidWlsZCBzdG9yeSoqIC0gW3doYXQgYSA2Ni41IG91dCBvZiAxMDAgdGF1Z2h0IG1lXShodHRwczovL3d3dy5saW5rZWRpbi5jb20vZmVlZC91cGRhdGUvdXJuOmxpOmFjdGl2aXR5Ojc1MjYzNDE2MjUxNTM4MjI3MjAvKSAtIHRoZSBob25lc3QgdmVyc2lvbiwgY2VydGlmaWNhdGUgYXR0YWNoZWQsIG5vIHdpbiBjbGFpbWVkLgotICoqVGhlIFNhY2ggbGF1bmNoIHBvc3QqKiAtIFtMaW5rZWRJbl0oaHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2luL3BydXRodmktZy9yZWNlbnQtYWN0aXZpdHkvYWxsLykgLSB0aGUgNTUtc2Vjb25kIGRlbW8gZmlsbSBhbmQgd2h5IGEgZmFjdC1jaGVja2VyIG11c3QgY2l0ZSBpdHMgdmVyZGljdHMuCi0gKipUaGUgU2FjaCBzdG9yeSBvbiBkZXYudG8qKiAtIFtFdmVyeSBmYW1pbHkgV2hhdHNBcHAgZ3JvdXAgaW4gSW5kaWEgaGFzIHRoZSBzYW1lIHByb2JsZW1dKGh0dHBzOi8vZGV2LnRvL3BydXRodmlnMTk5OC9ldmVyeS1mYW1pbHktd2hhdHNhcHAtZ3JvdXAtaW4taW5kaWEtaGFzLXRoZS1zYW1lLXByb2JsZW0tMWpmNikgLSB3aHkgYSBmYWN0LWNoZWNrZXIgbXVzdCBjaXRlIGl0cyB2ZXJkaWN0cy4KLSAqKlRoZSBRdWFudFBpbG90IHN0b3J5IG9uIGRldi50byoqIC0gW1Byb3VkIHRvIHNoYXJlIFF1YW50UGlsb3QsIG15IHNvbG8gYnVpbGQgZm9yIHRoZSBPcGVuIEFnZW50IEhhY2thdGhvbiAyMDI2XShodHRwczovL2Rldi50by9wcnV0aHZpZzE5OTgvcHJvdWQtdG8tc2hhcmUtcXVhbnRwaWxvdC1teS1zb2xvLWJ1aWxkLWZvci10aGUtb3Blbi1hZ2VudC1oYWNrYXRob24tMjAyNi0xcDIyKS4KLSBGdWxsIENWIGFuZCBleHBlcmllbmNlIGhpc3RvcnkgLSBbTGlua2VkSW5dKGh0dHBzOi8vd3d3LmxpbmtlZGluLmNvbS9pbi9wcnV0aHZpLWcvKSwga2VwdCBjdXJyZW50IHRoZXJlLgoKIyMgMDYgLSBMYXRlc3QgYWN0aXZpdHkKCjwhLS1TVEFSVF9TRUNUSU9OOmFjdGl2aXR5LS0+CjEuIPCfjokgTWVyZ2VkIFBSIFsjM10oaHR0cHM6Ly9naXRodWIuY29tL3BydXRodmlnMTk5OC9zYWNoLWNoZWNrL3B1bGwvMykgaW4gW3BydXRodmlnMTk5OC9zYWNoLWNoZWNrXShodHRwczovL2dpdGh1Yi5jb20vcHJ1dGh2aWcxOTk4L3NhY2gtY2hlY2spCjIuIPCfkqogT3BlbmVkIFBSIFsjM10oaHR0cHM6Ly9naXRodWIuY29tL3BydXRodmlnMTk5OC9zYWNoLWNoZWNrL3B1bGwvMykgaW4gW3BydXRodmlnMTk5OC9zYWNoLWNoZWNrXShodHRwczovL2dpdGh1Yi5jb20vcHJ1dGh2aWcxOTk4L3NhY2gtY2hlY2spCi0gTm92IDE0LCAyMDI2IC0gU2FjaCBmaWxlZCBpbiBDb2RlIGZvciBhIEJpbGxpb24gKGlzc3VlICMxMjYpLCBsYXVuY2ggcG9zdCBwdWJsaXNoZWQKPCEtLUVORF9TRUNUSU9OOmFjdGl2aXR5LS0+Cgo8c3ViPlRoaXMgc2VjdGlvbiByZXdyaXRlcyBpdHNlbGYgZGFpbHkgZnJvbSBteSBwdWJsaWMgR2l0SHViIGFjdGl2aXR5Ljwvc3ViPgoKIyMgMDcgLSBDb25uZWN0CgpUaGUgZmFzdGVzdCB3YXkgdG8gZXZhbHVhdGUgbXkgd29yayBpcyB0aGUgbGl2ZSBwcm9kdWN0cyBhYm92ZSAtIFNhY2ggdGFrZXMgMTAgc2Vjb25kcyB0byB0cnkuIEZvciByb2xlcyBvciBjb2xsYWJvcmF0aW9uLCByZWFjaCBtZSBvbiBbTGlua2VkSW5dKGh0dHBzOi8vd3d3LmxpbmtlZGluLmNvbS9pbi9wcnV0aHZpLWcvKS4KCiMjIyBHdWVzdGJvb2sKClZpc2l0aW5nPyBbT3BlbiBhIEd1ZXN0Ym9vayBpc3N1ZV0oaHR0cHM6Ly9naXRodWIuY29tL3BydXRodmlnMTk5OC9wcnV0aHZpZzE5OTgvaXNzdWVzL25ldz90aXRsZT1HdWVzdGJvb2slM0Erc2lnbmluZytpbikgYW5kIHlvdXIgYXZhdGFyIHNpZ25zIGJlbG93IGF1dG9tYXRpY2FsbHkuCgo8IS0tU1RBUlRfU0VDVElPTjpndWVzdGJvb2stLT4KKkJlIHRoZSBmaXJzdCB0byBzaWduLioKPCEtLUVORF9TRUNUSU9OOmd1ZXN0Ym9vay0tPgoKPHBpY3R1cmU+PHNvdXJjZSBtZWRpYT0iKHByZWZlcnMtY29sb3Itc2NoZW1lOiBkYXJrKSIgc3Jjc2V0PSJhc3NldHMvZm9vdGVyLnN2ZyIgLz48c291cmNlIG1lZGlhPSIocHJlZmVycy1jb2xvci1zY2hlbWU6IGxpZ2h0KSIgc3Jjc2V0PSJhc3NldHMvZm9vdGVyLWxpZ2h0LnN2ZyIgLz48aW1nIHNyYz0iYXNzZXRzL2Zvb3Rlci5zdmciIHdpZHRoPSIxMDAlIiBhbHQ9IiIgLz48L3BpY3R1cmU+Cg==
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/banner.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/banner-light.svg" /><img src="assets/banner.svg" width="100%" alt="Pruthvi Garlapati - Senior GCP DevOps Engineer" /></picture>
+
+<div align="center">
+
+**Senior GCP DevOps Engineer at UKG** - GKE · Terraform · Argo CD · Cloud Run. I build AI agents that have to show their work: Sach, QuantPilot, Cluse - built solo, live in production.
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Pruthvi%20Garlapati-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/pruthvi-g/)
+[![Live product](https://img.shields.io/badge/Live%20product-sachcheck.in-C2321F?style=for-the-badge&logo=whatsapp&logoColor=white)](https://sachcheck.in)
+[![Portfolio site](https://img.shields.io/badge/Portfolio-full%20site-8E2438?style=for-the-badge&logo=googlechrome&logoColor=white)](https://pruthvig1998.github.io/pruthvig1998/)
+
+</div>
+
+**[View my full portfolio site](https://pruthvig1998.github.io/pruthvig1998/)** - flagship projects, experience timeline and live demos in one page.
+
+<div align="center">
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/whoami.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/whoami-light.svg" /><img src="assets/whoami.svg" width="100%" alt="whoami - terminal profile" /></picture>
+</div>
+
+## 01 - About
+
+<div align="center">
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/about.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/about-light.svg" /><img src="assets/about.svg" width="100%" alt="About Pruthvi Garlapati - Senior GCP DevOps Engineer at UKG, AI agent systems builder" /></picture>
+</div>
+
+**Now - November 2026**
+
+| | |
+|---|---|
+| **Building** | AI agent systems that show their work - Sach is in the Code for a Billion judging window (winners Dec 5) |
+| **Maintaining** | Cluse, the live paper-trading research desk - it republishes itself daily |
+| **At work** | UTM infrastructure at UKG - GKE, Cloud Run, SQL Server 2022 migration, PagerDuty noise reduction |
+| **Open to** | Senior GCP / Platform roles - Toronto hybrid, Canada remote |
+
+Credentials: **Google Cloud Professional Cloud DevOps Engineer** (Jan 2024) - verifiable in my [Credly badge wallet](https://www.credly.com/users/prudhvi-garlapati); **PagerDuty Foundational Practitioner** (Feb 2025) - listed with issuer link on my [LinkedIn](https://www.linkedin.com/in/pruthvi-g/).
+
+Education: **BTech, Civil Engineering** - CVR College of Engineering, Hyderabad (2014-2018); **Postgraduate Diploma, Cloud Computing** - George Brown College (2022); **Postgraduate Diploma, Business Analytics** - Cambrian College (2021).
+
+<div align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/divider.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/divider-light.svg" /><img src="assets/divider.svg" width="100%" alt="" /></picture></div>
+
+## 02 - Flagship work
+
+<div align="center">
+<a href="https://github.com/pruthvig1998/sach-check"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-sach.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/card-sach-light.svg" /><img src="assets/card-sach.svg" width="100%" alt="Sach - WhatsApp forward fact-checker" /></picture></a>
+</div>
+
+<div align="center">
+<img src="https://img.shields.io/github/stars/pruthvig1998/sach-check?style=flat&labelColor=430A1B&color=E5484D" alt="Sach stars" /> <img src="https://img.shields.io/github/forks/pruthvig1998/sach-check?style=flat&labelColor=430A1B&color=E5484D" alt="Sach forks" />
+</div>
+
+<div align="center">
+<a href="https://github.com/pruthvig1998/QuantPilot"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-quantpilot.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/card-quantpilot-light.svg" /><img src="assets/card-quantpilot.svg" width="100%" alt="QuantPilot - autonomous options research agent" /></picture></a>
+</div>
+
+<div align="center">
+<img src="https://img.shields.io/github/stars/pruthvig1998/QuantPilot?style=flat&labelColor=430A1B&color=E5484D" alt="QuantPilot stars" /> <img src="https://img.shields.io/github/forks/pruthvig1998/QuantPilot?style=flat&labelColor=430A1B&color=E5484D" alt="QuantPilot forks" />
+</div>
+
+<div align="center">
+<a href="https://github.com/pruthvig1998/cluse-desk-live"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-cluse.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/card-cluse-light.svg" /><img src="assets/card-cluse.svg" width="100%" alt="Cluse desk, live - paper-trading research desk" /></picture></a>
+</div>
+
+<div align="center">
+<img src="https://img.shields.io/github/stars/pruthvig1998/cluse-desk-live?style=flat&labelColor=430A1B&color=E5484D" alt="Cluse stars" /> <img src="https://img.shields.io/github/forks/pruthvig1998/cluse-desk-live?style=flat&labelColor=430A1B&color=E5484D" alt="Cluse forks" />
+</div>
+
+<div align="center">
+<a href="https://github.com/pruthvig1998/nexus"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-nexus.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/card-nexus-light.svg" /><img src="assets/card-nexus.svg" width="100%" alt="Nexus - algorithmic trading system" /></picture></a>
+</div>
+
+<div align="center">
+<img src="https://img.shields.io/github/stars/pruthvig1998/nexus?style=flat&labelColor=430A1B&color=E5484D" alt="Nexus stars" /> <img src="https://img.shields.io/github/forks/pruthvig1998/nexus?style=flat&labelColor=430A1B&color=E5484D" alt="Nexus forks" />
+</div>
+
+Live demos: [Sach](https://sachcheck.in) - [Sach impact page](https://sachcheck.in/impact) - [Sach 55s demo](https://youtu.be/ZFO4BZXokL4) - [QuantPilot Explorer](https://pruthvig1998.github.io/QuantPilot/explorer/) - [Cluse live desk](https://pruthvig1998.github.io/cluse-desk-live/) - [Cluse 3D diagram](https://pruthvig1998.github.io/cluse-desk-live/3d/)
+
+## 03 - Core expertise
+
+<div align="center">
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/stack.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/stack-light.svg" /><img src="assets/stack.svg" width="100%" alt="Stack scan - cloud platform, infrastructure as code, reliability, AI agent systems" /></picture>
+</div>
+
+<div align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/divider.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/divider-light.svg" /><img src="assets/divider.svg" width="100%" alt="" /></picture></div>
+
+## 04 - GitHub activity
+
+<div align="center">
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/activity.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/activity-light.svg" /><img src="assets/activity.svg" width="100%" alt="System telemetry - live systems and language mix" /></picture>
+</div>
+
+<div align="center">
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/city.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/city-light.svg" /><img src="assets/city.svg" width="100%" alt="Commit city - main-branch commits per public repository" /></picture>
+</div>
+
+<div align="center">
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/timeline.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/timeline-light.svg" /><img src="assets/timeline.svg" width="100%" alt="Milestone timeline - October to December 2026" /></picture>
+</div>
+
+<div align="center">
+  <img alt="Galaga - contribution graph space shooter" src="https://raw.githubusercontent.com/pruthvig1998/pruthvig1998/output/galaga-contribution-graph-dark.svg" />
+</div>
+
+<div align="center">
+  <img alt="Breakout - contribution graph brick breaker" src="https://raw.githubusercontent.com/pruthvig1998/pruthvig1998/output/breakout-contribution-graph-dark.svg" />
+</div>
+
+<div align="center">
+  <img alt="Tetris - contribution graph block stacker" src="https://raw.githubusercontent.com/pruthvig1998/pruthvig1998/output/tetris-contribution-graph-dark.svg" />
+</div>
+
+<div align="center">
+  <img alt="Puzzle Bobble - contribution graph bubble shooter" src="https://raw.githubusercontent.com/pruthvig1998/pruthvig1998/output/puzzle-bobble-contribution-graph-dark.svg" />
+</div>
+
+<p align="center"><sub>LIVE DATA - REGENERATED DAILY FROM MY GITHUB ACTIVITY</sub></p>
+
+<div align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/divider.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/divider-light.svg" /><img src="assets/divider.svg" width="100%" alt="" /></picture></div>
+
+## 05 - Writing
+
+I write up what I build - the decisions, the numbers, and what the scores actually said.
+
+- **The QuantPilot build story** - [what a 66.5 out of 100 taught me](https://www.linkedin.com/feed/update/urn:li:activity:7526341625153822720/) - the honest version, certificate attached, no win claimed.
+- **The Sach launch post** - [LinkedIn](https://www.linkedin.com/in/pruthvi-g/recent-activity/all/) - the 55-second demo film and why a fact-checker must cite its verdicts.
+- **The Sach story on dev.to** - [Every family WhatsApp group in India has the same problem](https://dev.to/pruthvig1998/every-family-whatsapp-group-in-india-has-the-same-problem-1jf6) - why a fact-checker must cite its verdicts.
+- **The QuantPilot story on dev.to** - [Proud to share QuantPilot, my solo build for the Open Agent Hackathon 2026](https://dev.to/pruthvig1998/proud-to-share-quantpilot-my-solo-build-for-the-open-agent-hackathon-2026-1p22).
+- Full CV and experience history - [LinkedIn](https://www.linkedin.com/in/pruthvi-g/), kept current there.
+
+## 06 - Latest activity
+
+<!--START_SECTION:activity-->
+1. 🎉 Merged PR [#3](https://github.com/pruthvig1998/sach-check/pull/3) in [pruthvig1998/sach-check](https://github.com/pruthvig1998/sach-check)
+2. 💪 Opened PR [#3](https://github.com/pruthvig1998/sach-check/pull/3) in [pruthvig1998/sach-check](https://github.com/pruthvig1998/sach-check)
+- Nov 14, 2026 - Sach filed in Code for a Billion (issue #126), launch post published
+<!--END_SECTION:activity-->
+
+<sub>This section rewrites itself daily from my public GitHub activity.</sub>
+
+## 07 - Connect
+
+The fastest way to evaluate my work is the live products above - Sach takes 10 seconds to try. For roles or collaboration, reach me on [LinkedIn](https://www.linkedin.com/in/pruthvi-g/).
+
+### Guestbook
+
+Visiting? [Open a Guestbook issue](https://github.com/pruthvig1998/pruthvig1998/issues/new?title=Guestbook%3A+signing+in) and your avatar signs below automatically.
+
+<!--START_SECTION:guestbook-->
+*Be the first to sign.*
+<!--END_SECTION:guestbook-->
+
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/footer.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/footer-light.svg" /><img src="assets/footer.svg" width="100%" alt="" /></picture>
