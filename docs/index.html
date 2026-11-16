@@ -1846,13 +1846,7 @@
               mat2.opacity = 0.5 * (1 - e2);
             }
             mat.opacity = 1 - e2 * 0.92;
-            if(photoMesh){
-              photoMesh.visible = e2 > 0.01;
-              photoMesh.material.opacity = e2;
-              pImg.style.opacity = "0";
-            } else {
-              pImg.style.opacity = e2.toFixed(3);
-            }
+            pImg.style.opacity = e2.toFixed(3);
             if(Math.abs(nX - lastVarX) > 0.003 || Math.abs(nY - lastVarY) > 0.003){
               heroSec.style.setProperty("--look-x", nX.toFixed(3));
               heroSec.style.setProperty("--look-y", nY.toFixed(3));
