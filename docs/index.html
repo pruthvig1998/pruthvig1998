@@ -43,7 +43,7 @@
   ::-webkit-scrollbar-track{background:#0B0C0E}
   ::-webkit-scrollbar-thumb{background:#8E2438;border-radius:6px;border:2px solid #0B0C0E}
   html{scrollbar-width:thin;scrollbar-color:var(--gold) #0B0C0E;scroll-behavior:smooth;scroll-snap-type:y proximity}
-  #hero, .intro, #immersion, #about, #projects, #experience, #writing, #expertise, #contact{scroll-snap-align:start;scroll-margin-top:10px}
+  #hero, .intro, #about, #projects, #experience, #writing, #expertise, #contact{scroll-snap-align:start;scroll-margin-top:10px}
 
   /* ---------- Fixed top nav ---------- */
   .topnav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
@@ -160,6 +160,20 @@
   .card h3 .arrow{transition:transform .25s;display:inline-block;color:var(--gold)}
   .card:hover h3 .arrow{transform:translate(3px,-3px)}
   .card p{font-size:14px;margin-bottom:10px}
+  .card-metrics{display:flex;flex-wrap:wrap;gap:10px 28px;margin:12px 0 2px}
+  .metric{display:flex;flex-direction:column}
+  .metric b{font-family:var(--head);font-size:21px;font-weight:600;color:var(--ivory);line-height:1.1}
+  .metric span{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(236,231,223,.55);margin-top:3px}
+  .case{display:none;margin-top:14px;border-top:1px solid rgba(229,72,77,.22);padding-top:12px}
+  .case.open{display:block}
+  .case-row{display:flex;gap:14px;margin:0 0 8px}
+  .case-row b{flex:0 0 104px;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);padding-top:2px}
+  .case-row p{margin:0;font-size:13px}
+  .case-btn{margin-top:12px;font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);background:none;border:1px solid rgba(229,72,77,.4);border-radius:999px;padding:7px 14px;cursor:pointer;transition:border-color .25s ease,color .25s ease}
+  .case-btn:hover{border-color:var(--gold);color:#fff}
+  @media (min-width:1024px) and (min-height:660px){
+    #projects .card{position:sticky;top:96px;transform-origin:center top;box-shadow:0 -18px 44px rgba(0,0,0,.38)}
+  }
   .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
   .tags span{font-family:var(--mono);font-size:12px;color:var(--ivory);background:rgba(229,72,77,.08);border:1px solid rgba(229,72,77,.18);padding:4px 10px;border-radius:999px}
   .tags span:nth-child(even){color:#E5D9BE;background:rgba(229,217,190,.1);border-color:rgba(229,217,190,.22)}
@@ -339,6 +353,12 @@
   .imm-label.hub{left:50%;top:46%;opacity:.92;pointer-events:none;cursor:default;
     font-size:10px;letter-spacing:.22em;color:rgba(236,231,223,.85);border-color:rgba(236,231,223,.35);background:rgba(29,4,11,.55)}
   .imm-panel-proof{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-top:10px}
+  .imm-panel-gh{display:flex;gap:6px 14px;flex-wrap:wrap;justify-content:center;align-items:center;margin-top:9px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(236,231,223,.6)}
+  .gh-chip{border:1px solid rgba(229,72,77,.45);border-radius:999px;padding:1px 8px;color:var(--soft)}
+  .gh-chip.live{color:#A3B18A;border-color:rgba(163,177,138,.6)}
+  .imm-tourbar{height:2px;max-width:1100px;margin:12px auto 0;background:rgba(229,72,77,.18);border-radius:2px;overflow:hidden}
+  .imm-tourbar i{display:block;height:100%;background:var(--gold);transform:scaleX(0);transform-origin:left center}
+  @media (max-width:900px){ .imm-tourbar{display:none} }
   @media (max-width:900px){ .imm-stage{height:52vh;min-height:300px} }
 
   .writing-item{padding:16px 0;border-bottom:1px solid rgba(236,231,223,.08)}
@@ -482,8 +502,8 @@
 
 <section id="immersion" aria-label="Interactive project navigator">
   <div class="imm-eyebrow">INTERACTIVE</div>
-  <div class="imm-stage"><canvas id="gl3d"></canvas><button type="button" class="imm-label" data-proj="sach">Sach</button><button type="button" class="imm-label" data-proj="quantpilot">QuantPilot</button><button type="button" class="imm-label" data-proj="cluse">Cluse</button><span class="imm-label hub" aria-hidden="true">Platform core</span></div>
-  <p class="imm-line">Drag to rotate the system map - tap a node to inspect it.</p>
+  <div class="imm-stage"><canvas id="gl3d"></canvas><button type="button" class="imm-label" data-proj="sach">Sach</button><button type="button" class="imm-label" data-proj="quantpilot">QuantPilot</button><button type="button" class="imm-label" data-proj="cluse">Cluse</button><span class="imm-label hub" aria-hidden="true">Platform core</span></div><div class="imm-tourbar" aria-hidden="true"><i id="imm-tourfill"></i></div>
+  <p class="imm-line">Drag to rotate, tap a node to inspect it - or scroll on for the guided tour.</p>
   <div class="imm-nav" role="tablist" aria-label="Systems">
     <button type="button" class="imm-btn is-active" data-proj="sach" role="tab" aria-selected="true">Sach</button>
     <button type="button" class="imm-btn" data-proj="quantpilot" role="tab" aria-selected="false">QuantPilot</button>
@@ -494,6 +514,7 @@
     <div class="imm-panel-name" id="imm-name">Sach</div>
     <p class="imm-panel-line" id="imm-desc">Live WhatsApp-forward fact-checker. Paste a forward, get a cited TRUE / FALSE / MISLEADING / UNVERIFIED verdict.</p>
     <div class="imm-panel-proof" id="imm-proof">79-claim evaluation - 0 overclaimed verdicts</div>
+    <div class="imm-panel-gh" id="imm-gh"></div>
     <div class="imm-panel-links" id="imm-links"><a href="https://sachcheck.in">Live site</a><a href="https://sachcheck.in/impact">Impact page</a><a href="#sach">Full case</a></div>
   </div>
 </section>
@@ -520,28 +541,49 @@
       <div class="card" id="sach">
         <div class="card-band band-1" data-num="01" aria-hidden="true"><svg class="band-spark" width="180" height="44" viewBox="0 0 180 44" fill="none" aria-hidden="true"><polyline points="0,34 24,28 48,31 72,20 96,24 120,13 144,17 168,7 180,10" stroke="#E5484D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="180" cy="10" r="3" fill="#E5D9BE"/></svg></div>
         <div class="kicker">Live product - Code for a Billion, Governance</div>
+        <div class="card-metrics"><div class="metric"><b>79</b><span>Claims evaluated</span></div><div class="metric"><b>0</b><span>Overclaimed verdicts</span></div><div class="metric"><b>$0</b><span>Running cost</span></div></div>
         <h3><a href="https://sachcheck.in" target="_blank" rel="noopener">Sach - WhatsApp forward fact-checker <span class="arrow">↗</span></a></h3>
         <p>Paste a viral WhatsApp forward and get a cited TRUE / FALSE / MISLEADING / UNVERIFIED verdict from PIB Fact Check and official sources, in English and 15 Indian languages, as a card ready to post back into the family group. Built solo, runs on free tiers, filed as submission <a href="https://github.com/karlmehta/code-for-a-billion/issues/126" target="_blank" rel="noopener">#126</a>.</p>
         <div class="links"><a href="https://sachcheck.in" target="_blank" rel="noopener">Live: sachcheck.in</a><a href="https://sachcheck.in/impact" target="_blank" rel="noopener">Impact page</a><a href="https://github.com/pruthvig1998/sach-check" target="_blank" rel="noopener">79-claim evaluation, 0 overclaims</a><a href="https://youtu.be/ZFO4BZXokL4" target="_blank" rel="noopener">55s demo</a><a class="next-link" href="#quantpilot">Next: QuantPilot -&gt;</a></div>
         <div class="tags"><span>AI agents</span><span>Evidence grounding</span><span>Fact-check APIs</span><span>Vercel</span></div>
+        <button type="button" class="case-btn" aria-expanded="false">Read the case study</button>
+        <div class="case">
+          <div class="case-row"><b>Problem</b><p>A viral forward reaches a family group in seconds; a human fact-check takes days. By then it has been believed, forwarded and acted on.</p></div>
+          <div class="case-row"><b>Architecture</b><p>A three-layer cascade: match the claim against PIB Fact Check's archive and published fact-checks first, then a live AI check grounded in official sources, and if the evidence is not there, an honest UNVERIFIED with a human tipline handoff - never a guess dressed as a verdict.</p></div>
+          <div class="case-row"><b>Outcome</b><p>Public 79-claim evaluation with zero overclaimed FALSE verdicts, abstention preferred over guessing. Live at sachcheck.in in English and 15 Indian languages, filed in the Code for a Billion judging window.</p></div>
+        </div>
       </div>
 
       <div class="card" id="quantpilot">
         <div class="card-band band-2" data-num="02" aria-hidden="true"><svg class="band-spark" width="180" height="44" viewBox="0 0 180 44" fill="none" aria-hidden="true"><polyline points="0,12 24,20 48,15 72,26 96,21 120,30 144,25 168,34 180,31" stroke="#E5484D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="180" cy="31" r="3" fill="#E5D9BE"/></svg></div>
         <div class="kicker">Open Agent Hackathon 2026 - Track 02</div>
+        <div class="card-metrics"><div class="metric"><b>252 of 547</b><span>Screening rank</span></div><div class="metric"><b>12.5 / 15</b><span>Demo score</span></div><div class="metric"><b>12</b><span>Names per run</span></div></div>
         <h3><a href="https://pruthvig1998.github.io/QuantPilot/explorer/" target="_blank" rel="noopener">QuantPilot - research agent that shows its work <span class="arrow">↗</span></a></h3>
         <p>An autonomous pre-market options research agent for US markets. It investigates 12 names across fragmented sources and produces trade cards where every number traces to the evidence packet it came from - including a verifier that catches the model misquoting its own data. Screening rank 252 of 547; demo score 12.5 of 15.</p>
         <div class="links"><a href="https://pruthvig1998.github.io/QuantPilot/explorer/" target="_blank" rel="noopener">Live Explorer</a><a href="https://github.com/pruthvig1998/QuantPilot" target="_blank" rel="noopener">GitHub repo</a><a href="https://www.linkedin.com/feed/update/urn:li:activity:7526341625153822720/" target="_blank" rel="noopener">Build story</a><a class="next-link" href="#cluse">Next: Cluse -&gt;</a></div>
         <div class="tags"><span>Multi-agent systems</span><span>Citation verification</span><span>Python</span><span>Eval design</span></div>
+        <button type="button" class="case-btn" aria-expanded="false">Read the case study</button>
+        <div class="case">
+          <div class="case-row"><b>Problem</b><p>Research agents sound certain while misquoting their own data - and a trade idea built on a wrong number is worse than no idea at all.</p></div>
+          <div class="case-row"><b>Architecture</b><p>A multi-agent pipeline investigates 12 names across fragmented sources and assembles evidence packets. Every number on a trade card must trace back to its packet, and a separate verifier pass exists to catch the model misquoting its own evidence.</p></div>
+          <div class="case-row"><b>Outcome</b><p>Open Agent Hackathon 2026: screening rank 252 of 547, with a demo score of 12.5 of 15 - higher than all three Track 02 winners' demos (12.3 each).</p></div>
+        </div>
       </div>
 
       <div class="card" id="cluse">
         <div class="card-band band-3" data-num="03" aria-hidden="true"><svg class="band-spark" width="180" height="44" viewBox="0 0 180 44" fill="none" aria-hidden="true"><polyline points="0,24 24,24 48,10 72,36 96,12 120,30 144,16 168,26 180,20" stroke="#E5484D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="180" cy="20" r="3" fill="#E5D9BE"/></svg></div>
         <div class="kicker">Live system - paper trading only</div>
+        <div class="card-metrics"><div class="metric"><b>5 min</b><span>Refresh in session</span></div><div class="metric"><b>0</b><span>Real orders placed</span></div><div class="metric"><b>100%</b><span>Paper money</span></div></div>
         <h3><a href="https://pruthvig1998.github.io/cluse-desk-live/" target="_blank" rel="noopener">Cluse - autonomous paper-trading desk <span class="arrow">↗</span></a></h3>
         <p>A Nasdaq-100 options research desk running on virtual money: technical setups, an intraday news radar, market-regime filters, and strict risk rules with a drawdown kill-switch. The public page refreshes every 5 minutes in session, with an interactive 3D diagram of the whole system.</p>
         <div class="links"><a href="https://pruthvig1998.github.io/cluse-desk-live/" target="_blank" rel="noopener">Live desk</a><a href="https://pruthvig1998.github.io/cluse-desk-live/3d/" target="_blank" rel="noopener">3D system diagram</a><a href="https://github.com/pruthvig1998/cluse-desk-live" target="_blank" rel="noopener">GitHub repo</a><a class="next-link" href="#sach">Back to Sach -&gt;</a></div>
         <div class="tags"><span>Trading systems</span><span>Risk engines</span><span>Discord bots</span><span>Three.js</span></div>
+        <button type="button" class="case-btn" aria-expanded="false">Read the case study</button>
+        <div class="case">
+          <div class="case-row"><b>Problem</b><p>Strategy ideas are cheap. The hard part is a desk that sizes positions, takes profit, stops out and flattens by rule - proven without risking real capital.</p></div>
+          <div class="case-row"><b>Architecture</b><p>Nasdaq-100 technical setups pass through an intraday news radar and market-regime filters into a risk engine with conviction sizing, take-profit and stop-loss rules and a drawdown kill-switch. Everything flattens at the close; paper money only, by design.</p></div>
+          <div class="case-row"><b>Outcome</b><p>Runs in public as a live desk: refreshes every 5 minutes in session and republishes itself daily, with every position and exit on the page.</p></div>
+        </div>
       </div>
 
     </section>
@@ -1151,6 +1193,29 @@
           color: 0xE5484D, transparent: true, opacity: 0.42
         }));
         orbit.add(spokes);
+        var immNodePos = { sach: new THREE.Vector3(), quantpilot: new THREE.Vector3(), cluse: new THREE.Vector3() };
+        var immPulseCount = 90;
+        var immPulses = new THREE.InstancedMesh(new THREE.SphereGeometry(0.035, 8, 8), new THREE.MeshBasicMaterial({ color: 0xFFFFFF }), immPulseCount);
+        immPulses.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+        orbit.add(immPulses);
+        var immPulseData = [];
+        var immPulseKeys = Object.keys(nodeDefs);
+        for(var pi = 0; pi < immPulseCount; pi++){
+          immPulseData.push({ k: immPulseKeys[pi % immPulseKeys.length], t: Math.random(), sp: 0.14 + Math.random() * 0.22, back: pi % 3 === 0 });
+        }
+        var immDummy = new THREE.Object3D();
+        var immCol = new THREE.Color();
+        var immStarGeo = new THREE.BufferGeometry();
+        var immStarPos = new Float32Array(420 * 3);
+        for(var si2 = 0; si2 < 420; si2++){
+          var sr2 = 2.6 + Math.random() * 2.6, sth2 = Math.random() * Math.PI * 2, sph2 = Math.acos(2 * Math.random() - 1);
+          immStarPos[si2 * 3] = sr2 * Math.sin(sph2) * Math.cos(sth2);
+          immStarPos[si2 * 3 + 1] = sr2 * Math.cos(sph2) * 0.7;
+          immStarPos[si2 * 3 + 2] = sr2 * Math.sin(sph2) * Math.sin(sth2);
+        }
+        immStarGeo.setAttribute("position", new THREE.BufferAttribute(immStarPos, 3));
+        var immStars = new THREE.Points(immStarGeo, new THREE.PointsMaterial({ color: 0xF0A3A8, size: 0.02, transparent: true, opacity: 0.5 }));
+        group.add(immStars);
         scene.add(group);
         var labelEls = {};
         document.querySelectorAll(".imm-label").forEach(function(el){ labelEls[el.getAttribute("data-proj")] = el; });
@@ -1163,6 +1228,7 @@
           renderer.setSize(w, h, false);
           camera.aspect = w / h;
           camera.position.z = camera.aspect < 1 ? 6.0 / Math.max(camera.aspect, 0.45) * 0.78 : 6.0;
+          window.__immBaseZ = camera.position.z;
           camera.updateProjectionMatrix();
         };
         fitStage();
@@ -1212,11 +1278,13 @@
               while(rotY - ty > Math.PI) ty += Math.PI * 2;
               rotY += (ty - rotY) * 0.045;
               rotX += (tgt.x - rotX) * 0.045;
-              if(!reduceMotion && Math.abs(ty - rotY) < 0.02){ rotY += 0.0016; tgt.y = rotY; }
+              if(!reduceMotion && !window.__immTour && Math.abs(ty - rotY) < 0.02){ rotY += 0.0016; tgt.y = rotY; }
             }
           }
           group.rotation.x = rotX;
           group.rotation.y = rotY;
+          var dzT = (window.__immBaseZ || 6) * (window.__immDolly || 1);
+          camera.position.z += (dzT - camera.position.z) * 0.07;
           hub.rotation.y = -rotY * 0.7 + performance.now() * 0.00012;
           hub.rotation.x = rotX * 0.5;
           var tNow = performance.now() * 0.001;
@@ -1228,6 +1296,7 @@
             var ny = Math.sin(ang * 2 + nd.a) * 0.13;
             nodeMeshes[k].position.set(nx, ny, nz);
             anchors[k].position.set(nx, ny, nz);
+            immNodePos[k].set(nx, ny, nz);
             var on = (k === lastHudKey);
             nodeMats[k].emissiveIntensity += ((on ? 1.5 : 0.3) - nodeMats[k].emissiveIntensity) * 0.12;
             var sc2 = on ? 1.3 : 1.0;
@@ -1236,6 +1305,22 @@
             spokePos[sIdx++] = nx; spokePos[sIdx++] = ny; spokePos[sIdx++] = nz;
           });
           spokeGeo.attributes.position.needsUpdate = true;
+          for(var pj = 0; pj < immPulseCount; pj++){
+            var pd = immPulseData[pj];
+            pd.t += pd.sp * 0.0038 * (pd.k === lastHudKey ? 1.7 : 1.0);
+            if(pd.t > 1) pd.t -= 1;
+            var np2 = immNodePos[pd.k];
+            var pt2 = pd.back ? 1 - pd.t : pd.t;
+            immDummy.position.set(np2.x * pt2, np2.y * pt2, np2.z * pt2);
+            immDummy.scale.setScalar(0.6 + Math.sin(pt2 * Math.PI) * 0.9);
+            immDummy.updateMatrix();
+            immPulses.setMatrixAt(pj, immDummy.matrix);
+            immCol.setHex(pd.k === lastHudKey ? 0xF6D5D8 : 0xE5484D);
+            immPulses.setColorAt(pj, immCol);
+          }
+          immPulses.instanceMatrix.needsUpdate = true;
+          if(immPulses.instanceColor) immPulses.instanceColor.needsUpdate = true;
+          immStars.rotation.y = tNow * 0.01;
           var stageW = stage.clientWidth || 1, stageH = stage.clientHeight || 1;
           var bestKey = null, bestFacing = -2;
           Object.keys(anchors).forEach(function(k){
@@ -1832,6 +1917,160 @@
           startLoud();
         }
       });
+    } catch(e){}
+  })();
+</script>
+
+<script>
+  /* ---------- Immersion: scroll-driven camera tour (desktop) ---------- */
+  (function(){
+    try {
+      var sec = document.getElementById("immersion");
+      var fill = document.getElementById("imm-tourfill");
+      if(!sec || !window.gsap || !window.ScrollTrigger) return;
+      if(window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      if(!window.matchMedia("(min-width: 901px)").matches) return;
+      gsap.registerPlugin(ScrollTrigger);
+      var stops = [
+        { x: 0.35, y: 0.6, d: 1.14, key: null },
+        { x: 0.35, y: 0.6, d: 0.84, key: "sach" },
+        { x: 0.55, y: 2.2, d: 0.84, key: "quantpilot" },
+        { x: 0.2, y: 3.8, d: 0.84, key: "cluse" },
+        { x: 0.35, y: 0.6, d: 1.14, key: null }
+      ];
+      var lastChapter = -1;
+      var lerpA = function(a, b, t){ return a + (b - a) * t; };
+      var arcLerp = function(a, b, t){ var d = b - a; while(d > Math.PI) d -= Math.PI * 2; while(d < -Math.PI) d += Math.PI * 2; return a + d * t; };
+      ScrollTrigger.create({
+        trigger: sec, start: "top top", end: "+=220%", pin: true, scrub: 0.6, anticipatePin: 1,
+        onUpdate: function(self){
+          var p = self.progress;
+          window.__immTour = p > 0.001 && p < 0.999;
+          if(fill) fill.style.transform = "scaleX(" + p.toFixed(3) + ")";
+          var span = stops.length - 1;
+          var seg = Math.min(span - 1, Math.floor(p * span));
+          var t = (p * span) - seg;
+          var A = stops[seg], B = stops[seg + 1];
+          window.__immTarget = { x: lerpA(A.x, B.x, t), y: arcLerp(A.y, B.y, t) };
+          window.__immDolly = lerpA(A.d, B.d, t);
+          var chapter = Math.round(p * span);
+          if(chapter !== lastChapter){
+            lastChapter = chapter;
+            var key = stops[chapter] && stops[chapter].key;
+            if(key && window.__immShow) window.__immShow(key);
+          }
+        },
+        onLeave: function(){ window.__immTour = false; window.__immDolly = 1; },
+        onLeaveBack: function(){ window.__immTour = false; window.__immDolly = 1; }
+      });
+      addEventListener("load", function(){ ScrollTrigger.refresh(); });
+    } catch(e){}
+  })();
+
+  /* ---------- Immersion: live GitHub data line ---------- */
+  (function(){
+    try {
+      var ghEl = document.getElementById("imm-gh");
+      if(!ghEl) return;
+      var REPO = { sach: "sach-check", quantpilot: "QuantPilot", cluse: "cluse-desk-live" };
+      var DATA = {
+        sach: { stars: 1, pushed: "2026-11-15T18:43:40Z", lang: "Python" },
+        quantpilot: { stars: 0, pushed: "2026-11-15T18:44:04Z", lang: "Python" },
+        cluse: { stars: 0, pushed: "2026-11-16T16:27:15Z", lang: "HTML" }
+      };
+      var live = false;
+      try {
+        var cached = JSON.parse(localStorage.getItem("pg-gh-v1") || "null");
+        if(cached && cached.data && (Date.now() - cached.ts) < 3600000) DATA = cached.data;
+      } catch(e){}
+      var rel = function(iso){
+        var s = (Date.now() - new Date(iso).getTime()) / 1000;
+        if(s < 3600) return Math.max(1, Math.round(s / 60)) + "m ago";
+        if(s < 86400) return Math.round(s / 3600) + "h ago";
+        return Math.round(s / 86400) + "d ago";
+      };
+      var curKey = "sach";
+      var paint = function(){
+        var d = DATA[curKey];
+        if(!d) return;
+        ghEl.innerHTML = "";
+        var parts = ["GitHub - last push " + rel(d.pushed)];
+        if(d.lang) parts.push(d.lang);
+        parts.push("Stars " + d.stars);
+        parts.forEach(function(tx){
+          var sp = document.createElement("span");
+          sp.textContent = tx;
+          ghEl.appendChild(sp);
+        });
+        var chip = document.createElement("span");
+        chip.className = "gh-chip" + (live ? " live" : "");
+        chip.textContent = live ? "LIVE" : "CACHED";
+        ghEl.appendChild(chip);
+      };
+      paint();
+      setInterval(function(){
+        var act = document.querySelector(".imm-btn.is-active");
+        var k = act && act.getAttribute("data-proj");
+        if(k && k !== curKey && DATA[k]){ curKey = k; paint(); }
+      }, 500);
+      var keys = Object.keys(REPO), done = 0, fresh = {};
+      keys.forEach(function(k){
+        fetch("https://api.github.com/repos/pruthvig1998/" + REPO[k])
+          .then(function(r){ return r.json(); })
+          .then(function(j){ if(j && j.pushed_at) fresh[k] = { stars: j.stargazers_count || 0, pushed: j.pushed_at, lang: j.language || "" }; })
+          .catch(function(){})
+          .then(function(){
+            done++;
+            if(done === keys.length && Object.keys(fresh).length){
+              Object.keys(fresh).forEach(function(k2){ DATA[k2] = fresh[k2]; });
+              live = true;
+              try { localStorage.setItem("pg-gh-v1", JSON.stringify({ ts: Date.now(), data: DATA })); } catch(e){}
+              paint();
+            }
+          });
+      });
+    } catch(e){}
+  })();
+
+  /* ---------- Projects: case study toggles ---------- */
+  (function(){
+    try {
+      document.querySelectorAll(".case-btn").forEach(function(btn){
+        btn.addEventListener("click", function(){
+          var card = btn.closest(".card");
+          var box = card && card.querySelector(".case");
+          if(!box) return;
+          var open = box.classList.toggle("open");
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+          btn.textContent = open ? "Close case study" : "Read the case study";
+        });
+      });
+    } catch(e){}
+  })();
+
+  /* ---------- Projects: sticky stack scale/dim (desktop) ---------- */
+  (function(){
+    try {
+      var mq = window.matchMedia("(min-width: 1024px) and (min-height: 660px)");
+      var cards = Array.prototype.slice.call(document.querySelectorAll("#projects .card"));
+      if(cards.length < 2) return;
+      var ticking = false;
+      var update = function(){
+        ticking = false;
+        if(!mq.matches){
+          cards.forEach(function(c){ c.style.transform = ""; c.style.filter = ""; });
+          return;
+        }
+        for(var i = 0; i < cards.length - 1; i++){
+          var next = cards[i + 1].getBoundingClientRect();
+          var p = 1 - Math.min(1, Math.max(0, (next.top - 96) / (window.innerHeight * 0.55)));
+          cards[i].style.transform = "scale(" + (1 - 0.08 * p).toFixed(3) + ")";
+          cards[i].style.filter = "brightness(" + (1 - 0.45 * p).toFixed(3) + ")";
+        }
+      };
+      addEventListener("scroll", function(){ if(!ticking){ ticking = true; requestAnimationFrame(update); } }, { passive: true });
+      addEventListener("resize", update);
+      update();
     } catch(e){}
   })();
 </script>
