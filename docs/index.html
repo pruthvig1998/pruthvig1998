@@ -462,12 +462,10 @@
   .portrait-stage{position:absolute;inset:0;z-index:1;cursor:pointer;outline:none}
   .portrait-stage:focus-visible{box-shadow:0 0 0 2px var(--gold);border-radius:12px}
   #portrait-gl{position:absolute;inset:0;width:100%;height:100%;display:block}
-  .portrait-photo{position:absolute;inset:0;
-    transform:perspective(1100px) rotateY(calc(var(--look-x,0) * 9deg)) rotateX(calc(var(--look-y,0) * 5deg)) rotateZ(calc(var(--look-x,0) * 1.5deg)) translate3d(calc(var(--look-x,0) * 26px), calc(var(--look-y,0) * 16px), 0);
-    transform-origin:57% 70%;will-change:transform;
+  #portrait-img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;pointer-events:none;
+    transform:perspective(900px) rotateY(calc(var(--look-x,0) * 18deg)) rotateX(calc(var(--look-y,0) * 12deg)) translate3d(calc(var(--look-x,0) * 26px), calc(var(--look-y,0) * 16px), 0);
+    transform-origin:57% 30%;will-change:transform;
     -webkit-mask-image:linear-gradient(180deg, #000 88%, transparent 99%);mask-image:linear-gradient(180deg, #000 88%, transparent 99%)}
-  #portrait-img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;pointer-events:none}
-  #portrait-gaze{position:absolute;inset:0;width:100%;height:100%;opacity:0;pointer-events:none}
   /* About: scroll-driven 3D model layer */
   #about{position:relative;isolation:isolate}
   #about-gl{position:absolute;inset:-30px -16px;width:calc(100% + 32px);height:calc(100% + 60px);z-index:0;pointer-events:none}
@@ -557,10 +555,7 @@
     <figure class="hero-portrait reveal-hero" style="--d:.12s">
       <div class="portrait-stage" id="portrait-stage" role="button" tabindex="0" aria-pressed="false" aria-label="Dot portrait of Pruthvi Garlapati. Activate to reveal the photograph.">
         <canvas id="portrait-gl"></canvas>
-        <div class="portrait-photo">
-          <img id="portrait-img" src="assets/portrait-bust-v13.png" alt="Pruthvi Garlapati" />
-          <canvas id="portrait-gaze" width="1362" height="1140" aria-hidden="true"></canvas>
-        </div>
+        <img id="portrait-img" src="assets/portrait-bust-v13.png" alt="Pruthvi Garlapati" />
       </div>
     </figure>
     <button class="reveal-btn" id="reveal-btn" type="button" aria-pressed="false"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><circle cx="3" cy="3" r="1.7" fill="currentColor"/><circle cx="9" cy="3" r="1.7" fill="currentColor"/><circle cx="3" cy="9" r="1.7" fill="currentColor"/><circle cx="9" cy="9" r="1.7" fill="currentColor"/></svg><span id="reveal-label">REVEAL</span></button>
@@ -1630,64 +1625,6 @@
       var pStage = document.getElementById("portrait-stage");
       var pCanvas = document.getElementById("portrait-gl");
       var pImg = document.getElementById("portrait-img");
-      var gazeCv = document.getElementById("portrait-gaze");
-      var gazeCtx = gazeCv ? gazeCv.getContext("2d") : null;
-      var gazeReady = false;
-      var gazeSheet = new Image();
-      var ptrX = -1, ptrY = -1;
-      var GEYES = [
-        { n: "R", icx: 348, icy: 162, bx: 307, by: 141, x: 0, y: 0, tx: 0, ty: 0, ldx: 0, ldy: 0, lm: -1 },
-        { n: "L", icx: 421, icy: 160, bx: 385, by: 138, x: 0, y: 0, tx: 0, ty: 0, ldx: 0, ldy: 0, lm: -1 }
-      ];
-      var GRECT = { R_patch: [0, 0, 76, 44], R_under: [80, 0, 76, 44], L_patch: [160, 0, 76, 44], L_under: [240, 0, 76, 44] };
-      var gazeLastT = 0, sacX = 0, sacY = 0, sacNext = 0;
-      if(gazeCtx) gazeCtx.setTransform(2, 0, 0, 2, 0, 0);
-      function gazeFrame(nowP, idleTX, idleTY, ptrActive){
-        if(!gazeReady || !gazeCtx) return;
-        var dt = gazeLastT ? Math.min(0.05, Math.max(0.001, (nowP - gazeLastT) / 1000)) : 0.016;
-        gazeLastT = nowP;
-        var ke = 1 - Math.exp(-dt / 0.09);
-        var rect = gazeCv.getBoundingClientRect();
-        if(!rect.width) return;
-        if(!ptrActive && nowP > sacNext){
-          sacX = (Math.random() - 0.5) * 0.14;
-          sacY = (Math.random() - 0.5) * 0.10;
-          sacNext = nowP + 1500 + Math.random() * 2500;
-        }
-        var R0 = 0.16 * window.innerWidth;
-        for(var gi = 0; gi < GEYES.length; gi++){
-          var e = GEYES[gi];
-          if(ptrActive && ptrX >= 0){
-            var esx = rect.left + (e.icx / 681) * rect.width;
-            var esy = rect.top + (e.icy / 570) * rect.height;
-            var vx = ptrX - esx, vy = ptrY - esy;
-            var dd = Math.hypot(vx, vy) || 1;
-            var s2 = Math.tanh(dd / R0) / dd;
-            e.tx = vx * s2; e.ty = vy * s2;
-          } else {
-            e.tx = idleTX * 0.6 + sacX;
-            e.ty = idleTY * 0.6 + sacY;
-          }
-          e.x += (e.tx - e.x) * ke;
-          e.y += (e.ty - e.y) * ke;
-          var dx = e.x * 9, dy = e.y * 2.5;
-          var m = Math.hypot(dx, dy);
-          var moved = Math.abs(dx - e.ldx) + Math.abs(dy - e.ldy);
-          if(moved >= 0.02 || (m < 0.02 && e.lm >= 0.02)){
-            gazeCtx.clearRect(e.bx - 2, e.by - 2, 80, 48);
-            if(m >= 0.02){
-              var ru = GRECT[e.n + "_under"], rp = GRECT[e.n + "_patch"];
-              gazeCtx.globalAlpha = Math.min(1, m / 0.75);
-              gazeCtx.drawImage(gazeSheet, ru[0] * 2, ru[1] * 2, ru[2] * 2, ru[3] * 2, e.bx, e.by, ru[2], ru[3]);
-              gazeCtx.globalAlpha = 1;
-              gazeCtx.drawImage(gazeSheet, rp[0] * 2, rp[1] * 2, rp[2] * 2, rp[3] * 2, e.bx + dx, e.by + dy, rp[2], rp[3]);
-            }
-            e.ldx = dx; e.ldy = dy; e.lm = m;
-          }
-        }
-      }
-      gazeSheet.onload = function(){ gazeReady = true; };
-      gazeSheet.src = "assets/gaze-sheet.png";
       var rBtn = document.getElementById("reveal-btn");
       var rLabel = document.getElementById("reveal-label");
       if(heroSec && pStage && pCanvas && pImg && window.THREE){
@@ -1851,13 +1788,11 @@
           fitP();
           addEventListener("resize", fitP);
           var nTX = 0, nTY = 0, nX = 0, nY = 0, lastPtr = -1e9, lastVarX = 9, lastVarY = 9;
-          var hx = 0, hy = 0, lastFrameT = 0;
           heroSec.addEventListener("pointermove", function(e){
             var rect = heroSec.getBoundingClientRect();
             if(!rect.width) return;
             nTX = Math.max(-1, Math.min(1, ((e.clientX - rect.left) / rect.width - 0.5) * 2));
             nTY = Math.max(-1, Math.min(1, ((e.clientY - rect.top) / rect.height - 0.5) * 2));
-            ptrX = e.clientX; ptrY = e.clientY;
             lastPtr = performance.now();
           }, { passive: true });
           heroSec.addEventListener("pointerleave", function(){ lastPtr = -1e9; });
@@ -1891,11 +1826,6 @@
             }
             nX += (nTX - nX) * 0.12;
             nY += (nTY - nY) * 0.08;
-            var dtP = lastFrameT ? Math.min(0.05, Math.max(0.001, (nowP - lastFrameT) / 1000)) : 0.016;
-            lastFrameT = nowP;
-            var kh = 1 - Math.exp(-dtP / 0.28);
-            hx += (nTX - hx) * kh;
-            hy += (nTY - hy) * kh;
             var lookK = 1 - e2;
             for(var i = 0; i < posArr.length; i++){
               var d3 = (i / 3) | 0, w3 = wArr[d3], ph3 = i % 3;
@@ -1913,14 +1843,10 @@
             }
             mat.opacity = 1 - e2 * 0.92;
             pImg.style.opacity = e2.toFixed(3);
-            if(gazeReady){
-              gazeCv.style.opacity = e2.toFixed(3);
-              if(e2 > 0.01) gazeFrame(nowP, nTX, nTY, nowP - lastPtr <= 3500);
-            }
-            if(Math.abs(hx - lastVarX) > 0.003 || Math.abs(hy - lastVarY) > 0.003){
-              heroSec.style.setProperty("--look-x", hx.toFixed(3));
-              heroSec.style.setProperty("--look-y", hy.toFixed(3));
-              lastVarX = hx; lastVarY = hy;
+            if(Math.abs(nX - lastVarX) > 0.003 || Math.abs(nY - lastVarY) > 0.003){
+              heroSec.style.setProperty("--look-x", nX.toFixed(3));
+              heroSec.style.setProperty("--look-y", nY.toFixed(3));
+              lastVarX = nX; lastVarY = nY;
             }
             group.rotation.y = nX * 0.30;
             group.rotation.x = nY * 0.14;
