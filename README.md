@@ -63,14 +63,6 @@ Education: **BTech, Civil Engineering** - CVR College of Engineering, Hyderabad 
 <img src="https://img.shields.io/github/stars/pruthvig1998/cluse-desk-live?style=flat&labelColor=430A1B&color=E5484D" alt="Cluse stars" /> <img src="https://img.shields.io/github/forks/pruthvig1998/cluse-desk-live?style=flat&labelColor=430A1B&color=E5484D" alt="Cluse forks" />
 </div>
 
-<div align="center">
-<a href="https://github.com/pruthvig1998/nexus"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-nexus.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/card-nexus-light.svg" /><img src="assets/card-nexus.svg" width="100%" alt="Nexus - algorithmic trading system" /></picture></a>
-</div>
-
-<div align="center">
-<img src="https://img.shields.io/github/stars/pruthvig1998/nexus?style=flat&labelColor=430A1B&color=E5484D" alt="Nexus stars" /> <img src="https://img.shields.io/github/forks/pruthvig1998/nexus?style=flat&labelColor=430A1B&color=E5484D" alt="Nexus forks" />
-</div>
-
 Live demos: [Sach](https://sachcheck.in) - [Sach impact page](https://sachcheck.in/impact) - [Sach 55s demo](https://youtu.be/ZFO4BZXokL4) - [QuantPilot Explorer](https://pruthvig1998.github.io/QuantPilot/explorer/) - [Cluse live desk](https://pruthvig1998.github.io/cluse-desk-live/) - [Cluse 3D diagram](https://pruthvig1998.github.io/cluse-desk-live/3d/)
 
 ## 03 - Core expertise
