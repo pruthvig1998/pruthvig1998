@@ -42,7 +42,8 @@
   ::-webkit-scrollbar{width:10px}
   ::-webkit-scrollbar-track{background:#0B0C0E}
   ::-webkit-scrollbar-thumb{background:#8E2438;border-radius:6px;border:2px solid #0B0C0E}
-  html{scrollbar-width:thin;scrollbar-color:var(--gold) #0B0C0E}
+  html{scrollbar-width:thin;scrollbar-color:var(--gold) #0B0C0E;scroll-behavior:smooth;scroll-snap-type:y proximity}
+  #hero, .intro, #immersion, #about, #projects, #experience, #writing, #expertise, #contact{scroll-snap-align:start;scroll-margin-top:10px}
 
   /* ---------- Fixed top nav ---------- */
   .topnav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
@@ -172,6 +173,7 @@
   .job h3{font-family:var(--head);font-size:17px;font-weight:600;margin:5px 0 6px}
   .job h3 span{color:var(--gold)}
   .job p{font-size:14px;margin-bottom:6px}
+  .edu-head{font-family:var(--mono);font-size:11px;letter-spacing:.24em;color:var(--gold);margin:28px 0 6px;text-transform:uppercase}
 
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
   .skillbox{border-radius:14px;padding:20px;background:rgba(236,231,223,.03);
@@ -577,6 +579,26 @@
         <div class="when">JUL 2018 - SEP 2019 · HYDERABAD</div>
         <h3>Linux Administrator <span>· Guidewire</span></h3>
         <p>Linux systems administration - where the infrastructure career started.</p>
+      </div>
+
+      <div class="edu-head">Education</div>
+
+      <div class="job">
+        <div class="when">2022</div>
+        <h3>Postgraduate Diploma, Cloud Computing <span>· George Brown College</span></h3>
+        <p>One-year postgraduate diploma, completed while working full-time in DevOps.</p>
+      </div>
+
+      <div class="job">
+        <div class="when">2021</div>
+        <h3>Postgraduate Diploma, Business Analytics <span>· Cambrian College</span></h3>
+        <p>One-year postgraduate diploma, completed alongside the George Brown diploma.</p>
+      </div>
+
+      <div class="job">
+        <div class="when">2014 - 2018 · HYDERABAD</div>
+        <h3>BTech, Civil Engineering <span>· CVR College of Engineering</span></h3>
+        <p>Bachelor of Technology - the engineering foundation before the move into infrastructure.</p>
       </div>
     </section>
 
