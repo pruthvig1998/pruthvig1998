@@ -1,0 +1,6 @@
+<svg width="560" height="104" viewBox="0 0 560 104" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Portfolio - full site with live demos">
+  <rect x="2" y="2" width="556" height="100" rx="50" fill="#430A1B" stroke="#E5484D" stroke-opacity="0.55" stroke-width="2"/>
+  <circle cx="64" cy="52" r="27" fill="none" stroke="#ECE7DF" stroke-width="3.5"/><path d="M52,66 L76,42 M59,42 h17 v17" fill="none" stroke="#ECE7DF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="112" y="64" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="30" fill="#ECE7DF"><tspan font-weight="700">Portfolio</tspan><tspan fill="#F0A3A8"> - full site, live demos</tspan></text>
+  
+</svg>
