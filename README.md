@@ -22,7 +22,7 @@
 
 | | |
 |---|---|
-| **Building** | AI agent systems that show their work - Sach is in the Code for a Billion judging window (winners Dec 5) |
+| **Building** | AI agent systems that show their work - Sach is in the Code for a Billion judging window (winners Dec 5); Eleven Months, the rental agreement checker, shipped for #BuildHybridAI (deadline Nov 30) |
 | **Maintaining** | Cluse, the live paper-trading research desk - it republishes itself daily |
 | **At work** | UTM infrastructure at UKG - GKE, Cloud Run, SQL Server 2022 migration, PagerDuty noise reduction |
 | **Open to** | Senior GCP / Platform roles - Toronto hybrid, Canada remote |
@@ -59,7 +59,15 @@ Education: **BTech, Civil Engineering** - CVR College of Engineering, Hyderabad 
 <img src="https://img.shields.io/github/stars/pruthvig1998/cluse-desk-live?style=flat&labelColor=430A1B&color=E5484D" alt="Cluse stars" /> <img src="https://img.shields.io/github/forks/pruthvig1998/cluse-desk-live?style=flat&labelColor=430A1B&color=E5484D" alt="Cluse forks" />
 </div>
 
-Live demos: [Sach](https://sachcheck.in) - [Sach impact page](https://sachcheck.in/impact) - [Sach 55s demo](https://youtu.be/ZFO4BZXokL4) - [QuantPilot Explorer](https://pruthvig1998.github.io/QuantPilot/explorer/) - [Cluse live desk](https://pruthvig1998.github.io/cluse-desk-live/) - [Cluse 3D diagram](https://pruthvig1998.github.io/cluse-desk-live/3d/)
+<div align="center">
+<a href="https://github.com/pruthvig1998/eleven-months"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-eleven.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/card-eleven-light.svg" /><img src="assets/card-eleven.svg" width="100%" alt="Eleven Months - rental agreement checker" /></picture></a>
+</div>
+
+<div align="center">
+<img src="https://img.shields.io/github/stars/pruthvig1998/eleven-months?style=flat&labelColor=430A1B&color=E5484D" alt="Eleven Months stars" /> <img src="https://img.shields.io/github/forks/pruthvig1998/eleven-months?style=flat&labelColor=430A1B&color=E5484D" alt="Eleven Months forks" />
+</div>
+
+Live demos: [Sach](https://sachcheck.in) - [Sach impact page](https://sachcheck.in/impact) - [Sach 55s demo](https://youtu.be/ZFO4BZXokL4) - [QuantPilot Explorer](https://pruthvig1998.github.io/QuantPilot/explorer/) - [Cluse live desk](https://pruthvig1998.github.io/cluse-desk-live/) - [Cluse 3D diagram](https://pruthvig1998.github.io/cluse-desk-live/3d/) - [Eleven Months live app](https://eleven-months-nano.web.app)
 
 ## 03 - Core expertise
 
