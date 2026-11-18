@@ -21,7 +21,7 @@
     <animate attributeName="opacity" values="1;0.55;1" dur="2.2s" repeatCount="indefinite"/>
   </circle>
   <text x="78" y="59" font-family="'Courier New', monospace" font-size="16" letter-spacing="2.5" fill="#6E2438">LIVE IN PRODUCTION - SACHCHECK.IN</text>
-  <text x="1144" y="59" text-anchor="end" font-family="'Courier New', monospace" font-size="14" letter-spacing="2" fill="#6E2438" opacity="0.75">TORONTO / HYDERABAD - EST. 2018</text>
+  <text x="1144" y="59" text-anchor="end" font-family="'Courier New', monospace" font-size="14" letter-spacing="2" fill="#6E2438" opacity="0.75">TORONTO - EST. 2018</text>
   <text x="56" y="130" font-family="Georgia, 'Times New Roman', serif" font-size="46" fill="#2A060F">I build AI agents that have to show their work.</text>
   <text x="56" y="170" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="19.5" fill="#6E2438">Senior GCP DevOps Engineer at UKG &#183; GKE &#183; Terraform &#183; Argo CD &#183; Cloud Run</text>
   <line x1="56" y1="202" x2="1144" y2="202" stroke="#C22633" stroke-opacity="0.35"/>

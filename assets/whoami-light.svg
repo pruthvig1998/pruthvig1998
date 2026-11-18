@@ -11,7 +11,7 @@
   <text x="600" y="40" text-anchor="middle" font-family="Courier New, monospace" font-size="19" fill="#6E6259">pruthvi@ukg: ~/profile - zsh</text>
   <g font-family="Courier New, monospace" font-size="25">
     <g opacity="0"><animate attributeName="opacity" values="0;1" begin="0.3s" dur="0.01s" fill="freeze"/><text x="44" y="128" fill="#C2323B">$</text><text x="76" y="128" fill="#2A0E16">whoami</text></g>
-    <g opacity="0"><animate attributeName="opacity" values="0;1" begin="0.8s" dur="0.01s" fill="freeze"/><text x="76" y="172" fill="#E5484D">Pruthvi Garlapati</text><text x="76" y="206" fill="#6E6259">Senior GCP DevOps Engineer @ UKG - Toronto / Hyderabad</text></g>
+    <g opacity="0"><animate attributeName="opacity" values="0;1" begin="0.8s" dur="0.01s" fill="freeze"/><text x="76" y="172" fill="#E5484D">Pruthvi Garlapati</text><text x="76" y="206" fill="#6E6259">Senior GCP DevOps Engineer @ UKG - Toronto</text></g>
     <g opacity="0"><animate attributeName="opacity" values="0;1" begin="1.5s" dur="0.01s" fill="freeze"/><text x="44" y="268" fill="#C2323B">$</text><text x="76" y="268" fill="#2A0E16">cat stack.txt</text></g>
     <g opacity="0"><animate attributeName="opacity" values="0;1" begin="2.0s" dur="0.01s" fill="freeze"/><text x="76" y="312" fill="#6E6259">GKE - Terraform - Argo CD - Cloud Run - GitOps</text><text x="76" y="346" fill="#6E6259">AI agents with evidence grounding and evals</text></g>
     <g opacity="0"><animate attributeName="opacity" values="0;1" begin="2.7s" dur="0.01s" fill="freeze"/><text x="44" y="408" fill="#C2323B">$</text><text x="76" y="408" fill="#2A0E16">./status --now</text></g>
