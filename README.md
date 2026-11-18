@@ -3,9 +3,11 @@
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/hero-panel.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/hero-panel-light.svg" /><img src="assets/hero-panel.svg" width="100%" alt="Pruthvi Garlapati - I build AI agents that have to show their work. Sach: 79 claims in its public evaluation, 0 overclaimed FALSE verdicts. QuantPilot demo 12.5 of 15, above all Track 02 winners." /></picture>
 
 <div align="center">
-<a href="https://www.linkedin.com/in/pruthvi-g/"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/btn-linkedin.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/btn-linkedin-light.svg" /><img src="assets/btn-linkedin.svg" width="280" alt="LinkedIn - Pruthvi Garlapati" /></picture></a>
-<a href="https://sachcheck.in"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/btn-sach.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/btn-sach-light.svg" /><img src="assets/btn-sach.svg" width="280" alt="Sach - live product at sachcheck.in" /></picture></a>
-<a href="https://pruthvig1998.github.io/pruthvig1998/"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/btn-portfolio.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/btn-portfolio-light.svg" /><img src="assets/btn-portfolio.svg" width="280" alt="Portfolio - full site with live demos" /></picture></a>
+<a href="https://www.linkedin.com/in/pruthvi-g/" target="_blank" rel="noopener"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/btn-linkedin.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/btn-linkedin-light.svg" /><img src="assets/btn-linkedin.svg" width="280" alt="LinkedIn - Pruthvi Garlapati" /></picture></a>
+<a href="https://sachcheck.in" target="_blank" rel="noopener"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/btn-sach.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/btn-sach-light.svg" /><img src="assets/btn-sach.svg" width="280" alt="Sach - live product at sachcheck.in" /></picture></a>
+<a href="https://pruthvig1998.github.io/cluse-desk-live/" target="_blank" rel="noopener"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/btn-cluse.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/btn-cluse-light.svg" /><img src="assets/btn-cluse.svg" width="280" alt="Cluse - live paper-trading desk" /></picture></a>
+<a href="https://eleven-months-nano.web.app" target="_blank" rel="noopener"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/btn-eleven.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/btn-eleven-light.svg" /><img src="assets/btn-eleven.svg" width="280" alt="Eleven Months - live rental agreement checker" /></picture></a>
+<a href="https://pruthvig1998.github.io/pruthvig1998/" target="_blank" rel="noopener"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/btn-portfolio.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/btn-portfolio-light.svg" /><img src="assets/btn-portfolio.svg" width="280" alt="Portfolio - full site with live demos" /></picture></a>
 </div>
 
 <div align="center">
@@ -27,7 +29,7 @@
 | **At work** | UTM infrastructure at UKG - GKE, Cloud Run, SQL Server 2022 migration, PagerDuty noise reduction |
 | **Open to** | Senior GCP / Platform roles - Toronto hybrid, Canada remote |
 
-Credentials: **Google Cloud Professional Cloud DevOps Engineer** (Jan 2024) - verifiable in my [Credly badge wallet](https://www.credly.com/users/prudhvi-garlapati); **PagerDuty Foundational Practitioner** (Feb 2025) - listed with issuer link on my [LinkedIn](https://www.linkedin.com/in/pruthvi-g/).
+Credentials: **Google Cloud Professional Cloud DevOps Engineer** (Jan 2024) - verifiable in my <a href="https://www.credly.com/users/prudhvi-garlapati" target="_blank" rel="noopener">Credly badge wallet</a>; **PagerDuty Foundational Practitioner** (Feb 2025) - listed with issuer link on my <a href="https://www.linkedin.com/in/pruthvi-g/" target="_blank" rel="noopener">LinkedIn</a>.
 
 Education: **BTech, Civil Engineering** - CVR College of Engineering, Hyderabad (2014-2018); **Postgraduate Diploma, Cloud Computing** - George Brown College (2022); **Postgraduate Diploma, Business Analytics** - Cambrian College (2021).
 
@@ -36,7 +38,7 @@ Education: **BTech, Civil Engineering** - CVR College of Engineering, Hyderabad 
 ## 02 - Flagship work
 
 <div align="center">
-<a href="https://github.com/pruthvig1998/sach-check"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-sach.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/card-sach-light.svg" /><img src="assets/card-sach.svg" width="100%" alt="Sach - WhatsApp forward fact-checker" /></picture></a>
+<a href="https://github.com/pruthvig1998/sach-check" target="_blank" rel="noopener"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-sach.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/card-sach-light.svg" /><img src="assets/card-sach.svg" width="100%" alt="Sach - WhatsApp forward fact-checker" /></picture></a>
 </div>
 
 <div align="center">
@@ -44,7 +46,7 @@ Education: **BTech, Civil Engineering** - CVR College of Engineering, Hyderabad 
 </div>
 
 <div align="center">
-<a href="https://github.com/pruthvig1998/QuantPilot"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-quantpilot.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/card-quantpilot-light.svg" /><img src="assets/card-quantpilot.svg" width="100%" alt="QuantPilot - autonomous options research agent" /></picture></a>
+<a href="https://github.com/pruthvig1998/QuantPilot" target="_blank" rel="noopener"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-quantpilot.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/card-quantpilot-light.svg" /><img src="assets/card-quantpilot.svg" width="100%" alt="QuantPilot - autonomous options research agent" /></picture></a>
 </div>
 
 <div align="center">
@@ -52,7 +54,7 @@ Education: **BTech, Civil Engineering** - CVR College of Engineering, Hyderabad 
 </div>
 
 <div align="center">
-<a href="https://github.com/pruthvig1998/cluse-desk-live"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-cluse.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/card-cluse-light.svg" /><img src="assets/card-cluse.svg" width="100%" alt="Cluse desk, live - paper-trading research desk" /></picture></a>
+<a href="https://github.com/pruthvig1998/cluse-desk-live" target="_blank" rel="noopener"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-cluse.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/card-cluse-light.svg" /><img src="assets/card-cluse.svg" width="100%" alt="Cluse desk, live - paper-trading research desk" /></picture></a>
 </div>
 
 <div align="center">
@@ -60,14 +62,14 @@ Education: **BTech, Civil Engineering** - CVR College of Engineering, Hyderabad 
 </div>
 
 <div align="center">
-<a href="https://github.com/pruthvig1998/eleven-months"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-eleven.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/card-eleven-light.svg" /><img src="assets/card-eleven.svg" width="100%" alt="Eleven Months - rental agreement checker" /></picture></a>
+<a href="https://github.com/pruthvig1998/eleven-months" target="_blank" rel="noopener"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-eleven.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/card-eleven-light.svg" /><img src="assets/card-eleven.svg" width="100%" alt="Eleven Months - rental agreement checker" /></picture></a>
 </div>
 
 <div align="center">
 <img src="https://img.shields.io/github/stars/pruthvig1998/eleven-months?style=flat&labelColor=430A1B&color=E5484D" alt="Eleven Months stars" /> <img src="https://img.shields.io/github/forks/pruthvig1998/eleven-months?style=flat&labelColor=430A1B&color=E5484D" alt="Eleven Months forks" />
 </div>
 
-Live demos: [Sach](https://sachcheck.in) - [Sach impact page](https://sachcheck.in/impact) - [Sach 55s demo](https://youtu.be/ZFO4BZXokL4) - [QuantPilot Explorer](https://pruthvig1998.github.io/QuantPilot/explorer/) - [Cluse live desk](https://pruthvig1998.github.io/cluse-desk-live/) - [Cluse 3D diagram](https://pruthvig1998.github.io/cluse-desk-live/3d/) - [Eleven Months live app](https://eleven-months-nano.web.app)
+Live demos: <a href="https://sachcheck.in" target="_blank" rel="noopener">Sach</a> - <a href="https://sachcheck.in/impact" target="_blank" rel="noopener">Sach impact page</a> - <a href="https://youtu.be/ZFO4BZXokL4" target="_blank" rel="noopener">Sach 55s demo</a> - <a href="https://pruthvig1998.github.io/QuantPilot/explorer/" target="_blank" rel="noopener">QuantPilot Explorer</a> - <a href="https://pruthvig1998.github.io/cluse-desk-live/" target="_blank" rel="noopener">Cluse live desk</a> - <a href="https://pruthvig1998.github.io/cluse-desk-live/3d/" target="_blank" rel="noopener">Cluse 3D diagram</a> - <a href="https://eleven-months-nano.web.app" target="_blank" rel="noopener">Eleven Months live app</a>
 
 ## 03 - Core expertise
 
@@ -115,17 +117,17 @@ Live demos: [Sach](https://sachcheck.in) - [Sach impact page](https://sachcheck.
 
 I write up what I build - the decisions, the numbers, and what the scores actually said.
 
-- **The QuantPilot build story** - [what a 66.5 out of 100 taught me](https://www.linkedin.com/feed/update/urn:li:activity:7526341625153822720/) - the honest version, certificate attached, no win claimed.
-- **The Sach launch post** - [LinkedIn](https://www.linkedin.com/in/pruthvi-g/recent-activity/all/) - the 55-second demo film and why a fact-checker must cite its verdicts.
-- **The Sach story on dev.to** - [Every family WhatsApp group in India has the same problem](https://dev.to/pruthvig1998/every-family-whatsapp-group-in-india-has-the-same-problem-1jf6) - why a fact-checker must cite its verdicts.
-- **The QuantPilot story on dev.to** - [Proud to share QuantPilot, my solo build for the Open Agent Hackathon 2026](https://dev.to/pruthvig1998/proud-to-share-quantpilot-my-solo-build-for-the-open-agent-hackathon-2026-1p22).
-- Full CV and experience history - [LinkedIn](https://www.linkedin.com/in/pruthvi-g/), kept current there.
+- **The QuantPilot build story** - <a href="https://www.linkedin.com/feed/update/urn:li:activity:7526341625153822720/" target="_blank" rel="noopener">what a 66.5 out of 100 taught me</a> - the honest version, certificate attached, no win claimed.
+- **The Sach launch post** - <a href="https://www.linkedin.com/in/pruthvi-g/recent-activity/all/" target="_blank" rel="noopener">LinkedIn</a> - the 55-second demo film and why a fact-checker must cite its verdicts.
+- **The Sach story on dev.to** - <a href="https://dev.to/pruthvig1998/every-family-whatsapp-group-in-india-has-the-same-problem-1jf6" target="_blank" rel="noopener">Every family WhatsApp group in India has the same problem</a> - why a fact-checker must cite its verdicts.
+- **The QuantPilot story on dev.to** - <a href="https://dev.to/pruthvig1998/proud-to-share-quantpilot-my-solo-build-for-the-open-agent-hackathon-2026-1p22" target="_blank" rel="noopener">Proud to share QuantPilot, my solo build for the Open Agent Hackathon 2026</a>.
+- Full CV and experience history - <a href="https://www.linkedin.com/in/pruthvi-g/" target="_blank" rel="noopener">LinkedIn</a>, kept current there.
 
 ## 06 - Latest activity
 
 <!--START_SECTION:activity-->
-1. 🎉 Merged PR [#3](https://github.com/pruthvig1998/sach-check/pull/3) in [pruthvig1998/sach-check](https://github.com/pruthvig1998/sach-check)
-2. 💪 Opened PR [#3](https://github.com/pruthvig1998/sach-check/pull/3) in [pruthvig1998/sach-check](https://github.com/pruthvig1998/sach-check)
+1. 🎉 Merged PR <a href="https://github.com/pruthvig1998/sach-check/pull/3" target="_blank" rel="noopener">#3</a> in <a href="https://github.com/pruthvig1998/sach-check" target="_blank" rel="noopener">pruthvig1998/sach-check</a>
+2. 💪 Opened PR <a href="https://github.com/pruthvig1998/sach-check/pull/3" target="_blank" rel="noopener">#3</a> in <a href="https://github.com/pruthvig1998/sach-check" target="_blank" rel="noopener">pruthvig1998/sach-check</a>
 - Nov 14, 2026 - Sach filed in Code for a Billion (issue #126), launch post published
 <!--END_SECTION:activity-->
 
@@ -133,11 +135,11 @@ I write up what I build - the decisions, the numbers, and what the scores actual
 
 ## 07 - Connect
 
-The fastest way to evaluate my work is the live products above - Sach takes 10 seconds to try. For roles or collaboration, reach me on [LinkedIn](https://www.linkedin.com/in/pruthvi-g/).
+The fastest way to evaluate my work is the live products above - Sach takes 10 seconds to try. For roles or collaboration, reach me on <a href="https://www.linkedin.com/in/pruthvi-g/" target="_blank" rel="noopener">LinkedIn</a>.
 
 ### Guestbook
 
-Visiting? [Open a Guestbook issue](https://github.com/pruthvig1998/pruthvig1998/issues/new?title=Guestbook%3A+signing+in) and your avatar signs below automatically.
+Visiting? <a href="https://github.com/pruthvig1998/pruthvig1998/issues/new?title=Guestbook%3A+signing+in" target="_blank" rel="noopener">Open a Guestbook issue</a> and your avatar signs below automatically.
 
 <!--START_SECTION:guestbook-->
 *Be the first to sign.*
