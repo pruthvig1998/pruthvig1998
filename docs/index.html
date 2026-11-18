@@ -149,9 +149,9 @@
   .proof .l{font-size:12px;color:var(--muted);font-family:var(--mono);letter-spacing:.06em;margin-top:2px}
 
   .card{position:relative;display:block;border-radius:14px;padding:22px;margin:0 0 12px;
-    background:rgba(236,231,223,.03);border:1px solid rgba(236,231,223,.12);
+    background:linear-gradient(180deg,#2B0811,#20050E);border:1px solid rgba(236,231,223,.12);
     transition:border-color .25s ease,background-color .25s ease}
-  .card:hover{background:rgba(236,231,223,.05);border-color:rgba(229,72,77,.5)}
+  .card:hover{background:linear-gradient(180deg,#360B16,#270710);border-color:rgba(229,72,77,.5)}
   .card::before,.card::after{content:"";position:absolute;width:16px;height:16px;pointer-events:none;transition:border-color .25s ease}
   .card::before{top:-1px;left:-1px;border-top:2px solid var(--gold);border-left:2px solid var(--gold);border-top-left-radius:14px}
   .card::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--ivory);border-right:2px solid var(--ivory);border-bottom-right-radius:14px}
@@ -599,7 +599,7 @@
     <p class="imm-panel-line" id="imm-desc">Live WhatsApp-forward fact-checker. Paste a forward, get a cited TRUE / FALSE / MISLEADING / UNVERIFIED verdict.</p>
     <div class="imm-panel-proof" id="imm-proof">79-claim evaluation - 0 overclaimed verdicts</div>
     <div class="imm-panel-gh" id="imm-gh"></div>
-    <div class="imm-panel-links" id="imm-links"><a href="https://sachcheck.in">Live site</a><a href="https://sachcheck.in/impact">Impact page</a><a href="#sach">Full case</a></div>
+    <div class="imm-panel-links" id="imm-links"><a href="https://sachcheck.in" target="_blank" rel="noopener">Live site</a><a href="https://sachcheck.in/impact" target="_blank" rel="noopener">Impact page</a><a href="#sach">Full case</a></div>
   </div>
 </section>
 
@@ -2097,30 +2097,31 @@
 <div class="sound-glow" aria-hidden="true"></div>
 <canvas id="dissolve" aria-hidden="true"></canvas>
 <audio id="bg-music" loop preload="auto" src="assets/hero-music.mp3"></audio>
-<button type="button" id="sound-toggle" aria-pressed="false" aria-label="Toggle background music">Sound off</button>
+<button type="button" id="sound-toggle" aria-pressed="true" aria-label="Toggle background music">Sound on</button>
 <script>
-  // Background music: slowed phonk in the reel's mood (Pixabay free license).
-  // ON by default: plays with sound immediately where the browser allows
-  // it; where audible autoplay is blocked (first visit), the track starts
-  // muted and unmutes on the first tap, click or key press. The toggle
-  // pauses/resumes; an explicit off is remembered on this device.
+  // Background music: slowed phonk (Pixabay free license).
+  // Default ON. A browser cannot start audible playback before the visitor
+  // first interacts with the page, so the track starts playing MUTED on
+  // load (muted autoplay is allowed) and unmutes on the first interaction
+  // of any kind - click, tap, key press, scroll or mouse wheel. Only an
+  // explicit click on the Sound toggle turns it off, and only that choice
+  // is remembered (key pg-music3).
   (function(){
     try {
       var audio = document.getElementById("bg-music");
       var btn = document.getElementById("sound-toggle");
       if(!audio || !btn) return;
-      var TARGET = 0.45, on = false, fadeTimer = null, userOff = false, waiting = false;
-      var KEY = "pg-music2";
+      var TARGET = 0.45, KEY = "pg-music3";
+      var userOff = false;
       try { userOff = localStorage.getItem(KEY) === "off"; } catch(e){}
+      var on = false, waiting = false, fadeTimer = null;
       var fadeTo = function(target, done){
         if(fadeTimer) clearInterval(fadeTimer);
         var step = (target - audio.volume) / 12;
-        if(step === 0){ if(done) done(); return; }
+        if(!step){ if(done) done(); return; }
         fadeTimer = setInterval(function(){
           var v = audio.volume + step;
-          if((step > 0 && v >= target) || (step < 0 && v <= target)){
-            v = target; clearInterval(fadeTimer); fadeTimer = null; if(done) done();
-          }
+          if((step > 0 && v >= target) || (step < 0 && v <= target)){ v = target; clearInterval(fadeTimer); fadeTimer = null; if(done) done(); }
           audio.volume = Math.max(0, Math.min(1, v));
         }, 40);
       };
@@ -2130,88 +2131,66 @@
         btn.setAttribute("aria-pressed", mode === "off" ? "false" : "true");
         btn.textContent = mode === "on" ? "Sound on" : (mode === "waiting" ? "Tap for sound" : "Sound off");
       };
-      var startLoud = function(){
+      var disarm = function(){};
+      var goLoud = function(){
         audio.muted = false;
+        on = true; waiting = false;
         if(audio.paused){
           audio.volume = 0;
           var pr = audio.play();
           if(pr && pr.catch) pr.catch(function(){});
+          fadeTo(TARGET);
+        } else {
+          audio.volume = TARGET;
         }
-        fadeTo(TARGET);
-        on = true; waiting = false;
         setBtn("on");
+        disarm();
       };
-      var disarm = function(){};
       var armUnlock = function(){
-        var soft = function(){
-          if(!waiting) return;
-          audio.muted = false;
-        };
+        var events = ["pointerdown", "mousedown", "click", "touchstart", "keydown", "wheel", "scroll"];
         var unlock = function(e){
           if(e && e.target === btn) return;
           if(!waiting) return;
-          waiting = false;
-          audio.muted = false;
-          audio.volume = 0;
-          if(audio.paused){
-            var pr = audio.play();
-            if(pr && pr.catch) pr.catch(function(){});
-          }
-          fadeTo(TARGET);
-          on = true;
-          setBtn("on");
-          disarm();
+          if(!audio.paused){ goLoud(); return; }
+          var t = e && e.type;
+          if(t === "wheel" || t === "scroll") return;
+          goLoud();
         };
-        var gestures = ["pointerdown", "touchstart", "touchend", "click", "keydown"];
-        gestures.forEach(function(t){ addEventListener(t, unlock, { passive: true }); });
-        addEventListener("wheel", soft, { passive: true });
-        addEventListener("scroll", soft, { passive: true });
-        disarm = function(){
-          gestures.forEach(function(t){ removeEventListener(t, unlock); });
-          removeEventListener("wheel", soft);
-          removeEventListener("scroll", soft);
-        };
+        events.forEach(function(t){ addEventListener(t, unlock, { passive: true }); });
+        disarm = function(){ events.forEach(function(t){ removeEventListener(t, unlock); }); };
       };
-      if(!userOff){
+      if(userOff){
+        setBtn("off");
+      } else {
+        waiting = true;
+        setBtn("waiting");
+        armUnlock();
         audio.muted = false;
         audio.volume = 0;
         var pr0 = audio.play();
-        var fellBack = function(){
-          audio.muted = true;
-          audio.volume = TARGET;
-          waiting = true;
-          var prm = audio.play();
-          if(prm && prm.catch) prm.catch(function(){});
-          setBtn("waiting");
-          armUnlock();
-        };
         if(pr0 && pr0.then){
           pr0.then(function(){
-            on = true;
             fadeTo(TARGET);
+            on = true; waiting = false;
             setBtn("on");
-          }).catch(fellBack);
-        } else {
-          on = true;
-          fadeTo(TARGET);
-          setBtn("on");
+            disarm();
+          }).catch(function(){
+            audio.muted = true;
+            audio.volume = TARGET;
+            var prm = audio.play();
+            if(prm && prm.catch) prm.catch(function(){});
+          });
         }
-      } else {
-        setBtn("off");
       }
       btn.addEventListener("click", function(){
         if(on && !audio.paused && !waiting){
-          userOff = true;
           try { localStorage.setItem(KEY, "off"); } catch(err){}
           on = false;
           fadeTo(0, function(){ audio.pause(); });
           setBtn("off");
         } else {
-          userOff = false;
-          waiting = false;
           try { localStorage.setItem(KEY, "on"); } catch(err){}
-          disarm();
-          startLoud();
+          goLoud();
         }
       });
     } catch(e){}
